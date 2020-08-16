@@ -1,0 +1,136 @@
+body {
+	font-size: 16px;
+	color: #000;
+	background-color: #fff;
+}
+
+#header-nav { /* Navigation bar */
+	background-color: #8ac;
+	border-radius: 20px;
+	border: 2px solid #68a;
+	margin-bottom: 15px;
+}
+
+#logo-img { /* Logo */
+	background: url("../img/logo_md.png") no-repeat;
+	background-color: #8ac;
+	width: 119px;
+	height: 92px;
+	margin: 10px;
+}
+.navbar-brand {
+	padding-top: 15px;
+}
+.navbar-brand h1 { /* Name */
+	color: #26f;
+	font-size: 1.8em;
+	font-weight: bold;
+	text-shadow: 1px 2px 3px #424;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	line-height: .75;
+}
+.navbar-brand h2 { /* Department */
+	color: #824;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	line-height: .75;
+}
+.navbar-brand a:hover, .navbar-brand a:focus { /* Remove underlines */
+	text-decoration: none;
+}
+.navbar-brand p { 
+	color: #f22;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+
+.nav-item a {
+	background-color: #28c;
+	margin: 2px;
+	text-align: center;
+}
+.nav-item a:hover {
+	background: #cff;
+}
+
+.navbar-header button.navbar-toggler {
+	border: 1px solid #8ac;
+}
+.navbar-header button.navbar-toggler {
+	clear: both;
+}
+
+nav svg { /* Menu icon */
+	width: 1em;
+	height: 1em;
+	margin: 5px;
+	fill: currentColor;
+}
+
+/* Body */
+div h2 {
+	color: #824;
+	font-size: 24px;
+	font-weight: bold;
+}
+div h2#reserve a { /* Online reservation */
+	background-color: #fc0;
+	border: 1px solid #ca8;
+	border-radius: 5px;
+	color: #000;
+	padding: 5px 10px 5px 10px;
+}
+
+div h2#telemed a { /* Telemedicine */
+	background-color: #2f4;
+	border: 1px solid #8ac;
+	border-radius: 5px;
+	color: #000;
+	padding: 5px 10px 5px 10px;
+}
+div h2 a:hover, div h2 a:focus {
+	text-decoration: none;
+}
+div h2 a svg { /* Button icon */
+	width: 1em;
+	height: 1em;
+	margin: 5px;
+	fill: currentColor;
+}
+button.btn { /* Accordion button */
+	background-color: #06a;
+	border: 1px solid #048;
+	padding: 2px;
+}
+div#collapseDetail div.card {
+	background-color: #aff;
+	padding: 5px;
+}
+div .table th, div .table td { /* Hour table */
+	padding: 5px;
+	text-align: center;
+}
+div .table td.mark { /* Open hour */
+	background-color: #4a2;
+}
+
+form.form-inline input.form-control {
+	padding: 2px;
+	height: calc(1em + 0.75rem + 2px);
+}
+
+footer {
+	background-color: #4a2;
+}
+footer p {
+	color: #fff;
+	font-size: 0.8em;
+	text-align: center;
+	margin-bottom: 0px;
+}
