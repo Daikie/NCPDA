@@ -131,6 +131,12 @@ footer {
 footer p {
 	color: #fff;
 	font-size: 0.8em;
-	text-align: center;
 	margin-bottom: 0px;
+}
+footer a {
+	background-color: #8ac;
+	border: 1px solid #68a;
+	border-radius: 5px;
+	margin-top: 5px;
+	color: #000;
 }
