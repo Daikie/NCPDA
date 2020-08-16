@@ -79,6 +79,10 @@ div h2 {
 	font-size: 24px;
 	font-weight: bold;
 }
+div h3 {
+	color: #000;
+	font-size: 20px;
+}
 div h2#reserve a { /* Online reservation */
 	background-color: #fc0;
 	border: 1px solid #ca8;

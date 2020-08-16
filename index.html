@@ -27,12 +27,12 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="#">
+							<a class="nav-link" href="#reserve">
 								<svg viewBox="0 0 16 16" class="bi bi-menu-up" xmlns="http://www.w3.org/2000/svg">
 									<path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
 									<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 								</svg>
-								<br class="d-none d-lg-block">ホーム
+								<br class="d-none d-lg-block">受診方法
 							</a>
 						</li>
 						<li class="nav-item active">
@@ -45,7 +45,7 @@
 							</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="staff.html">
+							<a class="nav-link" href="#staff">
 								<svg viewBox="0 0 16 16" class="bi bi-card-list" xmlns="http://www.w3.org/2000/svg">
 	  								<path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
 								</svg>
@@ -53,7 +53,7 @@
 							</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="access.html">
+							<a class="nav-link" href="#access">
 								<svg viewBox="0 0 16 16" class="bi bi-building" xmlns="http://www.w3.org/2000/svg">
   									<path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
   									<path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
@@ -66,6 +66,26 @@
 			</div>
 		</div>
 	</nav>
+	<div class="container">
+		<img src="img/status.png" width="514px" height="124px" class="img-fluid">
+		<h2>お知らせ</h2>
+		<h3>2020/ 7/24</h3>
+		<ul>
+			<li>診療が長引き、待合室が密集してしまう状況が続きましたため、「待合室密集アラート」を導入しました。
+				<br>待ち組数が増えると診察室で音声警告が発出されます。
+				<br>優先順位の高いご相談からお話くださいますよう、ご協力お願い申し上げます。</li>
+		</ul>
+		<h3>2020/ 5/ 5</h3>
+		<ul>
+			<li>新型コロナウイルス流行中、一部の薬局ではオンライン診療後に薬の説明をオンラインで受け、薬をご自宅に配送してもらうことが可能です。現在薬の配送料が軽減されております。</li>
+		</ul>
+		<h3>2020/ 4/10</h3>
+		<ul>
+			<li>新型コロナウイルス流行中は初診・再診にかかわらずオンライン診療が可能です。【アプリをインストール】し、医療機関コードに「dd1f」と入力してご利用ください。</li>
+			<li>当院では新型コロナウイルスの検査やレントゲン、CTは行えません。</li>
+		</ul>
+		<hr>
+	</div>
 	<div class="container">
 		<h2 id="reserve"><a href="reserve.html">
 			<svg viewBox="0 0 16 16" class="bi bi-calendar-check" xmlns="http://www.w3.org/2000/svg">
@@ -154,40 +174,78 @@
 		</div>
 	</div>
 	<div class="container">
-		<div id="services" class="row">
-			<div class="col-lg">
+		<div class="row">
+			<div id="services" class="col-lg">
 				<h2>診療科目</h2>
-				<ul>
-					<li>小児科</li>
-					<ul>
-						<li>予防接種、乳幼児健診（電話予約）</li>
-						<li>ネブライザー</li>
-						<li>便秘</li>
-						<li>おねしょ・夜尿症、アラーム療法</li>
-					</ul>
-					<li>皮膚科</li>
-					<ul>
-						<li>赤ちゃんの肌相談</li>
-						<li>アトピー性皮膚炎</li>
-						<li>じんましん</li>
-						<li>ニキビ</li>
-						<li>かぶれ、虫刺され</li>
-						<li>掌蹠膿疱症の紫外線療法</li>
-						<li>脱毛症の光線療法</li>
-						<li>ヤケドの湿潤療法</li>
-						<li>イボの凍結療法、モノクロロ酢酸療法</li>
-						<li>ミズムシの顕微鏡検査</li>
-						<li>タコ・ウオノメ</li>
-						<li>巻き爪</li>
-					</ul>
-					<li>アレルギー科</li>
-					<ul>
-						<li>食物アレルギーの管理</li>
-						<li>喘息</li>
-						<li>アレルギー性鼻炎</li>
-						<li>スギ花粉・ダニアレルギー舌下免疫療法</li>
-						<li>パッチテスト<br>※48時間後の再診が必要です。</li>
-					</ul>
+				<ul class="list-group">
+					<li class="list-group-item">小児科
+						<ul>
+							<li>予防接種、乳幼児健診（電話予約）</li>
+							<li>ネブライザー</li>
+							<li>便秘</li>
+							<li>おねしょ・夜尿症、アラーム療法</li>
+						</ul>
+					</li>
+					<li class="list-group-item">皮膚科
+						<ul>
+							<li>赤ちゃんの肌相談</li>
+							<li>アトピー性皮膚炎</li>
+							<li>じんましん</li>
+							<li>ニキビ</li>
+							<li>かぶれ、虫刺され</li>
+							<li>掌蹠膿疱症の紫外線療法</li>
+							<li>脱毛症の光線療法</li>
+							<li>ヤケドの湿潤療法</li>
+							<li>イボの凍結療法、モノクロロ酢酸療法</li>
+							<li>ミズムシの顕微鏡検査</li>
+							<li>タコ・ウオノメ</li>
+							<li>巻き爪</li>
+						</ul>
+					</li>
+					<li class="list-group-item">アレルギー科
+						<ul>
+							<li>食物アレルギーの管理</li>
+							<li>喘息</li>
+							<li>アレルギー性鼻炎</li>
+							<li>スギ花粉・ダニアレルギー舌下免疫療法</li>
+							<li>パッチテスト<br>※48時間後の再診が必要です。</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div id="staff" class="col-lg">
+				<h2>医師経歴</h2>
+				<img src="img/name.png" width="98px" height="36">
+				<ul class="list-group">
+					<li class="list-group-item">学職歴
+						<ul>
+							<li>東京大学医学部医学科卒</li>
+							<li>東京大学医学部附属病院</li>
+							<li>国立成育医療研究センター
+								<br>総合診療部</li>
+							<li>東京大学医学部附属病院
+								<br>精神神経科こころの発達診療部</li>
+						</ul>
+					</li>
+					<li class="list-group-item">履修
+						<ul>
+							<li>Machine Learning
+								<br>(Stanford University Online)</li>
+							<li>Fundamentals of Graphic Design
+								<br>(California Institute of the Arts)</li>
+							<li>COVID-19 Contact Tracing
+								<br>(Johns Hopkins University)</li>
+						</ul>
+					</li>
+					<li class="list-group-item">所属学会・専門医
+						<ul>
+							<li>日本小児科学会　小児科専門医</li>
+							<li>日本小児皮膚科学会</li>
+							<li>皮膚科光線療法推進の会</li>
+							<li>日本アレルギー学会</li>
+							<li>日本外来小児科学会</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -198,18 +256,29 @@
 	</div>
 	<div class="container">
 		<div class="row">
+			<div id="access" class="col-lg">
+				<h2>アクセス</h2>
+				<p>〒152-0011　東京都目黒区原町1-11-1　コトブキビル2階
+					<br>電話/FAX番号：03-3791-5761
+					<br>東急目黒線西小山駅徒歩2分</p>
+				<p>設備：駐車場×　エレベーター×　男女共用トイレ〇　多機能トイレ×　おむつ交換スペース〇　全面禁煙〇</p>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.8675111211561!2d139.69682408806148!3d35.616137088990584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b42224ae14d%3A0x8fd5fb103b0eb484!2z6KW_5bCP5bGx44Kv44Oq44OL44OD44Kv!5e0!3m2!1sja!2sjp!4v1597549810546!5m2!1sja!2sjp" width="350" height="250" frameborder="1" style="border:1px solid #000;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				<img src="img/map.png" width="503px" height="355px" class="img-fluid">
+			</div>
 			<div class="col-lg">
 				<h2>外観</h2>
 				<img src="img/outside.jpg" width="346px" height="240px">
+				<h2>内観</h2>
+				<h3>感染を防ぐために分割された待合室</h3>
+				<img src="img/interior.jpg" width="365px" height="159px">
+				<h3>エアリアル・エデュ・トイ</h3>
+				<p>空中に浮かび上がる画面に指をかざすことで遊べる知育玩具です。</p>
+				<img src="img/aet.jpg" width="368px" height="227px">
 			</div>
-			<div class="col-lg">
-				<h2>所在地</h2>
-				<p>〒152-0011　東京都目黒区原町1-11-1　コトブキビル2階
-					<br>西小山クリニック　℡：03-3791-5761
-					<br>東急目黒線西小山駅徒歩2分</p>
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.8675111211561!2d139.69682408806148!3d35.616137088990584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b42224ae14d%3A0x8fd5fb103b0eb484!2z6KW_5bCP5bGx44Kv44Oq44OL44OD44Kv!5e0!3m2!1sja!2sjp!4v1597549810546!5m2!1sja!2sjp" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 		</div>
 	</div>
+	<br>
+	<br>
 	<footer class="fixed-bottom">
         <div class="container">
         	<p class="float-left">受診の際は必ず保険証・医療証をお持ちください。
