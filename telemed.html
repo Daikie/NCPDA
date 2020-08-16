@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1" />
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/styles.css">
+<title>オンライン診療規定</title>
+
+<script type="text/javascript">
+	function Certify(){
+		var sw=1;
+		var tmp="1RedHalfIndigo";
+		var ccd=tmp.substr(3, 1)+tmp.substr(10, 1)+tmp.substr(0, 1)+tmp.substr(7, 1);
+		if(Cert_form.number.value=="") sw=0;
+		if(Cert_form.year.value=="") sw=0;
+		if(Cert_form.month.value=="") sw=0;
+		if(Cert_form.day.value=="") sw=0;
+		if(sw==0) {
+			alert("該当するカルテがありません。");
+		} else {
+			alert("医療機関コードは "+ccd+" です。書き留めてください。");
+		}
+	}
+</script>
+
+</head>
+<body bgcolor=#ffffff link=#0000ff vlink=#800080 alink=#ff0000>
+<h1><font color=#9a0079>西小山クリニック　オンライン診療規定</font></h1>
+<hr size=0 width=62% align="left" color=#ff99a0 noshade>
+
+<p>※クリニックにお越しになって受診される方は該当しません。前のページに戻って、「対面診察」をお選びください。</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <h2>オンライン診療の概要</h2>
+            <img src="curon/curoncaution.png" alt="caution" width="202" height="62">
+            <p>クリニックにお越しにならずにスマートフォンのテレビ電話で診察がお受けになれます。</p>
+            <h3>curonアプリをダウンロード</h3>
+            <p>オンライン診療アプリのご利用に現在のページの下部で発行される医療機関コードが必要です。</p>
+            <h3>30日前から5時間前まで予約が可能</h3>
+            <p>確認のために<font color=#ff0000>保険証や医療証の写真を登録</font>していただいております。</p>
+            <h3>予約時刻になったらアプリを起動して待機</h3>
+            <p>医師からの着信で診察が始まります。<font color=#ff0000>※Wi-Fi接続推奨です。</font>
+            <br>着信にお出にならない場合は、キャンセル扱いとなる場合があります。
+            <br>通常診療の合間に行っておりますため、短時間の診療となります。</p>
+            <h3>診療費はクレジットカード決済</h3>
+            <p><font color=#ff0000>JCB、AMEX、VISA、MasterCard、Diners</font>によるクレジットカード決済となります。
+            <br>診療費に加えて<font color=#2800ff>アプリ利用料\330(税込)</font>が請求されます。</p>
+            <h3>薬の受け取り方</h3>
+            <ul type="disc">
+                <li>処方箋を来院受け取り→薬局で薬をもらう</li>
+                <li>処方箋をご自宅に郵送→薬局で薬をもらう</li>
+                <li>処方箋を薬局にFAX→薬局で薬をもらう<font color="ff0000">（新型コロナ流行中）</font></li>
+                <li>処方箋を薬局にFAX→薬局からオンラインで薬の説明を受け、自宅に薬を配送<font color="ff0000">（新型コロナ流行中）</font>
+                <br>＜対応可能な薬局＞<a href="https://gghb.f.msgs.jp/r/c.do?tl_8pW_1c_gghb">【詳しくはこちら】</a>
+                <br><img src="curon/pharm.png" alt="オンライン服薬指導薬局リスト" width="731" height="326" class="img-fluid"></li>
+            </ul>
+            <p>処方箋の<font color=#2800ff>郵送費は\84</font>です。新型コロナウイルス流行中は薬剤師会による支援で薬の配送料は軽減されます。</p>
+        </div>
+        <div class="col-lg">
+            <h2>オンライン診療に適した疾患</h2>
+            <ul>
+                <li>共通</li>
+                <dt>検査結果問い合わせ</dt>
+                <dt>薬の使い方の質問</dt>
+            	<li>小児科</li>
+            	<dt>おねしょ、便秘</dt>
+            	<dt>安定している喘息</dt>
+            	<dt>アレルギー性鼻炎、舌下免疫療法</dt>
+            	<li>皮膚科</li>
+            	<dt>安定しているアトピー性皮膚炎、乾燥肌</dt>
+            	<dt>ニキビ</dt>
+            	<dt>じんましん</dt>
+            </ul>
+
+            <h2>オンライン診療で可能なこと、不可能なこと</h2>
+            <table border="1">
+            <tr>
+            	<td></td><th bgcolor="ccffcc">可能なこと</th><th bgcolor="ffcccc">不可能なこと</th>
+            </tr>
+            <tr>
+            	<th>診察</th><td bgcolor="ccffcc">状況を聞く、画面で見る</td><td bgcolor="ffcccc">身体診察や検査</td>
+            </tr>
+            <tr>
+            	<th>治療</th><td bgcolor="ccffcc">処方箋を発行する</td><td bgcolor="ffcccc">処置や機器による治療</td>
+            </tr>
+            <tr>
+            	<th>処方</th><td bgcolor="ccffcc">いつもの薬、安全性の高い薬</td><td bgcolor="ffcccc">重大な副作用のある薬</td>
+            </tr>
+            <tr>
+            	<th>説明</th><td bgcolor="ccffcc">口頭の説明</td><td bgcolor="ffcccc">資料を用いた説明</td>
+            </tr>
+            </table>
+            <p>※病状によっては、医師が対面診察が必要と判断し、後日来院していただく場合がございます。</p>
+
+            <h2>医療機関コードの発行</h2>
+            <p>平常時は受診歴ある方のみが対象ですが、<font color=#ff0000>新型コロナウイルス流行中は初診の方でもオンライン診療をお受けになれます</font>。アプリをインストールし、医療機関コードに「dd1f」と入力してご利用ください。</p>
+    
+<!--
+<p>当院にカルテがある方には医療機関コードを発行しますので、以下のフォームにご入力ください。</p>
+<table border="1">
+<tr>
+	<td>
+	<form name="Cert_form" action="cert.html">
+	<p>カルテ番号：<input type="text" size="8" name="number"></p>
+	<p>
+		生年月日：西暦<input type="text" size="4" maxlength="4" name="year">年
+		<input type="text" size="4" maxlength="2" name="month">月
+		<input type="text" size="4" maxlength="2" name="day">日
+	</p>
+	<input type="button" value="医療機関コード発行" onclick="Certify()">
+	</form>
+	</td>
+</tr>
+</table>
+-->
+
+            <h2>アプリのダウンロード</h2>
+            <p>ご使用の端末に合わせて以下からダウンロードしてください。</p>
+            <p>診療費はクレジットカード決済となります。<font color=#ff0000>JCB、AMEX、VISA、MasterCard、Diners</font>が対象となっております。</p>
+
+            <img src="curon/curon.png" alt="curon" width="302" height="59">
+            <br><a href="https://itunes.apple.com/jp/app/id1101684249?mt=8" target="_blank"><img src="curon/apple.png" alt="App Store" width="242" height="72"></a>
+            <br><a href="https://play.google.com/store/apps/details?id=curon.micin.jp" target="_blank"><img src="curon/google.png" alt="Google Play" width="242" height="72"></a>
+            </div>
+        </div>
+    </div>
+<div class="container">
+    <h2>ご設定方法</h2>
+    <ol type="1">
+        <li>アプリを起動し、メールアドレスとお好みのパスワードを入力してください。</li>
+        <li>確認メールが届きます。文中のリンクから登録を完了してください。</li>
+        <img src="curon/curonsetup1.png" alt="setup1" width="601" height="534" class="img-fluid">
+        <li>アプリを再度開き、メールアドレスとパスワードを入力してください。</li>
+        <li>上から順に進みます。</li>
+        <img src="curon/curonsetup2.png" alt="setup2" width="601" height="534" class="img-fluid">
+        <li>受診者情報の入力を行います。</li>
+        <li>クレジットカード情報の入力に進みます。</li>
+        <img src="curon/curonsetup3.png" alt="setup3" width="601" height="534" class="img-fluid">
+        <li>医療機関を追加します。</li>
+        <li>上で発行された医療機関コードを入力して下さい。</li>
+        <img src="curon/curonsetup4.png" alt="setup4" width="601" height="534" class="img-fluid">
+        <li>アプリ利用の同意書を確認してください。</li>
+        <li>クリニックからの本人確認をお待ちください。1日程度要する場合があります。</li>
+        <img src="curon/curonsetup5.png" alt="setup5" width="601" height="534" class="img-fluid">
+    </ol>
+</div>
+
+<div class="container">
+    <h2>ご利用方法</h2>
+    <ol type="1">
+        <li>クリニックで本人確認が完了したら「診療に進む」をタップしてください。</li>
+        <li>予約日時を変更します。</li>
+        <img src="curon/curonusage1.png" alt="usage1" width="601" height="534" class="img-fluid">
+        <li>予約したい日を選びます。水色のドットがある日から選んでください。</li>
+        <li>予約時刻を選びます。</li>
+        <img src="curon/curonusage2.png" alt="usage2" width="601" height="534" class="img-fluid">
+        <li>問診表の回答に進みます。</li>
+        <li>問診表を入力した後、保険証等の写真撮影に進みます。</li>
+        <img src="curon/curonusage3.png" alt="usage3" width="601" height="534" class="img-fluid">
+        <li>保険証<font color=#ff0000>（医療証をお持ちの方は保険証と医療証）</font>の写真を撮影してください。</li>
+        <img src="curon/insurance.png" alt="保険証写真" width="441" height="311" class="img-fluid">
+        <li>予約を確定します。</li>
+        <li>予約された時間になったらアプリを起動してお待ちください。</li>
+        <img src="curon/curonusage4.png" alt="usage4" width="601" height="534" class="img-fluid">
+        <br>※テレビ電話のため、電波状況が悪いと通話できません。Wi-Fiに接続していただくか、電波の届きやすい場所でご待機ください。
+        <br>※一部のスマートフォンでは音声が聞き取りづらい場合があります。イヤホンのご利用をお勧めします。
+        <br>設定方法が不明な場合はcuronサポートセンター（0120-007-960）にご相談ください。
+    </ol>
+</div>
+
+
+<br>
+<a href="index.html">戻る</a>
+</body>
+</html>

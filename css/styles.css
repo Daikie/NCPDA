@@ -74,6 +74,16 @@ nav svg { /* Menu icon */
 }
 
 /* Body */
+span.markR {
+	color: #f00;
+}
+span.markB {
+	color: #00f;
+}
+div img {
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
 div h2 {
 	color: #824;
 	font-size: 24px;
@@ -81,7 +91,7 @@ div h2 {
 }
 div h3 {
 	color: #000;
-	font-size: 20px;
+	font-size: 18px;
 }
 div h2#reserve a { /* Online reservation */
 	background-color: #fc0;
@@ -134,13 +144,13 @@ footer {
 }
 footer p {
 	color: #fff;
-	font-size: 0.8em;
+	font-size: 0.9em;
 	margin-bottom: 0px;
 }
 footer a {
 	background-color: #8ac;
 	border: 1px solid #68a;
 	border-radius: 5px;
-	margin-top: 5px;
+	margin-top: 7px;
 	color: #000;
 }
