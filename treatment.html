@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+	<title>西小山クリニック・処置予約</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<script type="text/javascript"><!--
+		var urlParam = location.search.substring(1);
+		if(urlParam) {
+			var param = urlParam.split('=');
+			if(param[0] = "ID") {
+				var ida = [];
+				for(i=0; i<param[1].length; i++) {
+					ida[i] = Number(param[1].substr(i, 1));
+				}
+				var enc = String(ida[1]);
+				var chk = 0;
+				var idb = [];
+				idb[0] = ida[1];
+				for(j=1; j<ida.length-1; j++) {
+					idb[j] = (idb[j-1] + ida[j+1]) % 10;
+					enc = enc.concat(idb[j]);
+					chk = chk + Number(ida[j+1]);
+				}
+			}
+		} else {
+			alert("パラメーターがありません。");
+		}
+		// -->
+	</script> 
+</head>
+
+<body>
+	<div class="container">
+		<script type="text/javascript"><!--
+			var req = new XMLHttpRequest();
+			req.open("GET", "https://daikie.github.io/NCPDA/unavailable.txt", true);
+			req.onload = function() {
+				var paths = req.responseText.split("\n");
+				for(ln=0; ln<paths.length; ln++) {
+					if(enc == paths[ln]) {
+						chk = chk + 1;
+						break;
+					}
+				}
+				document.open();
+				document.write("<h1><font color=#9a0079>西小山クリニック　処置予約ページ</font></h1>");
+				document.write("<p>継続的な通院が必要な処置の方のための予約ページです。</p>");
+				if(chk % 10 == ida[0]) {
+					document.write("<p>ご利用中の処置予約ページは<font color=#ff0000>カルテ番号", enc, "</font>の方専用です。</p>");
+					document.write("<p><font color=#ff0000>メニューから「処置予約」をお選びください。</font></p>");
+					document.write("<p>30分に1枠となっております。30日先までの予約が可能です。<br>");
+					document.write("ご家族で受診されたい場合も別々に予約をお取りください。</p>");
+					document.write("<p>あらかじめ2回分以上の予約をお取りになることはできません。</p>");
+					document.write("<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>");
+					document.write("<p><a href='index.html'>戻る</a></p>");
+					document.write("<iframe type='text/html' frameborder='0' width='100%' height='1000px' src='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB' ></iframe>");
+				} else {
+					document.write("<p>現在処置予約を取得する権限がありません。</p>");
+					document.write("<p>原因は以下の可能性があります。</p>");
+					document.write("<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセル、複数予約取得などの規約違反</li></ul>");
+					document.write("<a href='index.html'>戻る</a>");
+				}
+				document.close();
+			}
+			req.send(null);
+			// -->
+		</script>
+	</div>
+</body>
+</html>

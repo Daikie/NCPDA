@@ -125,6 +125,7 @@ button.btn { /* Accordion button */
 div#collapseDetail div.card {
 	background-color: #aff;
 	padding: 5px;
+	margin-bottom: 15px;
 }
 div .table th, div .table td { /* Hour table */
 	padding: 5px;
@@ -139,6 +140,7 @@ form.form-inline input.form-control {
 	height: calc(1em + 0.75rem + 2px);
 }
 
+/* Footer */
 footer {
 	background-color: #4a2;
 }
