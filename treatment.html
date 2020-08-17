@@ -49,13 +49,13 @@
 					}
 				}
 				document.open();
-				document.write("<h1><font color=#9a0079>西小山クリニック　処置予約ページ</font></h1>");
+				document.write("<h1>西小山クリニック　処置予約ページ</h1>");
 				document.write("<p>継続的な通院が必要な処置の方のための予約ページです。</p>");
 				if(chk % 10 == ida[0]) {
-					document.write("<p>ご利用中の処置予約ページは<span class=markR>カルテ番号", enc, "</span>の方専用です。</p>");
+					document.write("<p>ご利用中の処置予約ページは<font color=ff0000>カルテ番号", enc, "の方専用</font>です。</p>");
 					document.write("<p>30分に1枠となっております。30日先までの予約が可能です。<p>");
 					document.write("<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>");
-					document.write("<a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB'>予約ページに行く</a>");
+					document.write("<h2><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>");
 					document.write("<p><a href='index.html'>戻る</a></p>");
 				} else {
 					document.write("<p>現在処置予約を取得する権限がありません。</p>");

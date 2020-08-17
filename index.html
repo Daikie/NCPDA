@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<script type="text/javascript"><!--
 		function Login(){
-			window.open("https://daikie.github.io/NCPDA/treatment.html?ID="+Login_form.ID.value, "_blank");
+			window.location.href="https://daikie.github.io/NCPDA/treatment.html?ID="+Login_form.ID.value;
 		}
 		// -->
 	</script>
@@ -104,9 +104,8 @@
 				<path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
 			</svg>対面診療予約
 		</a></h2>
-		<p>予約取得後に問診票にご記入ください。
-			<br><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDetail" aria-expanded="false" aria-controls="collapseDetail">▼ご家族2人で受診されたい方へ▼</button>
-		</p>
+		<p>予約取得後に問診票にご記入ください。</p>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDetail" aria-expanded="false" aria-controls="collapseDetail">▼ご家族2人で受診されたい方へ▼</button>
 		<div class="collapse" id="collapseDetail">
 			<div class="card card-body">
 				<h3>1枠の予約でご家族2人の診療を可能としました。ただし、以下のルールのもとでのご利用をお願いいたします。</h3>
@@ -124,7 +123,7 @@
 			</svg>オンライン診療
 		</a></h2>
 		<p>スマートフォンのアプリで5時間後～1ヵ月後の予約が取れます。JCB、AMEX、VISA、MasterCard、Dinersによる決済が可能な方が対象になります。</p>
-		<form class="form-inline" action="https://daikie.github.io/NCPDA/treatment.html">
+		<form class="form-inline" action="treatment.html">
 			<input class="form-control" type="text" placeholder="ID" name="ID">
 			<button class="btn btn-primary" type="submit" onclick="Login()">Go</button>
 		</form>
