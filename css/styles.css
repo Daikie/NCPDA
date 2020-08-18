@@ -5,24 +5,23 @@ body {
 }
 
 #header-nav { /* Navigation bar */
-	background-color: #8cf;
+	background-color: #DEE;
 	border-radius: 20px;
-	border: 2px solid #6ac;
+	border: 2px solid #BCC;
 	margin-bottom: 15px;
 }
 
 #logo-img { /* Logo */
 	background: url("../img/logo_md.png") no-repeat;
-	background-color: #8ac;
-	width: 119px;
-	height: 92px;
+	width: 71px;
+	height: 55px;
 	margin: 10px;
 }
 .navbar-brand {
 	padding-top: 15px;
 }
 .navbar-brand h1 { /* Name */
-	color: #26f;
+	color: #259;
 	font-size: 1.8em;
 	font-weight: bold;
 	text-shadow: 1px 2px 3px #424;
@@ -31,7 +30,7 @@ body {
 	line-height: .75;
 }
 .navbar-brand h2 { /* Department */
-	color: #824;
+	color: #831;
 	font-size: 1.2em;
 	font-weight: bold;
 	margin-top: 15px;
@@ -42,7 +41,7 @@ body {
 	text-decoration: none;
 }
 .navbar-brand p { 
-	color: #f22;
+	color: #F00;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 10px;
@@ -51,16 +50,16 @@ body {
 
 
 .nav-item a {
-	background-color: #28c;
+	background-color: #8BC;
 	margin: 2px;
 	text-align: center;
 }
 .nav-item a:hover {
-	background: #cff;
+	background: #ADE;
 }
 
 .navbar-header button.navbar-toggler {
-	border: 1px solid #8ac;
+	border: 1px solid #8BC;
 }
 .navbar-header button.navbar-toggler {
 	clear: both;
@@ -75,17 +74,17 @@ nav svg { /* Menu icon */
 
 /* Body */
 span.markR {
-	color: #f00;
+	color: #F00;
 }
 span.markB {
-	color: #00f;
+	color: #00F;
 }
 div img {
 	margin-top: 0px;
 	margin-bottom: 20px;
 }
 div h2 {
-	color: #824;
+	color: #831;
 	font-size: 24px;
 	font-weight: bold;
 }
@@ -95,22 +94,22 @@ div h3 {
 	font-weight: bold;
 }
 div h2#reserve a { /* Online reservation */
-	background-color: #fc0;
-	border: 1px solid #ca8;
+	background-color: #FE3;
+	border: 1px solid #DA1;
 	border-radius: 5px;
 	color: #000;
 	padding: 5px 10px 5px 10px;
 }
 div h2#telemed a { /* Telemedicine */
-	background-color: #2f4;
-	border: 1px solid #8ac;
+	background-color: #AC4;
+	border: 1px solid #8A2;
 	border-radius: 5px;
 	color: #000;
 	padding: 5px 10px 5px 10px;
 }
 div h2#interview a { /* Interview sheet */
-	background-color: #4ac;
-	border: 1px solid #28a;
+	background-color: #7CC;
+	border: 1px solid #5AA;
 	border-radius: 5px;
 	color: #000;
 	padding: 5px 10px 5px 10px;
@@ -134,32 +133,33 @@ div h2 a svg { /* Button icon */
 	fill: currentColor;
 }
 button.btn-primary { /* Accordion button */
-	background-color: #06a;
-	border: 1px solid #048;
+	/*background-color: #8BC;
+	border: 1px solid #048;*/
 	padding: 2px;
 	margin-bottom: 15px;
 }
 div#collapseDetail div.card {
-	background-color: #aff;
+	background-color: #AFF;
 	padding: 5px;
 	margin-bottom: 15px;
 }
 div#collapseSoftbank div.card {
-	background-color: #ccc;
+	background-color: #CCC;
 	padding: 5px;
 	margin-bottom: 15px;
 }
 div#collapseYmobile div.card {
-	background-color: #faa;
+	background-color: #FAA;
 	padding: 5px;
 	margin-bottom: 15px;
 }
-div .table th, div .table td { /* Hour table */
+div .table th, div .table td { /* Table */
+	background-color: #033;
 	padding: 5px;
 	text-align: center;
 }
-div .table td.mark { /* Open hour */
-	background-color: #4a2;
+div .table td.mark { /* Marked table */
+	background-color: #8A2;
 }
 
 form.form-inline {
@@ -167,25 +167,31 @@ form.form-inline {
 	flex-flow: nowrap;
 }
 
+ul {
+	padding-left:25px;
+}
 li.list-group-item {
 	font-weight: bold;
 }
 li.list-group-item li {
 	font-weight: normal;
 }
+ol {
+	padding-left:25px;
+}
 
 /* Footer */
 footer {
-	background-color: #4a2;
+	background-color: #8A2;
 }
 footer p {
-	color: #fff;
+	color: #FFF;
 	font-size: 0.8em;
 	margin-bottom: 0px;
 }
 footer a {
-	background-color: #8ac;
-	border: 1px solid #68a;
+	background-color: #8BC;
+	border: 1px solid #69A;
 	border-radius: 5px;
 	margin-top: 7px;
 	color: #000;
