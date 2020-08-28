@@ -9,65 +9,12 @@
 	<title>西小山クリニック・処置予約</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/styles.css">
-	<script type="text/javascript"><!--
-		var urlParam = location.search.substring(1);
-		if(urlParam) {
-			var param = urlParam.split('=');
-			if(param[0] = "ID") {
-				var ida = [];
-				for(i=0; i<param[1].length; i++) {
-					ida[i] = Number(param[1].substr(i, 1));
-				}
-				var enc = String(ida[1]);
-				var chk = 0;
-				var idb = [];
-				idb[0] = ida[1];
-				for(j=1; j<ida.length-1; j++) {
-					idb[j] = (idb[j-1] + ida[j+1]) % 10;
-					enc = enc.concat(idb[j]);
-					chk = chk + Number(ida[j+1]);
-				}
-			}
-		} else {
-			alert("パラメーターがありません。");
-		}
-		// -->
-	</script> 
 </head>
 
 <body>
-	<div class="container">
-		<script type="text/javascript"><!--
-			var req = new XMLHttpRequest();
-			req.open("GET", "https://daikie.github.io/NCPDA/unavailable.txt", true);
-			req.onload = function() {
-				var paths = req.responseText.split("\n");
-				for(ln=0; ln<paths.length; ln++) {
-					if(enc == paths[ln]) {
-						chk = chk + 1;
-						break;
-					}
-				}
-				document.open();
-				document.write("<h1>西小山クリニック　処置予約ページ</h1>");
-				document.write("<p>継続的な通院が必要な処置の方のための予約ページです。</p>");
-				if(chk % 10 == ida[0]) {
-					document.write("<p>ご利用中の処置予約ページは<font color=ff0000>カルテ番号", enc, "の方専用</font>です。</p>");
-					document.write("<p>30分に1枠となっております。30日先までの予約が可能です。<p>");
-					document.write("<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>");
-					document.write("<h2><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>");
-					document.write("<p><a href='index.html'>戻る</a></p>");
-				} else {
-					document.write("<p>現在処置予約を取得する権限がありません。</p>");
-					document.write("<p>原因は以下の可能性があります。</p>");
-					document.write("<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセル、複数予約取得などの規約違反</li></ul>");
-					document.write("<a href='index.html'>戻る</a>");
-				}
-				document.close();
-			}
-			req.send(null);
-			// -->
-		</script>
-	</div>
+	<div class="container" id="main-content"></div>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/login.js"></script>
 </body>
 </html>
