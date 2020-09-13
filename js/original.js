@@ -40,6 +40,7 @@ global.$ajaxUtils = ajaxUtils;
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	document.querySelector(".btn-success").addEventListener("click", function () {
+		document.querySelector(".poster").style.display = "none";
 		// Call server to get the name
 		$ajaxUtils.sendGetRequest("snippet.txt", function (request) {
 			var name = request.responseText;
