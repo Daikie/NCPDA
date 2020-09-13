@@ -3,6 +3,7 @@
 var ajaxUtils = {};
 // Returns an HTTP request object
 function getRequestObject() {
+	console.log("getting request object");
 	if (global.XMLHttpRequest) {
 		return (new XMLHttpRequest());
 	} else if (global.ActiveXObject) { // For very old IE browsers
@@ -16,6 +17,7 @@ function getRequestObject() {
 // Makes an Ajax GET request to 'requestUrl'
 ajaxUtils.sendGetRequest = function(requestUrl, responseHandler) {
 		var request = getRequestObject();
+		console.log(request);
 		request.onreadystatechange =
 			function() {
 				handleResponse(request, responseHandler);
@@ -26,17 +28,9 @@ ajaxUtils.sendGetRequest = function(requestUrl, responseHandler) {
 
 // Only calls user provided 'responseHandler' function if response is ready and not an error
 function handleResponse(request, responseHandler) {
+	console.log("handling response");
 	if ((request.readyState == 4) && (request.status == 200)) {
-		// Default to isJsonResponse = true
-		if (isJsonResponse == undefined) {
-			isJsonResponse = true;
-		}
-		if (isJsonResponse) {
-			responseHandler(JSON.parse(request.responseText));
-		}
-		else {
-			responseHandler(request.responseText);
-		}
+		responseHandler(request);
  	}
 }
 // Expose utility to the global object
