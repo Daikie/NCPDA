@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		$ajaxUtils.sendGetRequest("snippet.txt", function (request) {
 			var name = request.responseText;
 			console.log(name);
-			document.querySelector("#content").innerHTML = name;
+			document.querySelector(".content").innerHTML = name;
 			});
 		});
 	});
