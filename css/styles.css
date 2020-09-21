@@ -195,6 +195,9 @@ li.list-group-item {
 li.list-group-item li {
 	font-weight: normal;
 }
+li article {
+	font-weight: normal;
+}
 ol {
 	padding-left:25px;
 }
