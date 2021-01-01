@@ -27,7 +27,8 @@ window.addEventListener("load", function(event) {
 			htm += "<h2>西小山クリニック　短期再診予約</h2>";
 			htm += "<p>1週間以内に受診され、同じ相談内容で受診される方のための予約ページです。</p>"
 			if(chk % 10 == ida[0] && today<encdate) {
-				htm += "<p>以下のリンクをご利用ください。</p>";
+				htm += "<p>このページは" + encdate.toLocaleDateString('ja-JP') + "まで使用できます。</p>";
+				htm += "<p>受診を希望されている日の3日前の19時から1日前の19時まで予約が可能です。</p>";
 				htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00004880D', target='_blank'>予約ページに行く</a></h2>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 			} else {
