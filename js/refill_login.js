@@ -19,15 +19,18 @@ window.addEventListener("load", function(event) {
 		}
 		var today = new Date();
 		var encdate = new Date(Number(enc.substr(0,4)), Number(enc.substr(4,2))-1, Number(enc.substr(6,2)));
-		encdate.setDate(encdate.getDate()+8);
+		encdate.setDate(encdate.getDate()+14);
+		var duedate = new Date();
+		duedate.setDate(encdate.getDate()+46);
 		var req = new XMLHttpRequest();
 		req.open("GET", "https://daikie.github.io/NCPDA/unavailable.txt", true);
 		req.onload = function() {
 			var htm = "";
-			htm += "<h2>西小山クリニック　短期再診予約</h2>";
-			htm += "<p>近日中の受診を希望される方のための予約ページです。</p>"
-			htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日まで</font>使用できます。</p>";
-			if(chk % 10 == ida[0] && today<=encdate) {
+			htm += "<h2>西小山クリニック　常用薬再診予約</h2>";
+			htm += "<p>普段ご使用の薬のために受診される方のための予約ページです。</p>"
+			htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日から";
+			htm += duedate.getFullYear()+"年"+(duedate.getMonth()+1)+"月"+duedate.getDate()+"日まで</font>使用できます。</p>";
+			if(chk % 10 == ida[0] && today>=encdate && today<=duedate) {
 				htm += "<p>受診を希望されている日の<font color=#f00>3日前19時から前日19時まで</font>予約が可能です。</p>";
 				htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00004880D', target='_blank'>予約ページに行く</a></h2>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
