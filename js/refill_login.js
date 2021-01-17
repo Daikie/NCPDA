@@ -27,15 +27,15 @@ window.addEventListener("load", function(event) {
 		req.onload = function() {
 			var htm = "";
 			htm += "<h2>西小山クリニック　常用薬再診予約</h2>";
-			htm += "<p>普段ご使用の薬のために受診される方のための予約ページです。</p>"
+			htm += "<p>普段ご使用の薬を続けて処方してもらいたい方のための予約ページです。</p>";
 			htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日から";
 			htm += duedate.getFullYear()+"年"+(duedate.getMonth()+1)+"月"+duedate.getDate()+"日まで</font>使用できます。</p>";
 			if(chk % 10 == ida[0] && today>=encdate && today<=duedate) {
-				htm += "<p>受診を希望されている日の<font color=#f00>3日前19時から前日19時まで</font>予約が可能です。</p>";
+				htm += "<p>ご希望受診日の<font color=#f00>3日前19時から前日19時まで</font>予約が可能です。</p>";
 				htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00004880D', target='_blank'>予約ページに行く</a></h2>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 			} else {
-				htm += "<p>受付期間外です。</p>";;
+				htm += "<p>受付期間外です。</p>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 			}
 			document.getElementById("main-content").innerHTML = htm;
