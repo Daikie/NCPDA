@@ -37,7 +37,8 @@ window.addEventListener("load", function(event) {
 				htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00004880D', target='_blank'>予約ページに行く</a></h2>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 			} else {
-				htm += "<p>受付期間外です。</p>";
+				htm += "<p>受付期間外です。";
+				htm += "<br>期間内にも関わらず予約ページが表示されない場合は更新ボタンを押してください。</p>";
 				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 			}
 			document.getElementById("main-content").innerHTML = htm;
