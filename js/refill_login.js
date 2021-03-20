@@ -18,9 +18,9 @@ window.addEventListener("load", function(event) {
 			}
 		}
 		var today = new Date();
-		// var frmdate = new Date(Number(enc.substr(0,4)), Number(enc.substr(4,2))-1, Number(enc.substr(6,2)));
+		var frmdate = new Date(Number(enc.substr(0,4)), Number(enc.substr(4,2))-1, Number(enc.substr(6,2)));
 		var duedate = new Date(Number(enc.substr(0,4)), Number(enc.substr(4,2))-1, Number(enc.substr(6,2)));
-		// frmdate.setDate(frmdate.getDate()+14);
+		frmdate.setDate(frmdate.getDate());
 		duedate.setMonth(duedate.getMonth()+2);
 
 		var req = new XMLHttpRequest();
@@ -29,8 +29,7 @@ window.addEventListener("load", function(event) {
 			var htm = "";
 			htm += "<h2>西小山クリニック　アドバンス再診予約</h2>";
 			htm += "<p>数日前から予約を取得されたい方のための予約ページです。</p>";
-			// htm += "<p>このページは<font color=#00f>"+frmdate.getFullYear()+"年"+(frmdate.getMonth()+1)+"月"+frmdate.getDate()+"日から";
-			htm += "<p>このページは<font color=#00f>"+today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日から";
+			htm += "<p>このページは<font color=#00f>"+frmdate.getFullYear()+"年"+(frmdate.getMonth()+1)+"月"+frmdate.getDate()+"日から";
 			htm += duedate.getFullYear()+"年"+(duedate.getMonth()+1)+"月"+duedate.getDate()+"日まで</font>使用できます。</p>";
 			duedate.setDate(duedate.getDate()+1);
 			// if(chk % 10 == ida[0] && today>=frmdate && today<=duedate) {
