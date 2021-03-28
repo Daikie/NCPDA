@@ -180,6 +180,10 @@ div .table td, div .table th {
 div .table td.mark { /* Marked table */
 	background-color: #8A2;
 }
+div .border {
+	padding: 5px;
+	font-size: 14px;
+}
 
 form.form-inline {
 	-ms-flex-flow: nowrap;
