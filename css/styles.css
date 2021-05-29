@@ -129,9 +129,9 @@ div img {
 	  transform: scale(1, 0.8);
 	}
 	div.box{
-	  transform: translate(70px, 70px);
-	  width: 150px;
-	  height: 2000px;
+	  transform: translate(75px, 70px);
+	  width: 140px;
+	  height: 1800px;
 	  background-color: #ccc5;
 	  border: none;
 	  margin-bottom: 100px;
