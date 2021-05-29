@@ -82,6 +82,31 @@ div img {
 	margin-top: 0px;
 	margin-bottom: 20px;
 }
+
+div.frm{ /* Peep reservation table */
+  style=border: none;
+  width: 190px;
+  height: 790px;
+  margin-top: 0px;
+  overflow: hidden;
+  position: absolute;
+}
+div.frm iframe {
+  style=border: none;
+  margin-top: -340px;
+  transform-origin: 0% 0%;
+  transform: scale(1, 0.8);
+}
+div.box{
+  transform: translate(52px, 65px);
+  width: 140px;
+  height: 560px;
+  background-color: #ccc2;
+  border: none;
+  margin-bottom: 100px;
+  position: relative;
+}
+
 div h2 {
 	color: #831;
 	font-size: 24px;
