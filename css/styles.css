@@ -83,29 +83,62 @@ div img {
 	margin-bottom: 20px;
 }
 
-div.frm{ /* Peep reservation table */
-  style=border: none;
-  width: 190px;
-  height: 1200px;
-  margin-top: 0px;
-  overflow: hidden;
-  position: absolute;
+/* Peep reservation table */
+@media only screen and (max-device-width: 480px) { /* Smart phone */
+	div.frm{
+	  style=border: none;
+	  width: 190px;
+	  height: 1200px;
+	  margin-top: 0px;
+	  overflow: hidden;
+	  position: absolute;
+	}
+	div.frm iframe {
+	  style=border: none;
+	  width: 190px;
+	  height: 1550px;
+	  margin-top: -340px;
+	  transform-origin: 0% 0%;
+	  transform: scale(1, 0.8);
+	}
+	div.box{
+	  transform: translate(52px, 65px);
+	  width: 140px;
+	  height: 830px;
+	  background-color: #ccc2;
+	  border: none;
+	  margin-bottom: 100px;
+	  position: relative;
+	}
 }
-div.frm iframe {
-  style=border: none;
-  margin-top: -340px;
-  transform-origin: 0% 0%;
-  transform: scale(1, 0.8);
+@media only screen and (min-device-width: 480px) { /* PC */
+	div.frm{
+	  style=border: none;
+	  width: 190px;
+	  height: 800px;
+	  margin-top: 0px;
+	  overflow: hidden;
+	  position: absolute;
+	}
+	div.frm iframe {
+	  style=border: none;
+	  width: 190px;
+	  height: 1250px;
+	  margin-top: -340px;
+	  transform-origin: 0% 0%;
+	  transform: scale(1, 0.8);
+	}
+	div.box{
+	  transform: translate(52px, 65px);
+	  width: 140px;
+	  height: 560px;
+	  background-color: #ccc4;
+	  border: none;
+	  margin-bottom: 100px;
+	  position: relative;
+	}
 }
-div.box{
-  transform: translate(52px, 65px);
-  width: 140px;
-  height: 830px;
-  background-color: #ccc2;
-  border: none;
-  margin-bottom: 100px;
-  position: relative;
-}
+
 
 div h2 {
 	color: #831;
