@@ -114,24 +114,24 @@ div img {
 @media screen and (min-device-width: 601px) and (max-device-width: 1024px) { /* Tablet */
 	div.frm{
 	  style=border: none;
-	  width: 190px;
-	  height: 1700px;
+	  width: 210px;
+	  height: 2400px;
 	  margin-top: 0px;
 	  overflow: hidden;
 	  position: absolute;
 	}
 	div.frm iframe {
 	  style=border: none;
-	  width: 190px;
-	  height: 1700px;
+	  width: 210px;
+	  height: 2800px;
 	  margin-top: -340px;
 	  transform-origin: 0% 0%;
 	  transform: scale(1, 0.8);
 	}
 	div.box{
-	  transform: translate(55px, 65px);
-	  width: 135px;
-	  height: 955px;
+	  transform: translate(70px, 70px);
+	  width: 150px;
+	  height: 2000px;
 	  background-color: #ccc5;
 	  border: none;
 	  margin-bottom: 100px;
