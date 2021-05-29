@@ -130,9 +130,9 @@ div img {
 	}
 	div.box{
 	  transform: translate(75px, 70px);
-	  width: 140px;
-	  height: 1800px;
-	  background-color: #ccc5;
+	  width: 135px;
+	  height: 1830px;
+	  background-color: #ccc2;
 	  border: none;
 	  margin-bottom: 100px;
 	  position: relative;
