@@ -86,7 +86,7 @@ div img {
 div.frm{ /* Peep reservation table */
   style=border: none;
   width: 190px;
-  height: 790px;
+  height: 1200px;
   margin-top: 0px;
   overflow: hidden;
   position: absolute;
@@ -100,7 +100,7 @@ div.frm iframe {
 div.box{
   transform: translate(52px, 65px);
   width: 140px;
-  height: 560px;
+  height: 830px;
   background-color: #ccc2;
   border: none;
   margin-bottom: 100px;
