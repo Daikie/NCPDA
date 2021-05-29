@@ -84,7 +84,7 @@ div img {
 }
 
 /* Peep reservation table */
-@media only screen and (max-device-width: 480px) { /* Smart phone */
+@media screen and (max-device-width: 600px) { /* Smart phone */
 	div.frm{
 	  style=border: none;
 	  width: 190px;
@@ -111,7 +111,34 @@ div img {
 	  position: relative;
 	}
 }
-@media only screen and (min-device-width: 480px) { /* PC */
+@media screen and (min-device-width: 601px) and (max-device-width: 1024px) { /* Tablet */
+	div.frm{
+	  style=border: none;
+	  width: 190px;
+	  height: 1700px;
+	  margin-top: 0px;
+	  overflow: hidden;
+	  position: absolute;
+	}
+	div.frm iframe {
+	  style=border: none;
+	  width: 190px;
+	  height: 1700px;
+	  margin-top: -340px;
+	  transform-origin: 0% 0%;
+	  transform: scale(1, 0.8);
+	}
+	div.box{
+	  transform: translate(55px, 65px);
+	  width: 135px;
+	  height: 955px;
+	  background-color: #ccc5;
+	  border: none;
+	  margin-bottom: 100px;
+	  position: relative;
+	}
+}
+@media screen and (min-device-width: 1025px) { /* PC */
 	div.frm{
 	  style=border: none;
 	  width: 190px;
