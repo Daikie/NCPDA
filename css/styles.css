@@ -256,14 +256,17 @@ div .table tr { /* Table */
 	background-color: #033;
 }
 div .table tr.mark { /* Marked row */ 
-	background-color: #603;
+	background-color: #003;
 }
 div .table td, div .table th {
 	padding: 5px;
 	text-align: center;
 }
-div .table td.mark { /* Marked table */
+div .table td.markG { /* Marked table */
 	background-color: #8A2;
+}
+div .table td.markR { /* Marked table */
+	background-color: #603;
 }
 div .border {
 	padding: 5px;
