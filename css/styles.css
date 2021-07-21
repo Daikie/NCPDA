@@ -253,7 +253,7 @@ div#collapseYmobile div.card {
 	margin-bottom: 15px;
 }
 div .table tr { /* Table */
-	background-color: #033;
+	background-color: #022;
 }
 div .table tr.mark { /* Marked row */ 
 	background-color: #003;
@@ -263,10 +263,10 @@ div .table td, div .table th {
 	text-align: center;
 }
 div .table td.markG { /* Marked table */
-	background-color: #8A2;
+	background-color: #572;
 }
 div .table td.markR { /* Marked table */
-	background-color: #603;
+	background-color: #602;
 }
 div .border {
 	padding: 5px;
