@@ -28,8 +28,22 @@
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		chk = b.reduce(reducer)%10;
 		bas = a[0];
-		target = document.getElementById("main-content");
-		target.innerHTML = chk + bas + b.join("");
+		target1 = document.getElementById("main-content1");
+		target1.innerHTML = chk + bas + b.join("");
+	}
+
+	function Escx(){
+		const textbox = document.getElementById("url");
+		var lnk = textbox.value;
+		lnk = lnk.replace("!", "%21");
+		target2 = document.getElementById("main-content2");
+		target2.innerHTML = lnk;
+		var dummy = document.createElement("textarea");
+		document.body.appendChild(dummy);
+		dummy.value = lnk;
+	    dummy.select();
+	    document.execCommand("copy");
+	    document.body.removeChild(dummy);
 	}
 </script>
 
@@ -38,6 +52,10 @@
 
 <body>
 	<input type="button" value="Generate!" onclick="Otpw()">
-	<div class="container" id="main-content"></div>
+	<div class="container" id="main-content1"></div>
+
+	<input class="form-control" type="text" id="url">
+	<input type="button" value="変換してコピー" onclick="Escx()">
+	<div class="container" id="main-content2"></div>
 </body>
 </html>
