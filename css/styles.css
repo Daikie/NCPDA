@@ -252,20 +252,21 @@ div#collapseYmobile div.card {
 	padding: 5px;
 	margin-bottom: 15px;
 }
-div .table tr { /* Table */
+
+div .table.table-dark tr { /* Table dark */
 	background-color: #022;
 }
-div .table tr.mark { /* Marked row */ 
+div .table.table-dark tr.mark { /* Marked row */ 
 	background-color: #003;
 }
-div .table td, div .table th {
+div .table.table-dark td, div .table.table-dark th {
 	padding: 5px;
 	text-align: center;
 }
-div .table td.markG { /* Marked table */
+div .table.table-dark td.markG { /* Marked table */
 	background-color: #572;
 }
-div .table td.markR { /* Marked table */
+div .table.table-dark td.markR { /* Marked table */
 	background-color: #602;
 }
 div .border {
