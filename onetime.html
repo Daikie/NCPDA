@@ -24,7 +24,6 @@
 				b[i] = b[i]+10;
 			}
 		}
-		console.log(b);
 		const reducer = (accumulator, currentValue) => accumulator + currentValue;
 		chk = b.reduce(reducer)%10;
 		bas = a[0];
@@ -32,12 +31,32 @@
 		target1.innerHTML = chk + bas + b.join("");
 	}
 
+	function Adv(){
+		var today = new Date();
+		var y = String(today.getFullYear());
+		var m = ("0"+String(today.getMonth()+1)).slice(-2);
+		var d = ("0"+String(today.getDate())).slice(-2);
+		var a = y+m+d;
+		var b = [];
+		for(var i=0; i<7; i++) {
+			b[i] = Number(a[i+1])-Number(a[i]);
+			if(b[i]<0) {
+				b[i] = b[i]+10;
+			}
+		}
+		const reducer = (accumulator, currentValue) => accumulator + currentValue;
+		chk = b.reduce(reducer)%10;
+		bas = a[0];
+		target2 = document.getElementById("main-content2");
+		target2.innerHTML = "https://daikie.github.io/NCPDA/refill.html?ID=" + chk + bas + b.join("");
+	}
+
 	function Escx(){
 		const textbox = document.getElementById("url");
 		var lnk = textbox.value;
 		lnk = lnk.replace("!", "%21");
-		target2 = document.getElementById("main-content2");
-		target2.innerHTML = lnk;
+		target3 = document.getElementById("main-content3");
+		target3.innerHTML = lnk;
 		var dummy = document.createElement("textarea");
 		document.body.appendChild(dummy);
 		dummy.value = lnk;
@@ -51,11 +70,14 @@
 <body>
 
 <body>
-	<input type="button" value="Generate!" onclick="Otpw()">
+	<input type="button" value="Generate One Time Password!" onclick="Otpw()">
 	<div class="container" id="main-content1"></div>
+
+	<input type="button" value="Generate & Copy Advance Reservation Link!" onclick="Adv()">
+	<div class="container" id="main-content2"></div>
 
 	<input class="form-control" type="text" id="url">
 	<input type="button" value="変換してコピー" onclick="Escx()">
-	<div class="container" id="main-content2"></div>
+	<div class="container" id="main-content3"></div>
 </body>
 </html>
