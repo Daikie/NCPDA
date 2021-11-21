@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+	<title>新型コロナの疑問点</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+	<nav id="header-nav" class="navbar navbar-expand-lg navbar-light">
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				<a href="bydate.html"><h1>新型コロナの疑問点</h1></a>
+				<p>指摘されていない事実について検証</p>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h3>2021年11月21日：英国の新型コロナワクチン2回接種済の若年者は未接種者の2倍の死亡率</h3>
+		<p>ワクチンの有効性や安全性について様々な意見が飛び交っています。
+			<br><small>「mRNAワクチンだから未知の副作用がありうる」「メカニズムからは重い副作用は考えにくい」「コロナに感染した人のほとんどがワクチン未接種者だった」「ワクチン接種率が高い国で感染が増えている」「ワクチンを受けてもコロナにかかることがある」「ワクチン接種者はコロナにかかっても重症化しにくい」など、間接的な証拠を取り上げて水掛け論となっています。</small></p>
+		<p>ここへきて、これらの議論が吹っ飛ぶようなデータが英国から提示されましたので、紹介します。
+			<br><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland" target="_blank">Office for National Statistics Deaths by vaccination status, England</a>
+			<br>この英国政府による統計ページに公開されているエクセルファイルから、ワクチン2回接種者と未接種者の死亡率を比較するグラフを作成しました。</p>
+		<p>まず、60歳以上の高齢者については以下の通りで、確かにワクチン2回接種者の死亡率は未接種者に比べて明らかに低くなっております。
+			<br><img src=covid19/v20211121p01.png width=612px, height=378px, class="img-fluid"></p>
+		<p>さて、60歳未満ではいかがでしょうか。
+			<br><img src=covid19/v20211121p02.png width=612px, height=378px, class="img-fluid">
+			<br>意に反して、ワクチン2回接種者の方が未接種者よりも死亡率が2倍ほど高いです。</p>
+		<p>混乱してきたと思いますので、そもそもなぜ新型コロナワクチンを受けるのか考えてみましょう。
+			<ol>
+				<li>コロナにかからなくするため</li>
+				<li>他人にコロナを感染させないため</li>
+				<li>コロナで重症化しなくするため</li>
+				<li>コロナ後遺症を防ぐため</li>
+				<li>コロナで死なないため</li>
+			</ol>
+			このうち1と2は様々なデータから疑わしくなっております。
+			<br>3と4の観点でワクチンに効果がある可能性はあります。
+			<br>しかし60歳未満の場合、5についてはワクチンを受けた後に死亡するリスクのほうが高いことになります。
+			<br>当然、コロナで重症化したり、後遺症が残ったりすることは避けたいですが、後日回復する可能性はあります。一方、ワクチンの副作用やワクチン接種後の免疫低下で死亡してしまった場合は取り返しがつきません。
+			</p>
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title">結論</h3>
+					<p class="card-text"><b>60歳未満は現行の新型コロナワクチンを2回接種してはいけない</b></p>
+				</div>
+			</div>
+			<p>これまでワクチン接種者と未接種者の死亡率を比較するデータはどの国でも公開されてきませんでした。
+				<br>ワクチンパスポート制を実施するのであれば、各国も同様のデータを公開し、若年層もワクチン接種で死亡率が高まらないことを証明することが必須と考えます。</p>
+		
+	</div>
+	<div class="container">
+		<h2 id="back"><a href="bydate.html">戻る</a></h2>
+	</div>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>

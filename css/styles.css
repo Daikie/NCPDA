@@ -273,6 +273,10 @@ div .border {
 	padding: 5px;
 	font-size: 14px;
 }
+div .card {
+	text-align: center;
+	background-color: #FCC;
+}
 
 form.form-inline {
 	-ms-flex-flow: nowrap;
