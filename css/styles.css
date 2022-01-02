@@ -276,6 +276,12 @@ div .border {
 div .card {
 	text-align: center;
 	background-color: #FCC;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+div .card-body {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 form.form-inline {
@@ -314,4 +320,24 @@ footer a {
 	border-radius: 5px;
 	margin-top: 7px;
 	color: #000;
+}
+
+div.bible {
+	border: 3px solid #844;
+	border-radius: 10px;
+	background-color: #A44;
+	padding: 3px;
+}
+div.bible blockquote {
+	border-radius: 5px;
+	background-color: #FFE;
+	margin: 0px;
+	font-size: 14px;
+}
+div.bible p {
+	background-color: #A44;
+	margin: 0px;
+	text-align: right;
+	font-size: 12px;
+	color: #FFF;
 }
