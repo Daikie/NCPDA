@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	
+</head>
+<body>
+	<script language="javascript" type="text/javascript">
+		function getJson() {
+			tel = document.getElementById("tel").value;
+			var req = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
+			req.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
+				if(req.readyState == 4 && req.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
+					const jsonlist = JSON.parse(req.responseText)
+					let div1 = document.getElementById('div1');
+					div1.insertAdjacentHTML('afterend', jsonlist["bpi"]["USD"]["rate"]); // 取得した JSON ファイルの中身を表示
+					div1.insertAdjacentHTML('afterend', tel);
+				}
+			};
+			req.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json", false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
+			req.send(null);		
+		}
+	</script>
+	<form action="https://api.coindesk.com/v1/bpi/currentprice.json" method="get">
+		<p>携帯電話番号<input type="text" id="tel"></p>
+		<p><input type="button" value="JSONファイルを取得する" onclick="getJson()"></p>
+	</form>
+	<div id="div1"></div>
+</body>
