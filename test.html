@@ -7,17 +7,22 @@
 	<script language="javascript" type="text/javascript">
 		function getJson() {
 			tel = document.getElementById("tel").value;
-			var req = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
-			req.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
-				if(req.readyState == 4 && req.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
-					const jsonlist = JSON.parse(req.responseText)
+			var req = new XMLHttpRequest();
+			req.onreadystatechange = function() {
+				if(req.readyState == 4 && req.status == 200){ // 
+					const jsonlist = JSON.parse(req.responseText);
 					let div1 = document.getElementById('div1');
-					div1.insertAdjacentHTML('afterend', jsonlist["bpi"]["USD"]["rate"]); // 取得した JSON ファイルの中身を表示
+					//div1.insertAdjacentHTML('afterend', jsonlist["bpi"]["USD"]["rate"]);
+					div1.insertAdjacentHTML('afterend', jsonlist["result_url"]);
 					div1.insertAdjacentHTML('afterend', tel);
 				}
 			};
-			req.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json", false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
-			req.send(null);		
+			//req.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json", false);
+			req.open("POST", "https://goolnk.com/api/v1/shorten");
+			req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			req.setRequestHeader("Access-Control-Allow-Origin", "*"); 
+			alert(req.getResponseHeader("Content-Type"));
+			req.send("url=https%3A%2F%2Fgoogle.com%2F");	
 		}
 	</script>
 	<form action="https://api.coindesk.com/v1/bpi/currentprice.json" method="get">
