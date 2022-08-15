@@ -36,6 +36,7 @@
 		var y = String(today.getFullYear());
 		var m = ("0"+String(today.getMonth()+1)).slice(-2);
 		var d = ("0"+String(today.getDate())).slice(-2);
+		// Old Advance
 		var a = y+m+d;
 		var b = [];
 		for(var i=0; i<7; i++) {
@@ -48,7 +49,33 @@
 		chk = b.reduce(reducer)%10;
 		bas = a[0];
 		target2 = document.getElementById("main-content2");
-		target2.innerHTML = "https://daikie.github.io/NCPDA/refill.html?ID=" + chk + bas + b.join("");
+		target2.innerHTML = "<p><a href='https://daikie.github.io/NCPDA/refill.html?ID=" + chk + bas + b.join("") +"'>Old Advance</a></p>";
+		// Normal Advance
+		a = y+m+d+"1";
+		b = [];
+		for(i=0; i<8; i++) {
+			b[i] = Number(a[i+1])-Number(a[i]);
+			if(b[i]<0) {
+				b[i] = b[i]+10;
+			}
+		}
+		chk = b.reduce(reducer)%10;
+		bas = a[0];
+		target2 = document.getElementById("main-content2");
+		target2.innerHTML += "<p><a href='https://daikie.github.io/NCPDA/refill.html?ID=" + chk + bas + b.join("") +"'>Normal Advance</a></p>";
+		// Gold Advance
+		a = y+m+d+"2";
+		b = [];
+		for(i=0; i<8; i++) {
+			b[i] = Number(a[i+1])-Number(a[i]);
+			if(b[i]<0) {
+				b[i] = b[i]+10;
+			}
+		}
+		chk = b.reduce(reducer)%10;
+		bas = a[0];
+		target2 = document.getElementById("main-content2");
+		target2.innerHTML += "<p><a href='https://daikie.github.io/NCPDA/refill.html?ID=" + chk + bas + b.join("") +"'>Gold Advance</a></p>";
 	}
 
 	function Escx(){
@@ -73,7 +100,7 @@
 	<input type="button" value="Generate One Time Password!" onclick="Otpw()">
 	<div class="container" id="main-content1"></div>
 
-	<input type="button" value="Generate & Copy Advance Reservation Link!" onclick="Adv()">
+	<input type="button" value="Generate Advance Reservation Link!" onclick="Adv()">
 	<div class="container" id="main-content2"></div>
 
 	<input class="form-control" type="text" id="url">
