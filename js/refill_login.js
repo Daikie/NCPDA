@@ -46,9 +46,9 @@ window.addEventListener("load", function(event) {
 					if(grade == 0) {
 						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00004880D', target='_blank'>予約ページに行く</a></h2>";
 					} else if(grade == 1) {
-						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752D1', target='_blank'>予約ページに行く</a></h2>";
-					} else if(grade == 2) {
 						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752F0', target='_blank'>予約ページに行く</a></h2>";
+					} else if(grade == 2) {
+						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752D1', target='_blank'>予約ページに行く</a></h2>";
 					}
 					htm += "<p>※予約が埋まり次第受付終了となります。</p>"
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
