@@ -283,6 +283,10 @@ div .card-body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+div.watermark {
+	background-image: url("../img/wm.png");
+	padding: 15px;
+}
 
 form.form-inline {
 	-ms-flex-flow: nowrap;

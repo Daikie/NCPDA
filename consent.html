@@ -20,20 +20,35 @@
 <body>
 
 <body>
-	<img src="img/excimer.png" width="619px" height="884px" class="img-fluid">
-	<p>上記治療を受けることに同意される場合は以下にご署名をお願いします。</p>
-	<div id="canvas"></div>
-	<button id="clear">消去</button>
-	<button id="qr">QRコードに変換</button>
-	<div id="output"></div>
-	<div id="qrcode"></div>
+	<select id="doclist">
+		<option value="doc/front.png">同意書を選択</option>
+		<option value="doc/excimer.png">エキシマライト（紫外線）</option>
+		<option value="2">デルマトロン、プラズマ焼灼器</option>
+	</select>
+	<div class="watermark">
+		<img src="doc/front.png" class="img-fluid" id="doc">
+		<div id="datestamp">同意年月日：</div>
+		<div id="patient">治療を受ける方：</div>
+		<div id="proxy">代諾者：</div>
+		<p id="indicator">上記に同意される場合は以下に<b>治療を受ける方</b>のお名前をご記入ください。</p>
+		<div id="canvas"></div>
+		<button id="clear">消去</button>
+		<button id="ok">確定</button>
+	</div>
 
 	<script src="js/jquery-3.5.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 	<script src="js/jSignature.min.js"></script>
 	<script>
-
+		
 		$(document).ready(function() {
+			$("#doclist").change(function() {
+ 				var r = $("option:selected").val();
+    
+    			console.log(r);
+    			$("#doc").attr("src", r);
+			});
+			sw = 0;
+
 		    $("#canvas").jSignature({
 				width: 500,
 				height: 100,
@@ -44,29 +59,61 @@
 		    $("#clear").click(function() {
 				$("#canvas").jSignature("reset");
 				$("#canvas.img").remove();
-				$("#output").empty();
-				$("#qrcode").empty();
 			});
 			
-			$("#qr").click(function() {
-				$("#output").empty();
-				$("#qrcode").empty();
-				var i = new Image();
-				i.src = $("#canvas").jSignature("getData");
-				const canvas = document.createElement('canvas');
-        		canvas.width = 50;
-        		canvas.height = 10;
+			$("#ok").click(function() {
+				if(sw==0) {
+					var now = new Date();
+					var y = now.getFullYear();
+					var m = now.getMonth()+1;
+	  				var d = now.getDate();
+	  				$("#datestamp").html("同意年月日："+y+"年"+m+"月"+d+"日");
 
-        		i.onload = function onImageLoad() {
-        			const ctx = canvas.getContext('2d');
-        			ctx.drawImage(i,0,0,50,10);
-        			const imgData = canvas.toDataURL("image/png");
-        			var j = new Image();
-        			j.src = imgData;
-        			$(j).appendTo($("#output"));
-					console.log(imgData.split(",")[1]);
-					$("#qrcode").qrcode({width: 384, height: 384, text: imgData.split(",")[1]});
+					$("#patient").empty();
+					$("#patient").html("治療を受ける方：");
+					var i = new Image();
+					i.src = $("#canvas").jSignature("getData");
+					const canvas = document.createElement("canvas");
+	        		canvas.width = 200;
+	        		canvas.height = 40;
+
+	        		i.onload = function onImageLoad() {
+	        			const ctx = canvas.getContext('2d');
+	        			ctx.drawImage(i,0,0,200,40);
+	        			const imgData = canvas.toDataURL("image/png");
+	        			var j = new Image();
+	        			j.src = imgData;
+	        			$(j).appendTo($("#patient"));
+					}
+					$("#indicator").empty();
+					$("#indicator").html("治療を受ける方の<b>代理で署名</b>された場合は、以下に代諾者名を記入してください。");
+					$("#canvas").jSignature("reset");
+					$("#canvas.img").remove();
+					sw = 1;
+				} else {
+					$("#proxy").empty();
+					$("#proxy").html("代諾者：");
+					var i = new Image();
+					i.src = $("#canvas").jSignature("getData");
+					const canvas = document.createElement("canvas");
+	        		canvas.width = 200;
+	        		canvas.height = 40;
+					i.onload = function onImageLoad() {
+	        			const ctx = canvas.getContext("2d");
+	        			ctx.drawImage(i,0,0,200,40);
+	        			const imgData = canvas.toDataURL("image/png");
+	        			var j = new Image();
+	        			j.src = imgData;
+	        			$(j).appendTo($("#proxy"));
+					}
+					$("#doclist").remove();
+					$("#indicator").remove();
+					$("#canvas").remove();
+					$("#clear").remove();
+					$("#ok").remove();
 				}
+				
+				
 			});
 		});
 		
