@@ -309,6 +309,17 @@ ol {
 	padding-left:25px;
 }
 
+select#doclist {
+	margin: 5px;
+	border: 2px solid #662;
+	height: 40px;
+	font-size: 20px;
+	background-color: #884;
+	color: white;
+	text-align: left;
+}
+
+
 /* Footer */
 footer {
 	background-color: #8A2;

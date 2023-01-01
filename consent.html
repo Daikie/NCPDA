@@ -30,13 +30,15 @@
 		<option value="doc/grotty.png">幹細胞上清液療法</option>
 		<option value="doc/warts.png">疣贅</option>
 		<option value="doc/acronyx.png">巻き爪、嵌入爪</option>
+		<option value="doc/shingrix.png">帯状疱疹ワクチン（シングリックス）</option>
+		<option value="doc/menactra.png">4価髄膜炎菌ワクチン（メナクトラ）</option>
 	</select>
 	<div class="watermark">
 		<img src="doc/front.png" class="img-fluid" id="doc">
 		<div id="datestamp">同意年月日：</div>
-		<div id="patient">治療を受ける方：</div>
+		<div id="patient">処置を受ける方：</div>
 		<div id="proxy">代諾者：</div>
-		<p id="indicator">上記に同意される場合は以下に<b>治療を受ける方</b>のお名前をご記入ください。</p>
+		<p id="indicator">上記に同意される場合は以下に<b>処置を受ける方</b>のお名前をご記入ください。</p>
 		<div id="canvas"></div>
 		<button id="clear">消去</button>
 		<button id="ok">確定</button>
@@ -74,7 +76,7 @@
 	  				$("#datestamp").html("同意年月日："+y+"年"+m+"月"+d+"日");
 
 					$("#patient").empty();
-					$("#patient").html("治療を受ける方：");
+					$("#patient").html("処置を受ける方：");
 					var i = new Image();
 					i.src = $("#canvas").jSignature("getData");
 					const canvas = document.createElement("canvas");
@@ -90,7 +92,7 @@
 	        			$(j).appendTo($("#patient"));
 					}
 					$("#indicator").empty();
-					$("#indicator").html("治療を受ける方の<b>代理で署名</b>された場合は、以下に代諾者名を記入してください。");
+					$("#indicator").html("処置を受ける方の<b>代理で署名</b>された場合は、以下に代諾者名を記入してください。");
 					$("#canvas").jSignature("reset");
 					$("#canvas.img").remove();
 					sw = 1;
