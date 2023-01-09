@@ -56,8 +56,8 @@
 			sw = 0;
 
 		    $("#canvas").jSignature({
-				width: 500,
-				height: 100,
+				width: 720,
+				height: 120,
 				color: "#000",
 				"background-color": "#FFE",
 				lineWidth: 8
@@ -80,12 +80,12 @@
 					var i = new Image();
 					i.src = $("#canvas").jSignature("getData");
 					const canvas = document.createElement("canvas");
-	        		canvas.width = 200;
+	        		canvas.width = 240;
 	        		canvas.height = 40;
 
 	        		i.onload = function onImageLoad() {
 	        			const ctx = canvas.getContext('2d');
-	        			ctx.drawImage(i,0,0,200,40);
+	        			ctx.drawImage(i,0,0,240,40);
 	        			const imgData = canvas.toDataURL("image/png");
 	        			var j = new Image();
 	        			j.src = imgData;
@@ -102,11 +102,11 @@
 					var i = new Image();
 					i.src = $("#canvas").jSignature("getData");
 					const canvas = document.createElement("canvas");
-	        		canvas.width = 200;
+	        		canvas.width = 240;
 	        		canvas.height = 40;
 					i.onload = function onImageLoad() {
 	        			const ctx = canvas.getContext("2d");
-	        			ctx.drawImage(i,0,0,200,40);
+	        			ctx.drawImage(i,0,0,240,40);
 	        			const imgData = canvas.toDataURL("image/png");
 	        			var j = new Image();
 	        			j.src = imgData;
