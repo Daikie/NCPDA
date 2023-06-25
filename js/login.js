@@ -37,8 +37,8 @@ window.addEventListener("load", function(event) {
 				htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日まで</font>使用できます。</p>";
 				encdate.setDate(encdate.getDate()+1);
 				if(chk % 10 == ida[0] && today<=encdate) {
-					htm += "<p>ご希望受診日の<font color=#f00>3日前19時から前日19時まで</font>予約が可能です。</p>";
-					htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752D1', target='_blank'>予約ページに行く</a></h2>";
+					htm += "<p>ご希望受診日の<font color=#f00>7日前19時から前日19時まで</font>予約が可能です。</p>";
+					htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752F0', target='_blank'>予約ページに行く</a></h2>";
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 				} else {
 					htm += "<p>受付期間外です。</p>";
