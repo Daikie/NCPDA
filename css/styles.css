@@ -148,7 +148,7 @@ div img {
 	  pointer-events: none;
 	  style=border: none;
 	  width: 200px;
-	  height: 600px;
+	  height: 1000px;
 	  margin-top: 0px;
 	  overflow: hidden;
 	  position: absolute;
@@ -157,7 +157,7 @@ div img {
 	  pointer-events: none;
 	  style=border: none;
 	  width: 200px;
-	  height: 600px;
+	  height: 1000px;
 	  margin-top: -378px;
 	  transform-origin: 0% 0%;
 	  transform: scale(1, 0.8);
