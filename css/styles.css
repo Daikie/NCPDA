@@ -86,22 +86,25 @@ div img {
 /* Peep reservation table */
 @media screen and (max-device-width: 600px) { /* Smart phone */
 	div.frm{
+	  pointer-events: none;
 	  style=border: none;
-	  width: 190px;
-	  height: 1200px;
+	  width: 200px;
+	  height: 1000px;
 	  margin-top: 0px;
 	  overflow: hidden;
 	  position: absolute;
 	}
 	div.frm iframe {
+	  pointer-events: none;
+	  pointer-events: none;
 	  style=border: none;
-	  width: 190px;
-	  height: 1550px;
-	  margin-top: -340px;
+	  width: 200px;
+	  height: 1000px;
+	  margin-top: -378px;
 	  transform-origin: 0% 0%;
 	  transform: scale(1, 0.8);
 	}
-	div.box{
+	/*div.box{
 	  transform: translate(52px, 65px);
 	  width: 140px;
 	  height: 830px;
@@ -109,26 +112,28 @@ div img {
 	  border: none;
 	  margin-bottom: 100px;
 	  position: relative;
-	}
+	}*/
 }
 @media screen and (min-device-width: 601px) and (max-device-width: 1024px) { /* Tablet */
 	div.frm{
+	  pointer-events: none;
 	  style=border: none;
-	  width: 210px;
-	  height: 2400px;
+	  width: 200px;
+	  height: 1000px;
 	  margin-top: 0px;
 	  overflow: hidden;
 	  position: absolute;
 	}
 	div.frm iframe {
+	  pointer-events: none;
 	  style=border: none;
-	  width: 210px;
-	  height: 2800px;
-	  margin-top: -340px;
+	  width: 200px;
+	  height: 1000px;
+	  margin-top: -378px;
 	  transform-origin: 0% 0%;
 	  transform: scale(1, 0.8);
 	}
-	div.box{
+	/*div.box{
 	  transform: translate(75px, 70px);
 	  width: 135px;
 	  height: 1830px;
@@ -136,34 +141,36 @@ div img {
 	  border: none;
 	  margin-bottom: 100px;
 	  position: relative;
-	}
+	}*/
 }
 @media screen and (min-device-width: 1025px) { /* PC */
 	div.frm{
+	  pointer-events: none;
 	  style=border: none;
-	  width: 190px;
-	  height: 800px;
+	  width: 200px;
+	  height: 600px;
 	  margin-top: 0px;
 	  overflow: hidden;
 	  position: absolute;
 	}
 	div.frm iframe {
+	  pointer-events: none;
 	  style=border: none;
-	  width: 190px;
-	  height: 1250px;
-	  margin-top: -340px;
+	  width: 200px;
+	  height: 600px;
+	  margin-top: -378px;
 	  transform-origin: 0% 0%;
 	  transform: scale(1, 0.8);
 	}
-	div.box{
-	  transform: translate(52px, 65px);
-	  width: 140px;
-	  height: 560px;
+	/*div.box{
+	  transform: translate(53px, 40px);
+	  width: 150px;
+	  height: 390px;
 	  background-color: #ccc4;
 	  border: none;
 	  margin-bottom: 100px;
 	  position: relative;
-	}
+	}*/
 }
 
 
