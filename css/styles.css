@@ -309,6 +309,9 @@ li.list-group-item {
 li.list-group-item li {
 	font-weight: normal;
 }
+li.list-group-item ul img {
+	float: right;
+}
 li article {
 	font-weight: normal;
 }
