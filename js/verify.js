@@ -11,7 +11,7 @@
     	return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2,'0')).join('')
 	}
 
-	function $readCSV() {}
+	function $readCSV() {
 		let req = new XMLHttpRequest();
 		req.open("GET", "https://daikie.github.io/NCPDA/js/id.csv", true);
 		req.onload = function() {
@@ -88,7 +88,7 @@
 	
 	window.onload = function() {
 		$readCSV();
-		
+
 		buttonV.addEventListener("click", $verify);
 
 		$setYear();
