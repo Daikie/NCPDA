@@ -49,7 +49,7 @@
 		$sha256(name + brth).then(hash => {
 			for(let j = 0; j < csvArray.length; j++) {
 				if(hash == csvArray[j][0]) {
-					durt = int(csvArray[j][3]) + int(csvArray[j][4]);
+					durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
 					msg.innerHTML = "<p>" + csvArray[j][1] + "番" + durt + "</p>";
 				}
 			}
