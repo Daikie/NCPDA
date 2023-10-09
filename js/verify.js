@@ -52,12 +52,12 @@
 		}
 		$sha256(name + brth).then(hash => {
 			for(let j = 0; j < csvArray.length; j++) {
-				if(await hash == csvArray[j][0]) {
+				if(hash == csvArray[j][0]) {
 					console.log(csvArray[j][3]);
 					msg.innerHTML = "<p>カルテ番号" + csvArray[j][2] +"</p>";
 				}
 			}
-		}
+		});
 	}
 
 	let i;
