@@ -23,7 +23,9 @@
 			}
 		}
 		console.log(csvArray[0][0]);
-		console.log(csvArray[1][1]);
+		console.log(csvArray[1][0]);
+		console.log(csvArray.length);
+		console.log(csvArray[0].length);
 	});
 	req.open("GET", "./js/id.csv", true);
 	req.send();
@@ -50,6 +52,11 @@
 		}
 		hash = $sha256(name + brth);
 		console.log(hash);
+		for(let j = 0; j < csvArray.length; j++) {
+			if(hash == csvArray[j][0]) {
+				msg.innerHTML = "カルテ番号" + csvArray[j][2];
+			}
+		}
 	}
 
 	let i;
