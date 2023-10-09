@@ -11,16 +11,19 @@
     	return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2,'0')).join('')
 	}
 
-	let csv = new XMLHttpRequest();
-	csv.open("GET", "js/id.csv", false);
-	let csvArray = [];
-	let lines = csv.responseText.split(/\r\n|\n/);
-	for (let i = 0; i < lines.length; i++) {
-		let cells = lines[i].split(",");
-		if (cells.length != 1) {
-			csvArray.push(cells);
+	let req = new XMLHttpRequest();
+	req.open("GET", "/js/id.csv", true);
+	req.onload = function() {
+		let csvArray = [];
+		let lines = req.responseText.split(/\r\n|\n/);
+		for (let i = 0; i < lines.length; i++) {
+			let cells = lines[i].split(",");
+			if (cells.length != 1) {
+				csvArray.push(cells);
+			}
 		}
 	}
+	
 	console.log(csvArray[0]);
 	function $verify(){
 		const msg = document.getElementById("msg");
