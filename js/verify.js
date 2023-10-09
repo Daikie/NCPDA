@@ -22,10 +22,6 @@
 				csvArray.push(cells);
 			}
 		}
-		console.log(csvArray[0][0]);
-		console.log(csvArray[1][0]);
-		console.log(csvArray.length);
-		console.log(csvArray[0].length);
 	});
 	req.open("GET", "./js/id.csv", true);
 	req.send();
@@ -53,8 +49,8 @@
 		$sha256(name + brth).then(hash => {
 			for(let j = 0; j < csvArray.length; j++) {
 				if(hash == csvArray[j][0]) {
-					console.log(csvArray[j][3]);
-					msg.innerHTML = "<p>カルテ番号" + csvArray[j][2] +"</p>";
+					durt = csvArray[j][3] + csvArray[j][4]
+					msg.innerHTML = "<p>" + csvArray[j][1] + "番" + durt + "</p>";
 				}
 			}
 		});
@@ -84,7 +80,6 @@
 		}
 		if(selectY.value !== "" && selectM.value !== "") {
 			const lastDay = new Date(selectY.value, selectM.value, 0).getDate();
-			console.log(lastDay);
 			for(i = 1; i <= lastDay; i++) {
 				let op = document.createElement("option");
 				op.value = i;
@@ -95,7 +90,6 @@
 	}
 	
 	window.onload = function() {
-
 		buttonV.addEventListener("click", $verify);
 
 		$setYear();
