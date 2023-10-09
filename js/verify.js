@@ -50,13 +50,12 @@
 		if(selectY.value == today.getFullYear() && selectM.value == today.getMonth() + 1 && selectD.value == today.getDate()) {
 			msg.innerHTML = '<span class="markR">生年月日を選択してください。</span>';
 		}
-		hash = $sha256(name + brth);
-		console.log(hash);
-		console.log(csvArray[0][0]);
-		for(let j = 0; j < csvArray.length; j++) {
-			if(hash == csvArray[j][0]) {
-				console.log(csvArray[j][3]);
-				msg.innerHTML = "<p>カルテ番号" + csvArray[j][2] +"</p>";
+		$sha256(name + brth).then(hash => {
+			for(let j = 0; j < csvArray.length; j++) {
+				if(await hash == csvArray[j][0]) {
+					console.log(csvArray[j][3]);
+					msg.innerHTML = "<p>カルテ番号" + csvArray[j][2] +"</p>";
+				}
 			}
 		}
 	}
