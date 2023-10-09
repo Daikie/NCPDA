@@ -52,6 +52,7 @@
 		}
 		hash = $sha256(name + brth);
 		console.log(hash);
+		console.log(csvArray[0][0]);
 		for(let j = 0; j < csvArray.length; j++) {
 			if(hash == csvArray[j][0]) {
 				console.log(csvArray[j][3]);
