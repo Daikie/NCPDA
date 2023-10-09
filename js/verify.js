@@ -11,11 +11,11 @@
     	return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2,'0')).join('')
 	}
 
+	let csvArray = [];
 	const req = new XMLHttpRequest();
 	req.addEventListener("load", (event) => {
 		const res = event.target.responseText;
 		let lines = res.split(/\r\n|\n/);
-		let csvArray = [];
 		for (let i = 0; i < lines.length; i++) {
 			let cells = lines[i].split(",");
 			if (cells.length != 1) {
