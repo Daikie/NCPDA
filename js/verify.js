@@ -12,7 +12,7 @@
 	}
 
 	let req = new XMLHttpRequest();
-	req.open("GET", "/js/id.csv", true);
+	req.open("GET", "https://daikie.github.io/NCPDA/js/id.csv", true);
 	req.onload = function() {
 		let csvArray = [];
 		let lines = req.responseText.split(/\r\n|\n/);
@@ -22,9 +22,11 @@
 				csvArray.push(cells);
 			}
 		}
+		console.log(csvArray[0][0]);
+		console.log(csvArray[1][1]);
 	}
 	
-	console.log(csvArray[0]);
+	
 	function $verify(){
 		const msg = document.getElementById("msg");
 		msg.innerHTML = "";
