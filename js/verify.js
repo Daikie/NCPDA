@@ -11,23 +11,23 @@
     	return Array.from(new Uint8Array(digest)).map(v => v.toString(16).padStart(2,'0')).join('')
 	}
 
-	function $readCSV() {
-		let req = new XMLHttpRequest();
-		req.open("GET", "https://daikie.github.io/NCPDA/js/id.csv", true);
-		req.onload = function() {
-			let csvArray = [];
-			let lines = req.responseText.split(/\r\n|\n/);
-			for (let i = 0; i < lines.length; i++) {
-				let cells = lines[i].split(",");
-				if (cells.length != 1) {
-					csvArray.push(cells);
-				}
+	const req = new XMLHttpRequest();
+	req.addEventListener("load", (event) => {
+		const res = event.target.responseText;
+		let lines = res.split(/\r\n|\n/);
+		let csvArray = [];
+		for (let i = 0; i < lines.length; i++) {
+			let cells = lines[i].split(",");
+			if (cells.length != 1) {
+				csvArray.push(cells);
 			}
-			console.log(csvArray[0][0]);
-			console.log(csvArray[1][1]);
 		}
-	}
-	
+		console.log(csvArray[0][0]);
+		console.log(csvArray[1][1]);
+	});
+	req.open("GET", "./js/id.csv", true);
+	req.send();
+
 	
 	function $verify(){
 		const msg = document.getElementById("msg");
@@ -87,7 +87,6 @@
 	}
 	
 	window.onload = function() {
-		$readCSV();
 
 		buttonV.addEventListener("click", $verify);
 
