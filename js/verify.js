@@ -50,7 +50,12 @@
 			for(let j = 0; j < csvArray.length; j++) {
 				if(hash == csvArray[j][0]) {
 					durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
-					msg.innerHTML = "<p>" + csvArray[j][1] + "番" + durt + "</p>";
+					if(durt < 540) {
+						msg.innerHTML = "<p>カルテ番号：" + csvArray[j][1] + "</p><a href='https://airrsv.net/nishicli/calendar?schdlId=s00008E234'>短い</a>";
+					} else {
+						msg.innerHTML = "<p>カルテ番号：" + csvArray[j][1] + "</p><a href='https://airrsv.net/nishicli/calendar?schdlId=s00008E234'>長い</a>";
+					}
+					
 				}
 			}
 		});
