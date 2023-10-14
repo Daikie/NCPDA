@@ -51,11 +51,15 @@
 				if(hash == csvArray[j][0]) {
 					durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
 					if(durt < 540) {
-						msg.innerHTML = "<p>カルテ番号：" + csvArray[j][1] + "</p><a href='https://airrsv.net/nishicli/calendar?schdlId=s00008E234'>短い</a>";
+						msg.innerHTML = '<p>カルテ番号：' + csvArray[j][1] + '</p><a href="https://airrsv.net/nishicli/calendar?schdlId=s00008E234">短い</a>';
+						window.open("https://airrsv.net/nishicli/calendar?schdlId=s00008E234", "_blank");
 					} else {
-						msg.innerHTML = "<p>カルテ番号：" + csvArray[j][1] + "</p><a href='https://airrsv.net/nishicli/calendar?schdlId=s00008E234'>長い</a>";
+						msg.innerHTML = '<p>カルテ番号：' + csvArray[j][1] + '</p><a href="https://airrsv.net/nishicli/calendar?schdlId=s00008E234">長い</a>';
+						window.open("https://airrsv.net/nishicli/calendar?schdlId=s00008E234", "_blank");
 					}
 					
+				} else {
+					msg.innerHTML = '<p><span class="markR">当院カルテから見つかりませんでした。</span>お名前・生年月日が正しく入力されていることを確認して再度ボタンを押してください。</p>';
 				}
 			}
 		});

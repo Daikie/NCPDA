@@ -129,13 +129,14 @@
 			</tbody>
 		</table>
 		<p>ワクチンや健診の予約は受付あるいはお電話（050-1807-9804で3をプッシュ）でお申し付けください。
-		<h3>予約は前日19時から受付開始</h3>
-		<p>診察をお受けになりたい日の<span class="markR">前日19時から、当日の予約枠の直前まで</span>に予約が可能です。</p>
+		<h3>予約は6日前から受付開始</h3>
+		<p>診察をお受けになりたい日の<span class="markR">6日前から、前日19時まで</span>に予約が可能です。
+			<br>前日19時以降は直前枠からご予約ください。</p>
 		<h3>白枠からご都合の良い時間を選択</h3>
 		<p>同じ予約枠の中では、来院順に診察が行われます。1枠の診察時間は最長10分です。<br>予約時刻から<span class="markR">10分以上遅れて来院された方は、診察をお受けになれない</span>場合があります。</p>
 		    
 		<h3>複数人で受診される場合は、同時間帯に2つの予約を取得</h3>
-		<p><span class="markR">短時間の診療に限り</span>1枠の予約でご家族2人の診療が可能です。<br>必ず受付でお申し出ください。</p>
+		<p><span class="markR">短時間の診療に限り</span>1枠の予約でご家族2人の診療が可能です。<br>必ず事前に受付でお申し出ください。</p>
 		    
 		<h3>受診される方の情報を入力</h3>
 		<p><span class="markR">受診者の氏名</span>、当日つながる電話番号、メールアドレス、生年月日を入力してください。<br><span class="markR">ご姓名が変わられた方</span>は、ご来院の際にお申し出ください。</p>
@@ -177,6 +178,7 @@
 		<h3>キャンセル方法はメールに記載</h3>
 		<p><span class="markR">キャンセルの場合は、予約確認メール内のリンクから手続き</span>を行ってください。<br>お早めに手続きを行っていただけると、他の方が予約を取得することができます。</p>
 
+		<h2>初診の方・直前枠</h2>
 		<h2 id="reserve"><a href="https://airrsv.net/nishicli/calendar?schdlId=s000017A5E" target="_blank">
 			<svg viewBox="0 0 16 16" class="bi bi-calendar-check" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -184,6 +186,7 @@
 				<path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
 			</svg>対面診療予約
 		</a></h2>
+		<h2>再診の方</h2>
 		<form action="">
 			<label>お名前：
 				<input type="text" placeholder="ひらがな/カタカナ" id="name" required>
@@ -194,7 +197,7 @@
 				<select id="brth-m" name="month"></select>月
 				<select id="brth-d" name="day"></select>日
 			</label>
-			<button class="btn btn-secondary" type="button" id="verify">再診予約</button>
+			<br><button class="btn btn-secondary" type="button" id="verify">再診予約</button>
 		</form>
 		<p id="msg"></p>
 		<p>予約を取得されましたら、下のページから問診票のご記入をお願いします。</p>
