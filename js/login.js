@@ -51,8 +51,8 @@ window.addEventListener("load", function(event) {
 				csvReq.addEventListener("load", (event) => {
 					const csvRes = event.target.responseText;
 					let lines = csvRes.split(/\r\n|\n/);
-					for (let i = 0; i < lines.length; i++) {
-						let cells = lines[i].split(",");
+					for (let k = 0; k < lines.length; k++) {
+						let cells = lines[k].split(",");
 						if (cells.length != 1) {
 							csvArray.push(cells);
 						}
@@ -60,14 +60,14 @@ window.addEventListener("load", function(event) {
 				});
 				csvReq.open("GET", "./js/id.csv", true);
 				csvReq.send();
-				console.log(csvArray[1][1]);
+				
 				var htm = "";
 				htm += "<h2>西小山クリニック　処置予約ページ</h2>";
 				htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
 				if(chk % 10 == ida[0]) {
-					for(let k = 0; k < csvArray.length; k++) {
-						if(enc == Number(csvArray[k][1])) {
-							var durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
+					for(let l = 0; l < csvArray.length; l++) {
+						if(enc == Number(csvArray[l][1])) {
+							var durt = Number.parseFloat(csvArray[l][3]) + Number.parseFloat(csvArray[l][4]);
 							break;
 						}
 					}
