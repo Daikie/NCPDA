@@ -129,10 +129,12 @@
 			</tbody>
 		</table>
 		<p>ワクチンや健診の予約は受付あるいはお電話（050-1807-9804で3をプッシュ）でお申し付けください。
-		<h3>予約は6日前から受付開始</h3>
-		<p>診察をお受けになりたい日の<span class="markR">6日前から、前日19時まで</span>に予約が可能です。
-			<br>前日19時以降は直前枠からご予約ください。</p>
-		<h3>白枠からご都合の良い時間を選択</h3>
+
+		<h3>予約の取得方法</h3>
+		<p>初診の方は診察をお受けになりたい日の<span class="markR">前日19時から、直前まで</span>予約が可能です。
+			<br>再診の方は診察をお受けになりたい日の<span class="markR">7日前19時から、前日19時まで</span>予約が可能です。
+			<br>再診の方も診察をお受けになりたい日の<span class="markB">前日19時以降は直前枠</span>からご予約ください。</p>
+		<h3>ご都合の良い時間を選択</h3>
 		<p>同じ予約枠の中では、来院順に診察が行われます。1枠の診察時間は最長10分です。<br>予約時刻から<span class="markR">10分以上遅れて来院された方は、診察をお受けになれない</span>場合があります。</p>
 		    
 		<h3>複数人で受診される場合は、同時間帯に2つの予約を取得</h3>
@@ -178,26 +180,28 @@
 		<h3>キャンセル方法はメールに記載</h3>
 		<p><span class="markR">キャンセルの場合は、予約確認メール内のリンクから手続き</span>を行ってください。<br>お早めに手続きを行っていただけると、他の方が予約を取得することができます。</p>
 
-		<h2>初診の方・直前枠</h2>
+		<h2>直前枠（初診の方・再診の方）</h2>
+		<p>受診されたい日の前日19時から受付開始になります。初診・再診問わずご利用いただけます。キャンセルによって生じた空き枠もご確認いただけます。</p>
 		<h2 id="reserve"><a href="https://airrsv.net/nishicli/calendar?schdlId=s000017A5E" target="_blank">
 			<svg viewBox="0 0 16 16" class="bi bi-calendar-check" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
 				<path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
 				<path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
-			</svg>対面診療予約
+			</svg>直前枠
 		</a></h2>
 		<h2>再診の方</h2>
+		<p>当院受診歴のある方専用の予約ページをご利用いただけます。お名前をひらがな又はカタカナで入力し、生年月日を選択してください。</p>
 		<form action="">
-			<label>お名前：
+			<label>　お名前：
 				<input type="text" placeholder="ひらがな/カタカナ" id="name" required>
 			</label>
 			<br>
-			<label>生年月日：
+			<label>　生年月日：
 				<select id="brth-y" name="year"></select>年
 				<select id="brth-m" name="month"></select>月
 				<select id="brth-d" name="day"></select>日
 			</label>
-			<br><button class="btn btn-secondary" type="button" id="verify">再診予約</button>
+			<br>　<button class="btn btn-danger" type="button" id="verify">【認証】</button>
 		</form>
 		<p id="msg"></p>
 		<p>予約を取得されましたら、下のページから問診票のご記入をお願いします。</p>

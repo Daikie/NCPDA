@@ -244,6 +244,12 @@ button.btn-primary { /* Accordion button */
 	padding: 2px;
 	margin-bottom: 15px;
 }
+button.btn-danger { /* Verify button */
+	font-size: 24px;
+	font-weight: bold;
+	padding: 2px;
+	margin-bottom: 15px;
+}
 div#collapseDetail div.card {
 	background-color: #AFF;
 	padding: 5px;
