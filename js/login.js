@@ -48,7 +48,8 @@ window.addEventListener("load", function(event) {
 			} else {
 				let csvArray = [];
 				const csvReq = new XMLHttpRequest();
-				csvReq.addEventListener("load", (event) => {
+				csvReq.open("GET", "./js/id.csv", true);
+				csvReq.onload = function() {
 					const csvRes = event.target.responseText;
 					let lines = csvRes.split(/\r\n|\n/);
 					for (let k = 0; k < lines.length; k++) {
@@ -57,10 +58,8 @@ window.addEventListener("load", function(event) {
 							csvArray.push(cells);
 						}
 					}
-				});
-				csvReq.open("GET", "./js/id.csv", true);
-				csvReq.send();
-				
+				}
+				console.log(csvArray[1][1])
 				var htm = "";
 				htm += "<h2>西小山クリニック　処置予約ページ</h2>";
 				htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
