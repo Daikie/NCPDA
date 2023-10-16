@@ -67,6 +67,9 @@ window.addEventListener("load", function(event) {
 					for(let k = 0; k < csvArray.length; k++) {
 						if(enc == csvArray[k][1]) {
 							var durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
+							break;
+						}
+					}
 				var htm = "";
 					htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
 					htm += "<p>30日後までの予約が可能です。" + durt + "</p>";
