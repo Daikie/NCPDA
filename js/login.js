@@ -50,7 +50,7 @@ window.addEventListener("load", function(event) {
 				const csvReq = new XMLHttpRequest();
 				csvReq.open("GET", "./js/id.csv", true);
 				csvReq.onload = function() {
-					const csvRes = event.target.responseText;
+					const csvRes = csvReq.responseText;
 					let lines = csvRes.split(/\r\n|\n/);
 					for (let k = 0; k < lines.length; k++) {
 						let cells = lines[k].split(",");
