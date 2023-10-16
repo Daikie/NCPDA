@@ -58,30 +58,31 @@ window.addEventListener("load", function(event) {
 							csvArray.push(cells);
 						}
 					}
-				}
-				console.log(csvArray[1][1])
-				var htm = "";
-				htm += "<h2>西小山クリニック　処置予約ページ</h2>";
-				htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
-				if(chk % 10 == ida[0]) {
-					for(let l = 0; l < csvArray.length; l++) {
-						if(enc == Number(csvArray[l][1])) {
-							var durt = Number.parseFloat(csvArray[l][3]) + Number.parseFloat(csvArray[l][4]);
-							break;
+					console.log(csvArray[1][1])
+					var htm = "";
+					htm += "<h2>西小山クリニック　処置予約ページ</h2>";
+					htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
+					if(chk % 10 == ida[0]) {
+						for(let l = 0; l < csvArray.length; l++) {
+							if(enc == Number(csvArray[l][1])) {
+								var durt = Number.parseFloat(csvArray[l][3]) + Number.parseFloat(csvArray[l][4]);
+								break;
+							}
 						}
+						htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
+						htm += "<p>30日後までの予約が可能です。" + durt + "</p>";
+						htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
+						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
+						htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
+					} else {
+						htm += "<p>現在処置予約を取得する権限がありません。</p>";
+						htm += "<p>原因は以下の可能性があります。</p>";
+						htm += "<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセル、複数予約取得などの規約違反</li></ul>";
+						htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 					}
-					htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
-					htm += "<p>30日後までの予約が可能です。" + durt + "</p>";
-					htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
-					htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
-					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
-				} else {
-					htm += "<p>現在処置予約を取得する権限がありません。</p>";
-					htm += "<p>原因は以下の可能性があります。</p>";
-					htm += "<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセル、複数予約取得などの規約違反</li></ul>";
-					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
+					document.getElementById("main-content").innerHTML = htm;
 				}
-				document.getElementById("main-content").innerHTML = htm;
+				csvReq.send(null);
 			}
 		}	
 		req.send(null);
