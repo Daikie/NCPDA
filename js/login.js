@@ -4,14 +4,14 @@ window.addEventListener("load", function(event) {
 		var param = urlParam.split('=');
 		if(param[0] = "ID") {
 			var ida = [];
-			for(i=0; i<param[1].length; i++) {
+			for(let i=0; i<param[1].length; i++) {
 				ida[i] = Number(param[1].substr(i, 1));
 			}
 			var enc = String(ida[1]);
 			var chk = 0;
 			var idb = [];
 			idb[0] = ida[1];
-			for(j=1; j<ida.length-1; j++) {
+			for(let j=1; j<ida.length-1; j++) {
 				idb[j] = (idb[j-1] + ida[j+1]) % 10;
 				enc = enc.concat(idb[j]);
 				chk = chk + Number(ida[j+1]);
@@ -21,7 +21,7 @@ window.addEventListener("load", function(event) {
 		req.open("GET", "https://daikie.github.io/NCPDA/unavailable.txt", true);
 		req.onload = function() {
 			var paths = req.responseText.split("\n");
-			for(ln=0; ln<paths.length; ln++) {
+			for(let ln=0; ln<paths.length; ln++) {
 				if(enc == paths[ln]) {
 					chk = chk + 1;
 					break;
@@ -46,12 +46,30 @@ window.addEventListener("load", function(event) {
 				}
 				document.getElementById("main-content").innerHTML = htm;
 			} else {
-				var htm = "";
+				let csvArray = [];
+				const csvReq = new XMLHttpRequest();
+				csvReq.addEventListener("load", (event) => {
+					const csvRes = event.target.responseText;
+					let lines = csvRes.split(/\r\n|\n/);
+					for (let i = 0; i < lines.length; i++) {
+						let cells = lines[i].split(",");
+						if (cells.length != 1) {
+							csvArray.push(cells);
+						}
+					}
+				});
+				csvReq.open("GET", "./js/id.csv", true);
+				csvReq.send();
+
 				htm += "<h2>西小山クリニック　処置予約ページ</h2>";
 				htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
 				if(chk % 10 == ida[0]) {
+					for(let k = 0; k < csvArray.length; k++) {
+						if(enc == csvArray[k][1]) {
+							var durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
+				var htm = "";
 					htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
-					htm += "<p>30分に1枠となっております。30日先までの予約が可能です。<p>";
+					htm += "<p>30日後までの予約が可能です。" + durt + "</p>";
 					htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
 					htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
