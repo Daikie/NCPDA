@@ -52,7 +52,7 @@ window.addEventListener("load", function(event) {
 					}
 					htm += "<p>※予約が埋まり次第受付終了となります。</p>";
 					htm += "<p>人工知能予約システムが導入されました。1週間前の19時から予約が可能ですので、アドバンス予約よりも空きがある可能性があります。</p>";
-					htm += "<h2 id='febrile'><a href='f2freserve.html'>AI予約システム詳細</a></h2>";
+					htm += "<h2 id='febrile'><a href='darnn.html'>AI予約システム詳細</a></h2>";
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 				} else {
 					htm += "<p>受付期間外です。";
