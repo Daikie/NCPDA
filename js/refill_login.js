@@ -50,7 +50,9 @@ window.addEventListener("load", function(event) {
 					} else if(grade == 2) {
 						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000752D1', target='_blank'>予約ページに行く</a></h2>";
 					}
-					htm += "<p>※予約が埋まり次第受付終了となります。</p>"
+					htm += "<p>※予約が埋まり次第受付終了となります。</p>";
+					htm += "<p>人工知能予約システムが導入されました。1週間前の19時から予約が可能ですので、アドバンス予約よりも空きがある可能性があります。</p>";
+					htm += "<br><h2 id='febrile'><a href='f2freserve.html'>詳細はこちら</a></h2>";
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 				} else {
 					htm += "<p>受付期間外です。";
