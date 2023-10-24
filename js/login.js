@@ -34,7 +34,9 @@ window.addEventListener("load", function(event) {
 				var htm = "";
 				htm += "<h2>西小山クリニック　ワンタイム予約ページ</h2>";
 				htm += "<p>近日中の受診を希望される方のための予約ページです。</p>";
-				htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日まで</font>使用できます。</p>";
+				htm += "<p>受付期間外です。</p>";
+				htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
+				/*htm += "<p>このページは<font color=#00f>"+encdate.getFullYear()+"年"+(encdate.getMonth()+1)+"月"+encdate.getDate()+"日まで</font>使用できます。</p>";
 				encdate.setDate(encdate.getDate()+1);
 				if(chk % 10 == ida[0] && today<=encdate) {
 					htm += "<p>ご希望受診日の<font color=#f00>7日前19時から前日19時まで</font>予約が可能です。</p>";
@@ -43,7 +45,7 @@ window.addEventListener("load", function(event) {
 				} else {
 					htm += "<p>受付期間外です。</p>";
 					htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
-				}
+				}*/
 				document.getElementById("main-content").innerHTML = htm;
 			} else {
 				let csvArray = [];
@@ -71,7 +73,7 @@ window.addEventListener("load", function(event) {
 						htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
 						htm += "<p>30日後までの予約が可能です。</p>";
 						htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
-						if(durt < 540) {
+						if(durt < 510) {
 							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
 						} else {
 							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>予約ページに行く</a></h2>";
