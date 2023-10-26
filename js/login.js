@@ -67,13 +67,15 @@ window.addEventListener("load", function(event) {
 						for(let l = 0; l < csvArray.length; l++) {
 							if(enc == Number(csvArray[l][1])) {
 								var durt = Number.parseFloat(csvArray[l][3]) + Number.parseFloat(csvArray[l][4]);
+								var skip = Number.parseInt(csvArray[j][5]);
+								console.log(durt, skip);
 								break;
 							}
 						}
 						htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
 						htm += "<p>30日後までの予約が可能です。</p>";
 						htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
-						if(durt < 510) {
+						if(skip < 3 && durt < 560) {
 							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
 						} else {
 							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>予約ページに行く</a></h2>";
