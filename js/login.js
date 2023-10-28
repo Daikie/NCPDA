@@ -67,7 +67,7 @@ window.addEventListener("load", function(event) {
 						for(let l = 0; l < csvArray.length; l++) {
 							if(enc == Number(csvArray[l][1])) {
 								var durt = Number.parseFloat(csvArray[l][3]) + Number.parseFloat(csvArray[l][4]);
-								var skip = Number.parseInt(csvArray[j][5]);
+								var skip = Number.parseInt(csvArray[l][5]);
 								console.log(durt, skip);
 								break;
 							}
