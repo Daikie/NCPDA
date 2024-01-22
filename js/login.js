@@ -62,7 +62,7 @@ window.addEventListener("load", function(event) {
 					}
 					var htm = "";
 					htm += "<h2>西小山クリニック　処置予約ページ</h2>";
-					htm += "<p>継続的な通院が必要な処置の方のための予約ページです。</p>"
+					htm += "<p>継続的な通院が必要な方のための予約ページです。</p>"
 					if(chk % 10 == ida[0]) {
 						for(let l = 0; l < csvArray.length; l++) {
 							if(Number(enc) == Number(csvArray[l][1])) {
@@ -82,11 +82,14 @@ window.addEventListener("load", function(event) {
 						} else {
 							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>予約ページに行く</a></h2>";
 						}
+						htm += "<p>予約を取得されましたら、下のページから問診票のご記入をお願いします。</p>";
+						htm += "<a href='https://ubie.app/medical_institution/introduction?hospital_user_key=5047b32e-84b7-4bd7-a313-e358b6ce67df&done_screen_key=13206e76-d4d8-40f6-bc60-20e7c023ca8e' target='_blank'>";
+						htm += "<img src='img/ubie.png' width='320px' height='100px' class='img-fluid'></a>";
 						htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 					} else {
 						htm += "<p>現在処置予約を取得する権限がありません。</p>";
 						htm += "<p>原因は以下の可能性があります。</p>";
-						htm += "<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセル、複数予約取得などの規約違反</li></ul>";
+						htm += "<ul><li>IDの入力間違い</li><li>処置が終了した</li><li>予約の無断キャンセルなどの規約違反</li></ul>";
 						htm += "<br><h2 id='back'><a href='index.html'>戻る</a></h2>";
 					}
 					document.getElementById("main-content").innerHTML = htm;
