@@ -49,7 +49,7 @@
 				if(hash == csvArray[j][0]) {
 					var durt = Number.parseFloat(csvArray[j][3]) + Number.parseFloat(csvArray[j][4]);
 					var skip = Number.parseInt(csvArray[j][5]);
-					if (csvArray[j][6] == "0") {
+					if(csvArray[j][6] == "0") {
 						var last = new Date();
 						var days = parseInt(0);
 					} else {
