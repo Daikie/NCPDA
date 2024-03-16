@@ -72,7 +72,7 @@ window.addEventListener("load", function(event) {
 								break;
 							}
 						}
-						const suite = [3598, 19507, 23253, 25414, 27623, 27408, 27493];
+						const suite = [3598, 19507, 23253, 25414, 27623, 27408, 27493, 29703];
 						console.log(suite.includes(Number(enc)));
 						htm += "<p>ご利用中の処置予約ページは<span class='markR'>カルテ番号" + enc + "の方専用</span>です。</p>";
 						htm += "<p>30日後までの予約が可能です。</p>";
