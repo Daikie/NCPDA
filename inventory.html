@@ -40,7 +40,7 @@
 				var later = new Date(today);
 				later.setDate(later.getDate() + 5);
 				var weekday = ["（日）", "（月）", "（火）", "（水）", "（木）", "（金）", "（土）"];
-				var htm = '<h1>個別予定</h1><ul class="list-group-item">';
+				var htm = '<ul class="list-group-item">';
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					if (resvdate <= later) {
