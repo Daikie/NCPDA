@@ -40,19 +40,20 @@
 				var later = new Date(today);
 				later.setDate(later.getDate() + 5);
 				var weekday = ["日", "月", "火", "水", "木", "金", "土"];
-				var htm = "";
+				var htm = "<ul>";
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					if (resvdate <= later) {
-						htm += "<p>" + csvArray[j][0] + weekday[resvdate.getDay()] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
+						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2] + "<ul>";
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
-								htm += "\t" + csvArray[0][k];
+								htm += "<li>" + csvArray[0][k] + "</li>";
 							}
 						}
-						htm += "</p>";
+						htm += "</ul></li>";
 					}
 				}
+				htm += "</ul>";
 				document.getElementById("main-content").innerHTML = htm;
 			});
 			req.open("GET", "./js/inventory.csv", true);
