@@ -22,10 +22,10 @@
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/jSignature.min.js"></script>
 	<script>
-		window.onload = function() {
-			let csvArray = [];
-			const req = new XMLHttpRequest();
-			req.addEventListener("load", (event) => {
+		window.addEventListener("load", function(event) {
+			window.onload = function() {
+				let csvArray = [];
+				const req = new XMLHttpRequest();
 				const res = event.target.responseText;
 				let lines = res.split(/\r\n|\n/);
 				for (let i = 0; i < lines.length; i++) {
@@ -34,12 +34,11 @@
 						csvArray.push(cells);
 					}
 				}
-			});
-		
-		req.open("GET", "./js/inventory.csv", true);
-		req.send();
-		console.log(csvArray[0]);
-		}
+				req.open("GET", "./js/inventory.csv", true);
+				req.send();
+				console.log(csvArray[0]);
+			}
+		});
 	</script>
 	<script src="js/bootstrap.js"></script>
 </body>
