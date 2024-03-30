@@ -30,16 +30,15 @@
 				let lines = res.split(/\r\n|\n/);
 				for (let i = 0; i < lines.length; i++) {
 					let cells = lines[i].split(",");
-					console.log(cells.length);
 					if (cells.length != 1) {
 						csvArray.push(cells);
-						console.log(csvArray.length);
 					}
 				}
+				console.log(csvArray);
 			});
 			req.open("GET", "./js/inventory.csv", true);
 			req.send();
-			console.log(csvArray[0][0], csvArray[0][1]);
+			console.log(csvArray[1][1], csvArray[1][2]);
 			var today = new Date();
 			var htm = "";
 			for (let j = 0; j < csvArray.length; j++) {
