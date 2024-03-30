@@ -37,29 +37,12 @@
 				
 				var today = new Date();
 				today.setHours(0, 0, 0, 0);
+				var later = new Date(today);
+				later.setDate(later.getDate() + 5);
 				var htm = "";
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
-					console.log(resvdate, today);
-					if (resvdate == today) {
-						htm += csvArray[j][0] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
-						for (let k = 3; k < csvArray[j].length; k++) {
-							if (csvArray[j][k] > 0) {
-								htm += "\t" + csvArray[0][k];
-							}
-						}
-						htm += "\n";
-					}
-					if (resvdate == today.setDate(today.getDate()+1)) {
-						htm += csvArray[j][0] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
-						for (let k = 3; k < csvArray[j].length; k++) {
-							if (csvArray[j][k] > 0) {
-								htm += "\t" + csvArray[0][k];
-							}
-						}
-						htm += "\n";
-					}
-					if (resvdate == today.setDate(today.getDate()+1)) {
+					if (resvdate <= later) {
 						htm += csvArray[j][0] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
