@@ -34,20 +34,18 @@
 						csvArray.push(cells);
 					}
 				}
-				console.log(csvArray);
+				console.log(csvArray[0][0], csvArray[1][1]);
+				var today = new Date();
+				var htm = "";
+				for (let j = 0; j < csvArray.length; j++) {
+					if (csvArray[j][0] < today) {
+						htm += csvArray[j][1];
+					}
+				}
+				document.getElementById("main-content").innerHTML = htm;
 			});
 			req.open("GET", "./js/inventory.csv", true);
 			req.send();
-			console.log(csvArray[1][1], csvArray[1][2]);
-			var today = new Date();
-			var htm = "";
-			for (let j = 0; j < csvArray.length; j++) {
-				if (csvArray[j][0] < today) {
-					htm += csvArray[j][1];
-				}
-				
-			}
-			document.getElementById("main-content").innerHTML = htm;
 		}
 	</script>
 	<script src="js/bootstrap.js"></script>
