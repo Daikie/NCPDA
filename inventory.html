@@ -43,13 +43,13 @@
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					if (resvdate <= later) {
-						htm += csvArray[j][0] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
+						htm += csvArray[j][0] + resvdate.getDay() + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
 								htm += "\t" + csvArray[0][k];
 							}
 						}
-						htm += "\n";
+						htm += "\r\n";
 					}
 				}
 				document.getElementById("main-content").innerHTML = htm;
