@@ -44,7 +44,7 @@
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					if (resvdate <= later) {
-						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2] + "<ul>";
+						htm += "<li><pre>" + csvArray[j][0] + weekday[resvdate.getDay()] + "&#009;" + csvArray[j][1] + "&#009;" + csvArray[j][2] + "</pre><ul>";
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
 								htm += "<li>" + csvArray[0][k] + "</li>";
