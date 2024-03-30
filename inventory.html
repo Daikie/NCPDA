@@ -27,13 +27,13 @@
 			const req = new XMLHttpRequest();
 			req.addEventListener("load", (event) => {
 				const res = event.target.responseText;
-				console.log(res);
 				let lines = res.split(/\r\n|\n/);
-				console.log(lines[0]);
 				for (let i = 0; i < lines.length; i++) {
 					let cells = lines[i].split(",");
+					console.log(cells.length);
 					if (cells.length != 1) {
 						csvArray.push(cells);
+						console.log(csvArray.length);
 					}
 				}
 			});
