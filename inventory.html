@@ -15,17 +15,17 @@
 	</script>
 </head>
 <body>
-
+	<div class="container" id="main-content"></div>
 <body>
 	
 
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/jSignature.min.js"></script>
 	<script>
-		window.addEventListener("load", function(event) {
-			window.onload = function() {
-				let csvArray = [];
-				const req = new XMLHttpRequest();
+		window.onload = function() {
+			let csvArray = [];
+			const req = new XMLHttpRequest();
+			req.addEventListener("load", (event) => {
 				const res = event.target.responseText;
 				let lines = res.split(/\r\n|\n/);
 				for (let i = 0; i < lines.length; i++) {
@@ -34,11 +34,14 @@
 						csvArray.push(cells);
 					}
 				}
-				req.open("GET", "./js/inventory.csv", true);
-				req.send();
-				console.log(csvArray[0]);
-			}
-		});
+			});
+			req.open("GET", "./js/inventory.csv", true);
+			req.send();
+			console.log(csvArray[0]);
+			var htm = "";
+			htm += "あ";
+			document.getElementById("main-content").innerHTML = htm;
+		}
 	</script>
 	<script src="js/bootstrap.js"></script>
 </body>
