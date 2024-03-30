@@ -36,12 +36,19 @@
 				}
 				
 				var today = new Date();
+				today.setHours(0, 0, 0, 0);
 				var htm = "";
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					console.log(resvdate, today);
-					if (resvdate <= today.setDate(today.getDate() + 5)) {
-						htm += csvArray[j][1];
+					if (resvdate == today) {
+						htm += csvArray[j][1] + "\t" + csvArray[j][2];
+						for (let k = 3; k < csvArray[j].length; k++) {
+							if (csvArray[j][k] > 0) {
+								htm += "\t" + csvArray[0][k];
+							}
+						}
+						htm += "\n";
 					}
 				}
 				document.getElementById("main-content").innerHTML = htm;
