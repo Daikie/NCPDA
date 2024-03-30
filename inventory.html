@@ -37,9 +37,15 @@
 			});
 			req.open("GET", "./js/inventory.csv", true);
 			req.send();
-			console.log(csvArray[0]);
+			console.log(csvArray[0][0], csvArray[0][1]);
+			var today = new Date();
 			var htm = "";
-			htm += "あ";
+			for (let j = 0; j < csvArray.length; j++) {
+				if (csvArray[j][0] < today) {
+					htm += csvArray[j][1];
+				}
+				
+			}
 			document.getElementById("main-content").innerHTML = htm;
 		}
 	</script>
