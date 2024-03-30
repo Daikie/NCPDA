@@ -39,17 +39,18 @@
 				today.setHours(0, 0, 0, 0);
 				var later = new Date(today);
 				later.setDate(later.getDate() + 5);
+				var weekday = ["日", "月", "火", "水", "木", "金", "土"];
 				var htm = "";
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					if (resvdate <= later) {
-						htm += csvArray[j][0] + resvdate.getDay() + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
+						htm += "<p>" + csvArray[j][0] + weekday[resvdate.getDay()] + "\t" + csvArray[j][1] + "\t" + csvArray[j][2];
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
 								htm += "\t" + csvArray[0][k];
 							}
 						}
-						htm += "\r\n";
+						htm += "</p>";
 					}
 				}
 				document.getElementById("main-content").innerHTML = htm;
