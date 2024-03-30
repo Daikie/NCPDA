@@ -40,7 +40,7 @@
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
 					console.log(resvdate, today);
-					if (resvdate < today) {
+					if (resvdate <= today + 5) {
 						htm += csvArray[j][1];
 					}
 				}
