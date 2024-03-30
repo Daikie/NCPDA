@@ -34,11 +34,12 @@
 						csvArray.push(cells);
 					}
 				}
-				console.log(csvArray[0][0], csvArray[1][1]);
+				
 				var today = new Date();
 				var htm = "";
-				for (let j = 0; j < csvArray.length; j++) {
-					if (csvArray[j][0] < today) {
+				for (let j = 1; j < csvArray.length; j++) {
+					console.log(Date(csvArray[j][0]), today);
+					if (Date(csvArray[j][0]) < today) {
 						htm += csvArray[j][1];
 					}
 				}
