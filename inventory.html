@@ -38,8 +38,9 @@
 				var today = new Date();
 				var htm = "";
 				for (let j = 1; j < csvArray.length; j++) {
-					console.log(Date(csvArray[j][0]), today);
-					if (Date(csvArray[j][0]) < today) {
+					let resvdate = new Date(csvArray[j][0])
+					console.log(resvdate, today);
+					if (resvdate < today) {
 						htm += csvArray[j][1];
 					}
 				}
