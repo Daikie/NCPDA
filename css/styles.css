@@ -372,3 +372,8 @@ div.bible p {
 	font-size: 12px;
 	color: #FFF;
 }
+
+/* Inventory */
+ul.today {
+	background-color: #FDE;
+}

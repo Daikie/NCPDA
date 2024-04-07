@@ -38,13 +38,21 @@
 				var today = new Date();
 				today.setHours(0, 0, 0, 0);
 				var later = new Date(today);
-				later.setDate(later.getDate() + 5);
+				later.setDate(later.getDate() + 4);
 				var weekday = ["（日）", "（月）", "（火）", "（水）", "（木）", "（金）", "（土）"];
 				var htm = '<ul class="list-group-item">';
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
-					if (resvdate <= later) {
-						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "&emsp;" + csvArray[j][1] + "&emsp;" + csvArray[j][2] + "<ul>";
+					if (resvdate.getDate() == today.getDate()) {
+						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "&emsp;" + csvArray[j][1] + "&emsp;" + csvArray[j][2] + '<ul class="today">';
+						for (let k = 3; k < csvArray[j].length; k++) {
+							if (csvArray[j][k] > 0) {
+								htm += "<li>" + csvArray[0][k] + "</li>";
+							}
+						}
+						htm += "</ul></li>";
+					} else if (resvdate > today && resvdate <= later) {
+						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "&emsp;" + csvArray[j][1] + "&emsp;" + csvArray[j][2] + '<ul>';
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
 								htm += "<li>" + csvArray[0][k] + "</li>";
