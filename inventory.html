@@ -43,7 +43,7 @@
 				var htm = '<ul class="list-group-item">';
 				for (let j = 1; j < csvArray.length; j++) {
 					let resvdate = new Date(csvArray[j][0])
-					if (resvdate.getDate() == today.getDate()) {
+					if (resvdate.getMonth() == today.getMonth() && resvdate.getDate() == today.getDate()) {
 						htm += "<li>" + csvArray[j][0] + weekday[resvdate.getDay()] + "&emsp;" + csvArray[j][1] + "&emsp;" + csvArray[j][2] + '<ul class="today">';
 						for (let k = 3; k < csvArray[j].length; k++) {
 							if (csvArray[j][k] > 0) {
