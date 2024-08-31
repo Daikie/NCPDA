@@ -83,6 +83,11 @@ div img {
 	margin-bottom: 20px;
 }
 
+div img.float {
+	float: right;
+	margin-left: 10px;
+}
+
 /* Peep reservation table */
 @media screen and (max-device-width: 600px) { /* Smart phone */
 	div.frm{
