@@ -87,6 +87,11 @@ div img.float {
 	float: right;
 	margin-left: 10px;
 }
+sup {
+	color: #F36;
+	font-style: italic;
+	font-weight: bold;
+}
 
 /* Peep reservation table */
 @media screen and (max-device-width: 600px) { /* Smart phone */
