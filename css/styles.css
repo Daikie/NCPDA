@@ -195,6 +195,16 @@ div h3 {
 	font-size: 18px;
 	font-weight: bold;
 }
+div h4 {
+	display: table-cell;
+	color: #022;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	background-color: #E40;
+	line-height: 120%;
+	padding: 0px;
+}
 div h2#reserve a { /* Online reservation */
 	background-color: #FE3;
 	border: 1px solid #DA1;
