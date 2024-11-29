@@ -219,6 +219,13 @@ div h2#febrile a {	/* Febrile consultation */
 	color: #000;
 	padding: 5px 10px 5px 10px;
 }
+div h2#queue a { /* Online queuing */
+	background-color: #2CE;
+	border: 1px solid #1BD;
+	border-radius: 5px;
+	color: #000;
+	padding: 5px 10px 5px 10px;
+}
 div h2#telemed a { /* Telemedicine */
 	background-color: #AC4;
 	border: 1px solid #8A2;
