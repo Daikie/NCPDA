@@ -87,9 +87,11 @@ window.addEventListener("load", function(event) {
 						htm += "<p>30日後までの予約が可能です。</p>";
 						htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
 						if(skip < 3 && durt < 560 || suite.includes(Number(enc))) {
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>予約ページに行く</a></h2>";
+							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>2月1日までの予約</a></h2>";
+							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000AE870', target='_blank'>2月3日以降の予約</a></h2>";
 						} else {
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>予約ページに行く</a></h2>";
+							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>2月1日までの予約</a></h2>";
+							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000AE870', target='_blank'>2月3日以降の予約</a></h2>";
 						}
 						htm += "<p>予約を取得されましたら、下のページから問診票のご記入をお願いします。</p>";
 						htm += "<a href='https://ubie.app/medical_institution/introduction?hospital_user_key=5047b32e-84b7-4bd7-a313-e358b6ce67df&done_screen_key=13206e76-d4d8-40f6-bc60-20e7c023ca8e' target='_blank'>";
