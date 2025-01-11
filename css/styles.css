@@ -278,6 +278,7 @@ button.btn-danger { /* Verify button */
 	margin-bottom: 15px;
 }
 div#collapseDetail div.card {
+	width: 360px;
 	background-color: #AFF;
 	padding: 5px;
 	margin-bottom: 15px;
@@ -314,7 +315,7 @@ div .border {
 	font-size: 14px;
 }
 div .card {
-	text-align: center;
+	text-align: left
 	background-color: #FCC;
 	padding-top: 0px;
 	padding-bottom: 0px;
