@@ -74,7 +74,7 @@ window.addEventListener("load", function(event) {
 						const suite = [3598, 19507, 23253, 25414, 27623, 27408, 27493, 29703];
 						console.log(suite.includes(Number(enc)));
 						htm += "<p><span class='markR'>カルテ番号" + enc + "の方専用</span>の予約ページです。</p>";
-						htm += "<h3>2025年2月3日から新しい順番制を導入予定です。</h3>";
+						htm += "<h3>2025年2月3日から新しい順番制を導入しました。</h3>";
 						htm += "<p>これまで定期的な受診が必要な方のために、当システムをご利用いただいておりました。しかし、利用者の増加に伴い、予約が取りにくい状況になっております。";
 						htm += "また、一人当たりの診察時間が長くなっていることもあり、通常の診察予約も非常に取りにくい状況になっております。";
 						htm += "<br>その結果、いざ病気になったときに予約が取れないため、受診が必要になるかわからない方も念のため予約を取り、後でキャンセルになってしまうといったことが起こっています。";
@@ -86,13 +86,7 @@ window.addEventListener("load", function(event) {
 						htm += "ご不便をおかけしますが、ご協力よろしくお願いします。</p><hr>";
 						htm += "<p>30日後までの予約が可能です。</p>";
 						htm += "<p>直前キャンセル、遅延、無断キャンセルが計3回以上生じた場合や、<br>予約システムの乱用が見られた場合は処置予約をご利用になれなくなります。</p>";
-						if(skip < 3 && durt < 560 || suite.includes(Number(enc))) {
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000234AB', target='_blank'>2月1日までの予約</a></h2>";
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000AE870', target='_blank'>2月3日以降の予約</a></h2>";
-						} else {
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s00009401B', target='_blank'>2月1日までの予約</a></h2>";
-							htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000AE870', target='_blank'>2月3日以降の予約</a></h2>";
-						}
+						htm += "<h2 id='reserve'><a href='https://airrsv.net/nishicli/calendar?schdlId=s0000AE870', target='_blank'>予約ページ</a></h2>";
 						htm += "<p>予約を取得されましたら、下のページから問診票のご記入をお願いします。</p>";
 						htm += "<a href='https://ubie.app/medical_institution/introduction?hospital_user_key=5047b32e-84b7-4bd7-a313-e358b6ce67df&done_screen_key=13206e76-d4d8-40f6-bc60-20e7c023ca8e' target='_blank'>";
 						htm += "<img src='img/ubie.png' width='320px' height='100px' class='img-fluid'></a>";
