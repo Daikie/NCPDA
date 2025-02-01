@@ -25,8 +25,10 @@ window.addEventListener("load", function(event) {
 		min = String(Math.floor(avgDur / 60));
 		sec = String(Math.floor(avgDur - min * 60));
 		am = Math.floor(3.5 * 3600 / avgDur);
+		pm = Math.floor(7 * 3600 / avgDur);
 		document.getElementById("duration").innerHTML += min + "分" + sec + "秒";
 		document.getElementById("am").innerHTML += am + "人";
+		document.getElementById("pm").innerHTML += pm + "人";
 	}
 	req.send(null);
 });
