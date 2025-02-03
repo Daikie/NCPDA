@@ -130,9 +130,31 @@
 	</div>
 	<div class="container">
 		<h2>対面診療（順番制）</h2>
-		<p><span id="duration">一人当たりの平均診察時間：</span>
+		<table class="table">
+			<p><span id="duration">直近の一人当たりの平均診察時間：</span></p>
+			<thead>
+				<th class="table-secondary"></th>
+				<th class="table-danger">午前</th>
+				<th class="table-primary">午後</th>
+			</thead>
+			<tr>
+				<td class="table-secondary">診療受付開始</td>
+				<td class="table-danger">9:30</td>
+				<td class="table-primary">15:30</td>
+			</tr>
+			<tr>
+				<td class="table-secondary">受付可能人数</td>
+				<td class="table-danger"><span id="am"></span></td>
+				<td class="table-primary"><span id="pm"></span></td>
+			</tr>
+			<tr>
+				<td class="table-secondary">備考</td>
+				<td colspan="2" class="table-secondary">開始時に来院された最初の3組を優先</td>
+			</tr>
+		</table>
+		<!-- <p><span id="duration">一人当たりの平均診察時間：</span>
 		<br><span id="am">午前診療日に受付可能な人数：</span>
-		<br><span id="pm">午前・午後診療日に受付可能な人数：</span></p>
+		<br><span id="pm">午前・午後診療日に受付可能な人数：</span></p> -->
 		<div data-airwait="storeId:KR00378855">
 			<ul class="list-group">
 				<li class="list-group-item">現在の状態
