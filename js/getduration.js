@@ -19,6 +19,7 @@ window.addEventListener("load", function(event) {
 		var today = new Date();
 		var timeH = today.getHours();
 		var timeM = today.getMinutes();
+		var rest;
 		console.log(timeH);
 		console.log(timeM);
 		for(let j = 0; j < csvArray.length; j++) {
@@ -38,6 +39,10 @@ window.addEventListener("load", function(event) {
 		var countPerson = document.getElementById("count-person").textContent;
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
+		if(timeH < 13) {
+			rest = Math.floor(((12 - timeH) * 60 + 30 - timeM) + 60 / avgDur)
+		}
+		console.log(rest);
 	}
 	req.send(null);
 });
