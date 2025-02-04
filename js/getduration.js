@@ -17,6 +17,10 @@ window.addEventListener("load", function(event) {
 		var am;
 		var pm;
 		var today = new Date();
+		var timeH = today.getHours();
+		var timeM = today.getMinutes();
+		console.log(timeH);
+		console.log(timeM);
 		for(let j = 0; j < csvArray.length; j++) {
 			if(csvArray[j][1] == 1) {
 				avgDur = csvArray[j][3];
@@ -31,7 +35,9 @@ window.addEventListener("load", function(event) {
 		document.getElementById("am").innerHTML += am + "人";
 		document.getElementById("pm").innerHTML += pm + "人";
 		console.log(document.getElementById("count-person").textContent);
-		
+		var countPerson = document.getElementById("count-person").textContent;
+		var l = countPerson.replace(/[^0-9]/g, "");
+		console.log(l);
 	}
 	req.send(null);
 });
