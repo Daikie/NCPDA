@@ -16,6 +16,7 @@ window.addEventListener("load", function(event) {
 		var sec;
 		var am;
 		var pm;
+		var today = new Date();
 		for(let j = 0; j < csvArray.length; j++) {
 			if(csvArray[j][1] == 1) {
 				avgDur = csvArray[j][3];
@@ -29,6 +30,8 @@ window.addEventListener("load", function(event) {
 		document.getElementById("duration").innerHTML += min + "分" + sec + "秒";
 		document.getElementById("am").innerHTML += am + "人";
 		document.getElementById("pm").innerHTML += pm + "人";
+		console.log(document.getElementById("count-person").textContent);
+		
 	}
 	req.send(null);
 });
