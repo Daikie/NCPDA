@@ -40,11 +40,12 @@ window.addEventListener("load", function(event) {
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
 		if(timeH < 13) {
-			rest = Math.floor(((12 - timeH) * 60 + 30 - timeM) + 60 / avgDur);
+			rest = Math.floor(((12 - timeH) * 60 + 30 - timeM) * 60 / avgDur) - l;
 		} else {
-			rest = Math.floor(((18 - timeH) * 60 + 30 - timeM) + 60 / avgDur);
+			rest = Math.floor(((18 - timeH) * 60 + 30 - timeM) * 60 / avgDur) - l;
 		}
 		console.log(rest);
+		document.getElementById("count-rest").innerHTML += rest + "人";
 	}
 	req.send(null);
 });
