@@ -36,8 +36,8 @@ window.addEventListener("load", function(event) {
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
 		if (l == "") {
-			document.getElementById("count-person").textContent = "--";
 			rest = "--";
+			
 		} else {
 			if(t < 570) {			// 9:30
 				rest = "--";
@@ -53,10 +53,19 @@ window.addEventListener("load", function(event) {
 		}
 		console.log(rest);
 		if (rest == "--") {
+			document.getElementById("count-group").textContent += "--";
+			document.getElementById("count-person").textContent += "--";
+			document.getElementById("max-calling").textContent += "--";
 			document.getElementById("count-rest").innerHTML = "--";
 		} else if (rest <= 0) {
+			document.getElementById("count-group").textContent += "組";
+			document.getElementById("count-person").textContent += "人";
+			document.getElementById("max-calling").textContent += "番の方まで";
 			document.getElementById("count-rest").innerHTML = "残り0人";
 		} else {
+			document.getElementById("count-group").textContent += "組";
+			document.getElementById("count-person").textContent += "人";
+			document.getElementById("max-calling").textContent += "番の方まで";
 			document.getElementById("count-rest").innerHTML = "残り" + rest + "人";
 			queue = document.getElementById("queue");
 			queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
