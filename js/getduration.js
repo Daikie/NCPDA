@@ -35,16 +35,21 @@ window.addEventListener("load", function(event) {
 		var countPerson = document.getElementById("count-person").textContent;
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
-		if(t < 570) {			// 9:30
+		if (l == "") {
+			document.getElementById("count-person").textContent = "--";
 			rest = "--";
-		} else if(t < 750) {	// 12:30
-			rest = Math.floor((750 - t) * 60 / avgDur) - l;
-		} else if(t < 930) {	// 15:30
-			rest = "--";
-		} else if (t < 1110) {	// 18:30
-			rest = Math.floor((1110 - t) * 60 / avgDur) - l;
 		} else {
-			rest = "--";
+			if(t < 570) {			// 9:30
+				rest = "--";
+			} else if(t < 750) {	// 12:30
+				rest = Math.floor((750 - t) * 60 / avgDur) - l;
+			} else if(t < 930) {	// 15:30
+				rest = "--";
+			} else if (t < 1110) {	// 18:30
+				rest = Math.floor((1110 - t) * 60 / avgDur) - l;
+			} else {
+				rest = "--";
+			}
 		}
 		console.log(rest);
 		if (rest == "--") {
