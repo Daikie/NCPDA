@@ -37,8 +37,8 @@ window.addEventListener("load", function(event) {
 		console.log(l);
 		if (l == "") {
 			rest = "--";
-			
 		} else {
+			console.log(t);
 			if(t < 570) {			// 9:30
 				rest = "--";
 			} else if(t < 750) {	// 12:30
