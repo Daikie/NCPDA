@@ -53,9 +53,9 @@ window.addEventListener("load", function(event) {
 		}
 		console.log(rest);
 		if (rest == "--") {
-			document.getElementById("count-group").textContent += "--";
-			document.getElementById("count-person").textContent += "--";
-			document.getElementById("max-calling").textContent += "--";
+			document.getElementById("count-group").textContent = "--";
+			document.getElementById("count-person").textContent = "--";
+			document.getElementById("max-calling").textContent = "--";
 			document.getElementById("count-rest").innerHTML = "--";
 		} else if (rest <= 0) {
 			document.getElementById("count-group").textContent += "組";
