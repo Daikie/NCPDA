@@ -70,7 +70,7 @@ window.addEventListener("load", function(event) {
 			queue = document.getElementById("queue");
 			queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
 			queue.getElementsByTagName("a")[0].setAttribute("class", "active");
-			queue.innerHTML = queue.innerHTML.replace("受付停止", "を取得する");
+			queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
 		}
 		
 		
