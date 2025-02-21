@@ -121,14 +121,43 @@
                 <h3>curonアプリをダウンロード</h3>
                 <p>オンライン診療アプリのご利用に現在のページの下部で表示される<a href="#code">医療機関コード</a>が必要です。</p>
                 <h3>60日前から1時間前まで予約が可能</h3>
-                <p>確認のために<span class="markR">保険証や医療証の写真を登録</span>していただいております。</p>
+                <p>保険証などの登録画面で<span class="markR">保険証や医療証の写真を登録</span>していただきます。</p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDetail" aria-expanded="false" aria-controls="collapseDetail">▼マイナンバーカードをご利用の方▼</button>
+                <div class="collapse" id="collapseDetail">
+                    <div class="card card-body">
+                        <ol>
+                            <li>マイナポータルアプリをダウンロード</li>
+                            <img src="img/myna_portal.jpg" width="312px" height="107px" class="img-fluid">
+                            <li>一時的にWi-FiをOFFにする</li>
+                            <img src="img/curon_myna0.jpg" width="312px" height="223px" class="img-fluid">
+                            <li>curonで「マイナ保険証」を選択</li>
+                            <img src="img/curon_myna1.jpg" width="312px" height="392px" class="img-fluid">
+                            <li>マイナ在宅web受付ボタンを押す</li>
+                            <img src="img/curon_myna2.jpg" width="312px" height="370px" class="img-fluid">
+                            <li>当院に資格情報を提供する準備</li>
+                            <img src="img/curon_myna3.jpg" width="312px" height="448px" class="img-fluid">
+                            <li>マイナポータルアプリでパスワードを入力</li>
+                            <img src="img/curon_myna4.jpg" width="312px" height="177px" class="img-fluid">
+                            <li>マイナンバーカードを読み取り</li>
+                            <img src="img/curon_myna5.jpg" width="312px" height="556px" class="img-fluid">
+                            <img src="img/curon_myna6.jpg" width="312px" height="325px" class="img-fluid">
+                            <li>safariに戻る</li>
+                            <img src="img/curon_myna7.jpg" width="312px" height="520px" class="img-fluid">
+                            <li>オンライン診療予約日を指定</li>
+                            <img src="img/curon_myna8.jpg" width="312px" height="632px" class="img-fluid">
+                            <li>curonの画面に戻り、同意登録完了にチェック</li>
+                            <img src="img/curon_myna9.jpg" width="312px" height="376px" class="img-fluid">
+                        </ol>
+                    </div>
+                </div>
+                <br>
                 <h3>予約時刻になったらアプリを起動してビデオルームに入室</h3>
                 <p>お互いがビデオルームに入室すると通話が開始します。<span class="markR">※Wi-Fi接続推奨です。</span>
                 <br>予約時間から30分以内に接続が生じない場合は、キャンセル扱いとなる場合があります。
                 <br>通常診療の合間に行っておりますため、短時間の診療となります。</p>
                 <h3>診療費はクレジットカード決済</h3>
                 <p><span class="markR">JCB、AMEX、VISA、MasterCard、Diners</span>によるクレジットカード決済となります。
-                <br>診療費に加えて<span class="markB">アプリ利用料330円(税込)</span>が請求されます。処方箋郵送費84円、ご自宅への薬の配送料がかかる場合があります。</p>
+                <br>診療費に加えて<span class="markB">アプリ利用料330円(税込)</span>が請求されます。処方箋郵送費110円、ご自宅への薬の配送料がかかる場合があります。</p>
                 <h3>薬の受け取り方</h3>
                 <ul type="disc">
                     <li>来院し処方箋をもらう→薬は薬局で<small><span class="markR">当日OK</span></small></li>
@@ -206,24 +235,6 @@
                 <h2 id="code">医療機関コードの入力</h2>
                 <p>アプリをインストールし、<span class="markB">医療機関コードに「dd1f」</span>と入力してご利用ください。<br>初診の方でもオンライン診療をお受けになれますが、<span class="markR">処方日数が7日間までに制限されること</span>、<span class="markR">睡眠導入剤や向精神薬の処方は行えないこと</span>にご留意いただきますよう、お願いします。</p>
     
-<!--
-<p>当院にカルテがある方には医療機関コードを発行しますので、以下のフォームにご入力ください。</p>
-<table border="1">
-<tr>
-	<td>
-	<form name="Cert_form" action="cert.html">
-	<p>カルテ番号：<input type="text" size="8" name="number"></p>
-	<p>
-		生年月日：西暦<input type="text" size="4" maxlength="4" name="year">年
-		<input type="text" size="4" maxlength="2" name="month">月
-		<input type="text" size="4" maxlength="2" name="day">日
-	</p>
-	<input type="button" value="医療機関コード発行" onclick="Certify()">
-	</form>
-	</td>
-</tr>
-</table>
--->
 
                 <h2>アプリのダウンロード</h2>
                 <p>ご使用の端末に合わせて以下からダウンロードしてください。</p>
@@ -246,58 +257,9 @@
             <br>
             <h2 id="back"><a href="index.html">戻る</a></h2>
         </div>
-        
-    <!--
-    <div class="container">
-        <ol type="1">
-            <li>アプリを起動し、メールアドレスとお好みのパスワードを入力してください。</li>
-            <li>確認メールが届きます。文中のリンクから登録を完了してください。</li>
-            <img src="curon/curonsetup1.png" alt="setup1" width="601" height="534" class="img-fluid">
-            <li>アプリを再度開き、メールアドレスとパスワードを入力してください。</li>
-            <li>上から順に進みます。</li>
-            <img src="curon/curonsetup2.png" alt="setup2" width="601" height="534" class="img-fluid">
-            <li>受診者情報の入力を行います。</li>
-            <li>クレジットカード情報の入力に進みます。</li>
-            <img src="curon/curonsetup3.png" alt="setup3" width="601" height="534" class="img-fluid">
-            <li>医療機関を追加します。</li>
-            <li>上で発行された医療機関コードを入力して下さい。</li>
-            <img src="curon/curonsetup4.png" alt="setup4" width="601" height="534" class="img-fluid">
-            <li>アプリ利用の同意書を確認してください。</li>
-            <li>クリニックからの本人確認をお待ちください。1日程度要する場合があります。</li>
-            <img src="curon/curonsetup5.png" alt="setup5" width="601" height="534" class="img-fluid">
-        </ol>
-    </div>
-
-    <div class="container">
-        <h2>ご利用方法</h2>
-        <ol type="1">
-            <li>クリニックで本人確認が完了したら「診療に進む」をタップしてください。</li>
-            <li>予約日時を変更します。</li>
-            <img src="curon/curonusage1.png" alt="usage1" width="601" height="534" class="img-fluid">
-            <li>予約したい日を選びます。水色のドットがある日から選んでください。</li>
-            <li>予約時刻を選びます。</li>
-            <img src="curon/curonusage2.png" alt="usage2" width="601" height="534" class="img-fluid">
-            <li>問診表の回答に進みます。</li>
-            <li>問診表を入力した後、保険証等の写真撮影に進みます。</li>
-            <img src="curon/curonusage3.png" alt="usage3" width="601" height="534" class="img-fluid">
-            <li>保険証<span class="markR">（医療証をお持ちの方は保険証と医療証）</span>の写真を撮影してください。</li>
-            <img src="curon/insurance.png" alt="保険証写真" width="441" height="311" class="img-fluid">
-            <li>予約を確定します。</li>
-            <li>予約された時間になったらアプリを起動してお待ちください。</li>
-            <img src="curon/curonusage4.png" alt="usage4" width="601" height="534" class="img-fluid">
-        </ol>
-        <p>※テレビ電話のため、電波状況が悪いと通話できません。Wi-Fiに接続していただくか、電波の届きやすい場所でご待機ください。
-            <br>※一部のスマートフォンでは音声が聞き取りづらい場合があります。イヤホンのご利用をお勧めします。
-            <br>設定方法が不明な場合はcuronサポートセンター（0120-007-960）にご相談ください。</p>
-        <h2 id="back"><a href="index.html">戻る</a></h2>
         <br>
         <br>
-    </div>
-    -->
-        
-    <br>
-    <br>
-    <footer class="fixed-bottom">
+        <footer class="fixed-bottom">
         <div class="container">
             <p class="float-left">受診時は保険証あるいはマイナンバーカードをお持ちください。
                 <br>医療証・お薬手帳をお持ちの方はご持参ください。</p>
