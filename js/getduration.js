@@ -6,15 +6,30 @@ window.addEventListener("load", function(event) {
 	reqB.addEventListener("load", function() {
 		const resB = reqB.responseText;
 		let linesB = resB.split(/\r\n|\n/);
-		for (let i = 0; i < linesB.length; i++) {
-			let cellsB = linesB[i].split(",");
+		for (let ib = 0; ib < linesB.length; ib++) {
+			let cellsB = linesB[ib].split(",");
 			if (cellsB.length != 1) {
 				csvArrayB.push(cellsB);
-				
 			}
 		}
 	});
 	reqB.send(null);
+
+	// 祝日
+	const reqH = new XMLHttpRequest();
+	let csvArrayH = [];
+	reqH.open("GET", "./js/hd.csv", true);
+	reqH.addEventListener("load", function() {
+		const resH = reqH.responseText;
+		let linesH = resH.split(/\r\n|\n/);
+		for (let ih = 0; ih < linesH.length; ih++) {
+			let cellsH = linesH[ih].split(",");
+			if (cellsH.length != 1) {
+				csvArrayH.push(cellsH);
+			}
+		}
+	});
+	reqH.send(null);
 
 	// 臨時休業日
 	const reqC = new XMLHttpRequest();
@@ -23,25 +38,25 @@ window.addEventListener("load", function(event) {
 	reqC.addEventListener("load", function() {
 		const resC = reqC.responseText;
 		let linesC = resC.split(/\r\n|\n/);
-		for (let i = 0; i < linesC.length; i++) {
-			let cellsC = linesC[i].split(",");
+		for (let ic = 0; ic < linesC.length; ic++) {
+			let cellsC = linesC[ic].split(",");
 			if (cellsC.length != 1) {
 				csvArrayC.push(cellsC);
 				
 			}
 		}
-		for(let j = 0; j < csvArrayC.length; j++) {
-			if(csvArrayC[j][2] == "-") {
-				if(csvArrayC[j][1] == "a") {
-					console.log(csvArrayC[j][0] + "午前休診");
+		for(let jc = 0; jc < csvArrayC.length; jc++) {
+			if(csvArrayC[jc][2] == "-") {
+				if(csvArrayC[jc][1] == "a") {
+					console.log(csvArrayC[jc][0] + "午前休診");
 				} else {
-					console.log(csvArrayC[j][0] + "午後休診");
+					console.log(csvArrayC[jc][0] + "午後休診");
 				}
 			} else {
-				if(csvArrayC[j][1] == "a") {
-					console.log(csvArrayC[j][0] + "午前" + csvArrayC[j][2] + "～" + csvArrayC[j][3]);
+				if(csvArrayC[jc][1] == "a") {
+					console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
 				} else {
-					console.log(csvArrayC[j][0] + "午後" + csvArrayC[j][2] + "～" + csvArrayC[j][3]);
+					console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
 				}
 			}
 		}
@@ -61,33 +76,16 @@ window.addEventListener("load", function(event) {
 				csvArray.push(cells);
 			}
 		}
-		
+		var today = new Date();
+		var year = today.getFullYear();
+      	var month = today.getMonth() + 1;
+      	var day = today.getDate();
+      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
+		var weekday = today.getDay();
+		var youbi;
 		var avgDur;
 		var min;
 		var sec;
-		var amStart;
-		var amLast;
-		var pmStart;
-		var pmLast;
-		var amLimit;
-		var pmLimit;
-		var today = new Date();
-		var year = today.getFullYear();
-      	var month = today.getMonth()+1;
-      	var day = today.getDate();
-		var weekday = today.getDay();
-		for(let j = 0; j < csvArrayB.length; j++) {
-			if(csvArrayB[j][0] == weekday) {
-				if(csvArrayB[j][2] == "a") {
-					amStart = csvArrayB[j][3];
-					amLast = csvArrayB[j][4];
-				} else {
-					pmStart = csvArrayB[j][3];
-					pmLast = csvArrayB[j][4];
-				}
-			}
-
-		}
 		var t = today.getHours() * 60 + today.getMinutes();
 		var rest;
 		for(let j = 0; j < csvArray.length; j++) {
@@ -98,16 +96,71 @@ window.addEventListener("load", function(event) {
 		console.log(avgDur + "秒");
 		min = String(Math.floor(avgDur / 60));
 		sec = String(Math.floor(avgDur - min * 60));
-		amLimit = Math.floor(3.5 * 3600 / avgDur);
-		pmLimit = Math.floor(3.5 * 3600 / avgDur);
-		document.getElementById("today").innerHTML = year + "年" + month + "月" + day +"日";
+
+		var amStart, amLast;
+		var amSmin, amLmin;
+		var pmStart, pmLast;
+		var amLimit, pmLimit;
+		// 営業日を反映
+		for(let k = 0; k < csvArrayB.length; k++) {
+			if(csvArrayB[k][0] == weekday) {
+				if(csvArrayB[k][2] == "a") {
+					amStart = csvArrayB[k][3];
+					amLast = csvArrayB[k][4];
+				} else {
+					pmStart = csvArrayB[k][3];
+					pmLast = csvArrayB[k][4];
+				}
+				youbi = csvArrayB[k][1];
+			}
+		}
+		// 祝日を反映
+		for(let m = 0; m < csvArrayH.length; m++) {
+			if(csvArrayH[m][0] == todaystr) {
+				amStart = "-";
+				amLast = "-";
+				pmStart = "-";
+				pmLast = "-";
+			}
+		}
+		// 臨時休業日を反映
+		for(let n = 0; n < csvArrayC.length; n++) {
+			if(csvArrayC[n][0] == todaystr) {
+				if(csvArrayC[n][1] == "a") {
+					amStart = csvArrayC[n][2];
+					amLast = csvArrayC[n][3];
+				} else {
+					pmStart = csvArrayC[n][2];
+					pmLast = csvArrayC[n][3];
+				}
+			}
+
+		}
+		
+		if (amStart == "-") {
+			amLimit = "-";
+		} else {
+			amSmin = Number(amStart.split(":")[0]) * 60 + Number(amStart.split(":")[1]);
+			amLmin = Number(amLast.split(":")[0]) * 60 + Number(amLast.split(":")[1]);
+			amLimit = Math.floor((amLmin - amSmin) * 60 / avgDur) + 3;
+			amLimit = amLimit + "人";
+		}
+		if (pmStart == "-") {
+			pmLimit = "-";
+		} else {
+			pmSmin = Number(pmStart.split(":")[0]) * 60 + Number(pmStart.split(":")[1]);
+			pmLmin = Number(pmLast.split(":")[0]) * 60 + Number(pmLast.split(":")[1]);
+			pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
+			pmLimit = pmLimit + "人";
+		}
+		document.getElementById("today").innerHTML = month + "/" + day + youbi;
 		document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
 		document.getElementById("am-start").innerHTML = amStart;
 		document.getElementById("am-last").innerHTML = amLast;
 		document.getElementById("pm-start").innerHTML = pmStart;
 		document.getElementById("pm-last").innerHTML = pmLast;
-		document.getElementById("am-limit").innerHTML = amLimit + "人";
-		document.getElementById("pm-limit").innerHTML = pmLimit + "人";
+		document.getElementById("am-limit").innerHTML = amLimit;
+		document.getElementById("pm-limit").innerHTML = pmLimit;
 		var countPerson = document.getElementById("count-person").textContent;
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
@@ -115,14 +168,14 @@ window.addEventListener("load", function(event) {
 			rest = "--";
 		} else {
 			console.log(t);
-			if(t < 570) {			// 9:30
+			if(t < amSmin) {			// 午前開始
 				rest = "--";
-			} else if(t < 750) {	// 12:30
-				rest = Math.floor((750 - t) * 60 / avgDur) - l;
-			} else if(t < 930) {	// 15:30
+			} else if(t < amLmin) {		// 午前終了
+				rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+			} else if(t < pmSmin) {		// 午後開始
 				rest = "--";
-			} else if (t < 1110) {	// 18:30
-				rest = Math.floor((1110 - t) * 60 / avgDur) - l;
+			} else if (t < pmLmin) {	// 午後終了
+				rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
 			} else {
 				rest = "--";
 			}
