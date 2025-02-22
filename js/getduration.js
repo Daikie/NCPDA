@@ -1,8 +1,58 @@
 window.addEventListener("load", function(event) {
+	// 営業日
+	const reqB = new XMLHttpRequest();
+	let csvArrayB = [];
+	reqB.open("GET", "./js/bd.csv", true);
+	reqB.addEventListener("load", function() {
+		const resB = reqB.responseText;
+		let linesB = resB.split(/\r\n|\n/);
+		for (let i = 0; i < linesB.length; i++) {
+			let cellsB = linesB[i].split(",");
+			if (cellsB.length != 1) {
+				csvArrayB.push(cellsB);
+				
+			}
+		}
+	});
+	reqB.send(null);
+
+	// 臨時休業日
+	const reqC = new XMLHttpRequest();
+	let csvArrayC = [];
+	reqC.open("GET", "./js/cd.csv", true);
+	reqC.addEventListener("load", function() {
+		const resC = reqC.responseText;
+		let linesC = resC.split(/\r\n|\n/);
+		for (let i = 0; i < linesC.length; i++) {
+			let cellsC = linesC[i].split(",");
+			if (cellsC.length != 1) {
+				csvArrayC.push(cellsC);
+				
+			}
+		}
+		for(let j = 0; j < csvArrayC.length; j++) {
+			if(csvArrayC[j][2] == "-") {
+				if(csvArrayC[j][1] == "a") {
+					console.log(csvArrayC[j][0] + "午前休診");
+				} else {
+					console.log(csvArrayC[j][0] + "午後休診");
+				}
+			} else {
+				if(csvArrayC[j][1] == "a") {
+					console.log(csvArrayC[j][0] + "午前" + csvArrayC[j][2] + "～" + csvArrayC[j][3]);
+				} else {
+					console.log(csvArrayC[j][0] + "午後" + csvArrayC[j][2] + "～" + csvArrayC[j][3]);
+				}
+			}
+		}
+	});
+	reqC.send(null);
+
+	// ID
 	let csvArray = [];
 	const req = new XMLHttpRequest();
 	req.open("GET", "./js/id.csv", true);
-	req.onload = function() {
+	req.addEventListener("load", function() {
 		const res = req.responseText;
 		let lines = res.split(/\r\n|\n/);
 		for (let i = 0; i < lines.length; i++) {
@@ -11,12 +61,33 @@ window.addEventListener("load", function(event) {
 				csvArray.push(cells);
 			}
 		}
+		
 		var avgDur;
 		var min;
 		var sec;
-		var am;
-		var pm;
+		var amStart;
+		var amLast;
+		var pmStart;
+		var pmLast;
+		var amLimit;
+		var pmLimit;
 		var today = new Date();
+		var year = today.getFullYear();
+      	var month = today.getMonth()+1;
+      	var day = today.getDate();
+		var weekday = today.getDay();
+		for(let j = 0; j < csvArrayB.length; j++) {
+			if(csvArrayB[j][0] == weekday) {
+				if(csvArrayB[j][2] == "a") {
+					amStart = csvArrayB[j][3];
+					amLast = csvArrayB[j][4];
+				} else {
+					pmStart = csvArrayB[j][3];
+					pmLast = csvArrayB[j][4];
+				}
+			}
+
+		}
 		var t = today.getHours() * 60 + today.getMinutes();
 		var rest;
 		for(let j = 0; j < csvArray.length; j++) {
@@ -27,11 +98,16 @@ window.addEventListener("load", function(event) {
 		console.log(avgDur + "秒");
 		min = String(Math.floor(avgDur / 60));
 		sec = String(Math.floor(avgDur - min * 60));
-		am = Math.floor(3.5 * 3600 / avgDur);
-		pm = Math.floor(3.5 * 3600 / avgDur);
-		document.getElementById("duration").innerHTML += min + "分" + sec + "秒";
-		document.getElementById("am").innerHTML += am + "人";
-		document.getElementById("pm").innerHTML += pm + "人";
+		amLimit = Math.floor(3.5 * 3600 / avgDur);
+		pmLimit = Math.floor(3.5 * 3600 / avgDur);
+		document.getElementById("today").innerHTML = year + "年" + month + "月" + day +"日";
+		document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
+		document.getElementById("am-start").innerHTML = amStart;
+		document.getElementById("am-last").innerHTML = amLast;
+		document.getElementById("pm-start").innerHTML = pmStart;
+		document.getElementById("pm-last").innerHTML = pmLast;
+		document.getElementById("am-limit").innerHTML = amLimit + "人";
+		document.getElementById("pm-limit").innerHTML = pmLimit + "人";
 		var countPerson = document.getElementById("count-person").textContent;
 		var l = countPerson.replace(/[^0-9]/g, "");
 		console.log(l);
@@ -74,6 +150,6 @@ window.addEventListener("load", function(event) {
 		}
 		
 		
-	}
+	});
 	req.send(null);
 });

@@ -132,21 +132,26 @@
 	<div class="container">
 		<h2>対面診療（順番制）</h2>
 		<table class="table">
-			<p><span id="duration">直近の一人当たりの平均診察時間：</span></p>
+			<p>直近の一人当たりの平均診察時間：<span id="duration"></span></p>
 			<thead>
-				<th class="table-secondary"></th>
+				<th class="table-secondary"><span id="today"></span></th>
 				<th class="table-danger">午前</th>
 				<th class="table-primary">午後</th>
 			</thead>
 			<tr>
 				<td class="table-secondary">受付開始</td>
-				<td class="table-danger">9:30</td>
-				<td class="table-primary">15:30</td>
+				<td class="table-danger"><span id="am-start"></span></td>
+				<td class="table-primary"><span id="pm-start"></span></td>
+			</tr>
+			<tr>
+				<td class="table-secondary">受付終了</td>
+				<td class="table-danger"><span id="am-last"></span></td>
+				<td class="table-primary"><span id="pm-last"></span></td>
 			</tr>
 			<tr>
 				<td class="table-secondary">受付可能</td>
-				<td class="table-danger"><span id="am"></span></td>
-				<td class="table-primary"><span id="pm"></span></td>
+				<td class="table-danger"><span id="am-limit"></span></td>
+				<td class="table-primary"><span id="pm-limit"></span></td>
 			</tr>
 			<tr>
 				<td class="table-secondary">備考</td>
@@ -613,7 +618,6 @@
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="https://airwait.jp/js/corporate/airwait.js" data-airwait="key:Gh821KMxF8MMPmmQUIpycVeNRAXVEd99" enable-log charset="utf-8"></script>
-	<script src="js/original.js"></script>
 	<script src="js/delayed_action.js"></script>
 	<script src="js/getduration.js"></script>
 	
