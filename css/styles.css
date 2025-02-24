@@ -317,10 +317,30 @@ div .table.table-dark td.markG { /* Marked table */
 div .table.table-dark td.markR { /* Marked table */
 	background-color: #602;
 }
+
+div.container table.status thead th {
+	padding: 8px;
+	text-align: center;
+}
+div.container table.status tr td {
+	padding: 8px;
+	text-align: center;
+}
+div.container table.status .table-bg {
+	background-color: #DDD;
+}
+div.container table.status .table-am {
+	background-color: #FCA;
+}
+div.container table.status .table-pm {
+	background-color: #BBF;
+}
+
 div .border {
 	padding: 5px;
 	font-size: 14px;
 }
+
 div .card {
 	text-align: left;
 	background-color: #FCC;

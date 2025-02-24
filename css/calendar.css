@@ -1,0 +1,40 @@
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#calendar section {
+    margin: 10px;
+}
+
+#calendar h1 {
+    font-size: 18px;
+}
+
+#calendar table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#calendar td {
+    border: 1px solid #CCC;
+    padding: 5px;
+    text-align: center;
+}
+
+#calendar td.half {
+    color: blue;
+}
+
+#calendar td.off {
+    color: red;
+}
+
+#calendar td.today {
+    font-weight: bold;
+    background-color: #CFC;
+}
+
+#calendar td.is-disabled {
+    color: #AAA;
+}

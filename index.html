@@ -10,6 +10,7 @@
 	<title>西小山クリニック</title>
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/calendar.css">
 	<script type="text/javascript">
 		function Login(){
 			window.location.href="https://daikie.github.io/NCPDA/treatment.html?ID="+Login_form.ID.value;
@@ -131,31 +132,31 @@
 	</div>
 	<div class="container">
 		<h2>対面診療（順番制）</h2>
-		<table class="table">
+		<table class="status">
 			<p>直近の一人当たりの平均診察時間：<span id="duration"></span></p>
 			<thead>
-				<th class="table-secondary"><span id="today"></span></th>
-				<th class="table-danger">午前</th>
-				<th class="table-primary">午後</th>
+				<th class="table-bg"><span id="today"></span></th>
+				<th class="table-am">午前</th>
+				<th class="table-pm">午後</th>
 			</thead>
 			<tr>
-				<td class="table-secondary">受付開始</td>
-				<td class="table-danger"><span id="am-start"></span></td>
-				<td class="table-primary"><span id="pm-start"></span></td>
+				<td class="table-bg">受付開始</td>
+				<td class="table-am"><span id="am-start"></span></td>
+				<td class="table-pm"><span id="pm-start"></span></td>
 			</tr>
 			<tr>
-				<td class="table-secondary">診療終了</td>
-				<td class="table-danger"><span id="am-last"></span></td>
-				<td class="table-primary"><span id="pm-last"></span></td>
+				<td class="table-bg">診療終了</td>
+				<td class="table-am"><span id="am-last"></span></td>
+				<td class="table-pm"><span id="pm-last"></span></td>
 			</tr>
 			<tr>
-				<td class="table-secondary">受付可能</td>
-				<td class="table-danger"><span id="am-limit"></span></td>
-				<td class="table-primary"><span id="pm-limit"></span></td>
+				<td class="table-bg">受付可能</td>
+				<td class="table-am"><span id="am-limit"></span></td>
+				<td class="table-pm"><span id="pm-limit"></span></td>
 			</tr>
 			<tr>
-				<td class="table-secondary">備考</td>
-				<td colspan="2" class="table-secondary">開始時に来院された最初の3組を優先</td>
+				<td class="table-bg">備考</td>
+				<td colspan="2" class="table-bg">開始前に来院された最初の3組を優先</td>
 			</tr>
 		</table>
 		<div data-airwait="storeId:KR00378855">
@@ -190,6 +191,7 @@
 	                <li>複数人の場合は改行して列挙</li>
 	            </ol>
 	            <img src="img/queuing.png" width="295px" height="325px" class="img-fluid">
+	            <p>番号は順番を取得された方を識別するためのものですので、待ち時間の目安にはなりません。</p>
 	            <p>待ち人数が少ない場合は来院なさってください。待ち人数が多い場合は院外で待ち人数が減るのを待ってから来院していただくことができます。</p>
 			</div>
 		</div>
@@ -258,6 +260,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<div id="calendar"></div>
 				<h2>使用可能なキャッシュレス決済</h2>
 				<p>通常の診察および予防接種のお会計にご利用が可能です。</p>
 				<img src="img/pay.png" width="400px" height="448px" class="img-fluid">
@@ -620,6 +623,7 @@
 	<script src="https://airwait.jp/js/corporate/airwait.js" data-airwait="key:Gh821KMxF8MMPmmQUIpycVeNRAXVEd99" enable-log charset="utf-8"></script>
 	<script src="js/delayed_action.js"></script>
 	<script src="js/getduration.js"></script>
+	<script src="js/calendar.js"></script>
 	
 </body>
 </html>

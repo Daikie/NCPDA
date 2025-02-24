@@ -1,4 +1,4 @@
-window.addEventListener("load", function(event) {
+window.addEventListener("DOMContentLoaded", function(event) {
 	// 営業日
 	const reqB = new XMLHttpRequest();
 	let csvArrayB = [];
@@ -12,197 +12,195 @@ window.addEventListener("load", function(event) {
 				csvArrayB.push(cellsB);
 			}
 		}
+		// 祝日
+		const reqH = new XMLHttpRequest();
+		let csvArrayH = [];
+		reqH.open("GET", "./js/hd.csv", true);
+		reqH.addEventListener("load", function() {
+			const resH = reqH.responseText;
+			let linesH = resH.split(/\r\n|\n/);
+			for (let ih = 0; ih < linesH.length; ih++) {
+				let cellsH = linesH[ih].split(",");
+				if (cellsH.length != 1) {
+					csvArrayH.push(cellsH);
+				}
+			}
+			// 臨時休業日
+			const reqC = new XMLHttpRequest();
+			let csvArrayC = [];
+			reqC.open("GET", "./js/cd.csv", true);
+			reqC.addEventListener("load", function() {
+				const resC = reqC.responseText;
+				let linesC = resC.split(/\r\n|\n/);
+				for (let ic = 0; ic < linesC.length; ic++) {
+					let cellsC = linesC[ic].split(",");
+					if (cellsC.length != 1) {
+						csvArrayC.push(cellsC);
+					}
+				}
+				for(let jc = 0; jc < csvArrayC.length; jc++) {
+					if(csvArrayC[jc][2] == "-") {
+						if(csvArrayC[jc][1] == "a") {
+							console.log(csvArrayC[jc][0] + "午前休診");
+						} else {
+							console.log(csvArrayC[jc][0] + "午後休診");
+						}
+					} else {
+						if(csvArrayC[jc][1] == "a") {
+							console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+						} else {
+							console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+						}
+					}
+				}
+				// ID
+				let csvArray = [];
+				const req = new XMLHttpRequest();
+				req.open("GET", "./js/id.csv", true);
+				req.addEventListener("load", function() {
+					const res = req.responseText;
+					let lines = res.split(/\r\n|\n/);
+					for (let i = 0; i < lines.length; i++) {
+						let cells = lines[i].split(",");
+						if (cells.length != 1) {
+							csvArray.push(cells);
+						}
+					}
+					var today = new Date();
+					var year = today.getFullYear();
+			      	var month = today.getMonth() + 1;
+			      	var day = today.getDate();
+			      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
+					var weekday = today.getDay();
+					var youbi;
+					var avgDur;
+					var min;
+					var sec;
+					var t = today.getHours() * 60 + today.getMinutes();
+					var rest;
+					for(let j = 0; j < csvArray.length; j++) {
+						if(csvArray[j][1] == 1) {
+							avgDur = csvArray[j][3];
+						}
+					}
+					console.log(avgDur + "秒");
+					min = String(Math.floor(avgDur / 60));
+					sec = String(Math.floor(avgDur - min * 60));
+
+					var amStart, amLast;
+					var amSmin, amLmin;
+					var pmStart, pmLast;
+					var amLimit, pmLimit;
+					// 営業日を反映
+					for(let k = 0; k < csvArrayB.length; k++) {
+						if(csvArrayB[k][0] == weekday) {
+							if(csvArrayB[k][2] == "a") {
+								amStart = csvArrayB[k][3];
+								amLast = csvArrayB[k][4];
+							} else {
+								pmStart = csvArrayB[k][3];
+								pmLast = csvArrayB[k][4];
+							}
+							youbi = csvArrayB[k][1];
+						}
+					}
+					// 祝日を反映
+					for(let m = 0; m < csvArrayH.length; m++) {
+						if(csvArrayH[m][0] == todaystr) {
+							amStart = "-";
+							amLast = "-";
+							pmStart = "-";
+							pmLast = "-";
+						}
+					}
+					// 臨時休業日を反映
+					for(let n = 0; n < csvArrayC.length; n++) {
+						if(csvArrayC[n][0] == todaystr) {
+							if(csvArrayC[n][1] == "a") {
+								amStart = csvArrayC[n][2];
+								amLast = csvArrayC[n][3];
+							} else if(csvArrayC[n][1] == "p"){
+								pmStart = csvArrayC[n][2];
+								pmLast = csvArrayC[n][3];
+							} else {
+								amStart = csvArrayC[n][2];
+								amLast = csvArrayC[n][3];
+								pmStart = csvArrayC[n][2];
+								pmLast = csvArrayC[n][3];
+							}
+						}
+					}
+					
+					if (amStart == "-") {
+						amLimit = "-";
+					} else {
+						amSmin = Number(amStart.split(":")[0]) * 60 + Number(amStart.split(":")[1]);
+						amLmin = Number(amLast.split(":")[0]) * 60 + Number(amLast.split(":")[1]);
+						amLimit = Math.floor((amLmin - amSmin) * 60 / avgDur) + 3;
+						amLimit = amLimit + "人";
+					}
+					if (pmStart == "-") {
+						pmLimit = "-";
+					} else {
+						pmSmin = Number(pmStart.split(":")[0]) * 60 + Number(pmStart.split(":")[1]);
+						pmLmin = Number(pmLast.split(":")[0]) * 60 + Number(pmLast.split(":")[1]);
+						pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
+						pmLimit = pmLimit + "人";
+					}
+					document.getElementById("today").innerHTML = month + "/" + day + youbi;
+					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
+					document.getElementById("am-start").innerHTML = amStart;
+					document.getElementById("am-last").innerHTML = amLast;
+					document.getElementById("pm-start").innerHTML = pmStart;
+					document.getElementById("pm-last").innerHTML = pmLast;
+					document.getElementById("am-limit").innerHTML = amLimit;
+					document.getElementById("pm-limit").innerHTML = pmLimit;
+					var countPerson = document.getElementById("count-person").textContent;
+					var l = countPerson.replace(/[^0-9]/g, "");
+					console.log(l);
+					if (l == "") {
+						rest = "--";
+					} else {
+						console.log(t);
+						if(t < amSmin) {			// 午前開始
+							rest = "--";
+						} else if(t < amLmin) {		// 午前終了
+							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+						} else if(t < pmSmin) {		// 午後開始
+							rest = "--";
+						} else if (t < pmLmin) {	// 午後終了
+							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
+						} else {
+							rest = "--";
+						}
+					}
+					console.log(rest);
+					if (rest == "--") {
+						document.getElementById("count-group").textContent = "待ち組数：--";
+						document.getElementById("count-person").textContent = "待ち人数：--";
+						document.getElementById("max-calling").textContent = "通知済み：--";
+						document.getElementById("count-rest").innerHTML = "--";
+					} else if (rest <= 0) {
+						document.getElementById("count-group").textContent += "組";
+						document.getElementById("count-person").textContent += "人";
+						document.getElementById("max-calling").textContent += "番の方まで";
+						document.getElementById("count-rest").innerHTML = "残り0人";
+					} else {
+						document.getElementById("count-group").textContent += "組";
+						document.getElementById("count-person").textContent += "人";
+						document.getElementById("max-calling").textContent += "番の方まで";
+						document.getElementById("count-rest").innerHTML = "残り" + rest + "人";
+						queue = document.getElementById("queue");
+						queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
+						queue.getElementsByTagName("a")[0].setAttribute("class", "active");
+						queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
+					}
+				});
+				req.send(null);
+			});
+			reqC.send(null);
+		});
+		reqH.send(null);
 	});
 	reqB.send(null);
-
-	// 祝日
-	const reqH = new XMLHttpRequest();
-	let csvArrayH = [];
-	reqH.open("GET", "./js/hd.csv", true);
-	reqH.addEventListener("load", function() {
-		const resH = reqH.responseText;
-		let linesH = resH.split(/\r\n|\n/);
-		for (let ih = 0; ih < linesH.length; ih++) {
-			let cellsH = linesH[ih].split(",");
-			if (cellsH.length != 1) {
-				csvArrayH.push(cellsH);
-			}
-		}
-	});
-	reqH.send(null);
-
-	// 臨時休業日
-	const reqC = new XMLHttpRequest();
-	let csvArrayC = [];
-	reqC.open("GET", "./js/cd.csv", true);
-	reqC.addEventListener("load", function() {
-		const resC = reqC.responseText;
-		let linesC = resC.split(/\r\n|\n/);
-		for (let ic = 0; ic < linesC.length; ic++) {
-			let cellsC = linesC[ic].split(",");
-			if (cellsC.length != 1) {
-				csvArrayC.push(cellsC);
-				
-			}
-		}
-		for(let jc = 0; jc < csvArrayC.length; jc++) {
-			if(csvArrayC[jc][2] == "-") {
-				if(csvArrayC[jc][1] == "a") {
-					console.log(csvArrayC[jc][0] + "午前休診");
-				} else {
-					console.log(csvArrayC[jc][0] + "午後休診");
-				}
-			} else {
-				if(csvArrayC[jc][1] == "a") {
-					console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-				} else {
-					console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-				}
-			}
-		}
-	});
-	reqC.send(null);
-
-	// ID
-	let csvArray = [];
-	const req = new XMLHttpRequest();
-	req.open("GET", "./js/id.csv", true);
-	req.addEventListener("load", function() {
-		const res = req.responseText;
-		let lines = res.split(/\r\n|\n/);
-		for (let i = 0; i < lines.length; i++) {
-			let cells = lines[i].split(",");
-			if (cells.length != 1) {
-				csvArray.push(cells);
-			}
-		}
-		var today = new Date();
-		var year = today.getFullYear();
-      	var month = today.getMonth() + 1;
-      	var day = today.getDate();
-      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
-		var weekday = today.getDay();
-		var youbi;
-		var avgDur;
-		var min;
-		var sec;
-		var t = today.getHours() * 60 + today.getMinutes();
-		var rest;
-		for(let j = 0; j < csvArray.length; j++) {
-			if(csvArray[j][1] == 1) {
-				avgDur = csvArray[j][3];
-			}
-		}
-		console.log(avgDur + "秒");
-		min = String(Math.floor(avgDur / 60));
-		sec = String(Math.floor(avgDur - min * 60));
-
-		var amStart, amLast;
-		var amSmin, amLmin;
-		var pmStart, pmLast;
-		var amLimit, pmLimit;
-		// 営業日を反映
-		for(let k = 0; k < csvArrayB.length; k++) {
-			if(csvArrayB[k][0] == weekday) {
-				if(csvArrayB[k][2] == "a") {
-					amStart = csvArrayB[k][3];
-					amLast = csvArrayB[k][4];
-				} else {
-					pmStart = csvArrayB[k][3];
-					pmLast = csvArrayB[k][4];
-				}
-				youbi = csvArrayB[k][1];
-			}
-		}
-		// 祝日を反映
-		for(let m = 0; m < csvArrayH.length; m++) {
-			if(csvArrayH[m][0] == todaystr) {
-				amStart = "-";
-				amLast = "-";
-				pmStart = "-";
-				pmLast = "-";
-			}
-		}
-		// 臨時休業日を反映
-		for(let n = 0; n < csvArrayC.length; n++) {
-			if(csvArrayC[n][0] == todaystr) {
-				if(csvArrayC[n][1] == "a") {
-					amStart = csvArrayC[n][2];
-					amLast = csvArrayC[n][3];
-				} else {
-					pmStart = csvArrayC[n][2];
-					pmLast = csvArrayC[n][3];
-				}
-			}
-
-		}
-		
-		if (amStart == "-") {
-			amLimit = "-";
-		} else {
-			amSmin = Number(amStart.split(":")[0]) * 60 + Number(amStart.split(":")[1]);
-			amLmin = Number(amLast.split(":")[0]) * 60 + Number(amLast.split(":")[1]);
-			amLimit = Math.floor((amLmin - amSmin) * 60 / avgDur) + 3;
-			amLimit = amLimit + "人";
-		}
-		if (pmStart == "-") {
-			pmLimit = "-";
-		} else {
-			pmSmin = Number(pmStart.split(":")[0]) * 60 + Number(pmStart.split(":")[1]);
-			pmLmin = Number(pmLast.split(":")[0]) * 60 + Number(pmLast.split(":")[1]);
-			pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
-			pmLimit = pmLimit + "人";
-		}
-		document.getElementById("today").innerHTML = month + "/" + day + youbi;
-		document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
-		document.getElementById("am-start").innerHTML = amStart;
-		document.getElementById("am-last").innerHTML = amLast;
-		document.getElementById("pm-start").innerHTML = pmStart;
-		document.getElementById("pm-last").innerHTML = pmLast;
-		document.getElementById("am-limit").innerHTML = amLimit;
-		document.getElementById("pm-limit").innerHTML = pmLimit;
-		var countPerson = document.getElementById("count-person").textContent;
-		var l = countPerson.replace(/[^0-9]/g, "");
-		console.log(l);
-		if (l == "") {
-			rest = "--";
-		} else {
-			console.log(t);
-			if(t < amSmin) {			// 午前開始
-				rest = "--";
-			} else if(t < amLmin) {		// 午前終了
-				rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
-			} else if(t < pmSmin) {		// 午後開始
-				rest = "--";
-			} else if (t < pmLmin) {	// 午後終了
-				rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
-			} else {
-				rest = "--";
-			}
-		}
-		console.log(rest);
-		if (rest == "--") {
-			document.getElementById("count-group").textContent = "待ち組数：--";
-			document.getElementById("count-person").textContent = "待ち人数：--";
-			document.getElementById("max-calling").textContent = "通知済み：--";
-			document.getElementById("count-rest").innerHTML = "--";
-		} else if (rest <= 0) {
-			document.getElementById("count-group").textContent += "組";
-			document.getElementById("count-person").textContent += "人";
-			document.getElementById("max-calling").textContent += "番の方まで";
-			document.getElementById("count-rest").innerHTML = "残り0人";
-		} else {
-			document.getElementById("count-group").textContent += "組";
-			document.getElementById("count-person").textContent += "人";
-			document.getElementById("max-calling").textContent += "番の方まで";
-			document.getElementById("count-rest").innerHTML = "残り" + rest + "人";
-			queue = document.getElementById("queue");
-			queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
-			queue.getElementsByTagName("a")[0].setAttribute("class", "active");
-			queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
-		}
-		
-		
-	});
-	req.send(null);
 });
