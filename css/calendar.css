@@ -4,7 +4,7 @@
 }
 
 #calendar section {
-    margin: 2px;
+    margin: 1px;
 }
 
 #calendar h1 {
@@ -17,7 +17,7 @@
 }
 
 #calendar td {
-    border: 2px solid #CCC;
+    border: 1px solid #CCC;
     padding: 1px 2px 1px 2px;
     text-align: center;
 }
