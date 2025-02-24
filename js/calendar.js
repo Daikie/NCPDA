@@ -56,14 +56,15 @@ function createCalendar(year, month, halfList, offList, todayStr) {
                 dayCount++;
             } else {
                 dateStr = String(year + "-" + ("00" + month).slice(-2) + "-" + ("00" + dayCount).slice(-2));
+                if(todayStr == dateStr) {
+                    let dayTag = '<span class="today">' + dayCount + '</span>' 
+                }
                 if(d == 0 || d == 3 || offList.includes(dateStr)) {
-                    calendarHtml += '<td class="off">' + dayCount + '</td>';
+                    calendarHtml += '<td class="off">' + dayTag + '</td>';
                 } else if(d == 5 || d == 6 || halfList.includes(dateStr)) {
-                    calendarHtml += '<td class="half">' + dayCount + '</td>';
-                } else if(todayStr == dateStr) {
-                    calendarHtml += '<td class="today">' + dayCount + '</td>';
+                    calendarHtml += '<td class="half">' + dayTag + '</td>';
                 } else {
-                    calendarHtml += '<td>' + dayCount + '</td>';
+                    calendarHtml += '<td>' + dayTag + '</td>';
                 }
                 dayCount++;
             }

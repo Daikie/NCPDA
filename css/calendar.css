@@ -30,7 +30,7 @@
     color: red;
 }
 
-#calendar td.today {
+#calendar td span.today {
     font-weight: bold;
     background-color: #CFC;
 }
