@@ -33,7 +33,7 @@ function createCalendar(year, month, halfList, offList, todayStr) {
     let dayCount = 1; // 日にちのカウント
     let calendarHtml = ''; // HTMLを組み立てる変数
     let dateStr; // YYYY-MM-DDの形式の日付
-
+    let dayTag; // 日にち表示タグ
     calendarHtml += '<h1>' + year  + '年' + month + '月</h1>';
     calendarHtml += '<table>';
 
@@ -56,13 +56,15 @@ function createCalendar(year, month, halfList, offList, todayStr) {
                 dayCount++;
             } else {
                 dateStr = String(year + "-" + ("00" + month).slice(-2) + "-" + ("00" + dayCount).slice(-2));
-                if(todayStr == dateStr) {
-                    let dayTag = '<span class="today">' + dayCount + '</span>' 
-                }
                 if(d == 0 || d == 3 || offList.includes(dateStr)) {
-                    calendarHtml += '<td class="off">' + dayTag + '</td>';
+                    dayTag = '<span class="off">' + dayCount + '</span>';
                 } else if(d == 5 || d == 6 || halfList.includes(dateStr)) {
-                    calendarHtml += '<td class="half">' + dayTag + '</td>';
+                    dayTag = '<span class="half">' + dayCount + '</span>';
+                } else {
+                    dayTag = '<span>' + dayCount + '</span>';
+                }
+                if(todayStr == dateStr) {
+                    calendarHtml += '<td class="today">' + dayTag + '</td>';
                 } else {
                     calendarHtml += '<td>' + dayTag + '</td>';
                 }

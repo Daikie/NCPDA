@@ -22,17 +22,17 @@
     text-align: center;
 }
 
-#calendar td.half {
+#calendar td.today {
+    font-weight: bold;
+    background-color: #CFC;
+}
+
+#calendar td span.half {
     color: blue;
 }
 
-#calendar td.off {
+#calendar td span.off {
     color: red;
-}
-
-#calendar td span.today {
-    font-weight: bold;
-    background-color: #CFC;
 }
 
 #calendar td.is-disabled {
