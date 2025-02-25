@@ -153,12 +153,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log("午後開始：" + pmSmin);
 					console.log("午後終了：" + pmLmin);
 					console.log("午後残り" + pmLimit);
-					var urlParam = location.search
-					if (urlParam !== null) {
-						var param = urlParam.substring(1).split('=');
-						t = Number(param[1]);
-					}
-					console.log("現在時刻(分)：" + t);
+
 					document.getElementById("today").innerHTML = month + "/" + day + youbi;
 					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
 					document.getElementById("am-start").innerHTML = amStart;
@@ -169,7 +164,16 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					document.getElementById("pm-limit").innerHTML = pmLimit;
 					var countPerson = document.getElementById("count-person").textContent;
 					var l = countPerson.replace(/[^0-9]/g, "");
+
+					var urlParam = location.search
+					console.log(urlParam);
+					if (urlParam !== "") {
+						var param = urlParam.substring(1).split('&');
+						t = Number(param[0].split('=')[1]);
+						l = Number(param[1].split('=')[1]);
+					}
 					console.log("現在待ち人数：" + l);
+					console.log("現在時刻(分)：" + t);
 					if (l == "") {
 						rest = "--";
 					} else {
