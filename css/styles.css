@@ -327,12 +327,15 @@ div.container table.status tr td {
 	text-align: center;
 }
 div.container table.status .table-bg {
+	border: 1px solid #BBB;
 	background-color: #DDD;
 }
 div.container table.status .table-am {
+	border: 1px solid #DA8;
 	background-color: #FCA;
 }
 div.container table.status .table-pm {
+	border: 1px solid #99D;
 	background-color: #BBF;
 }
 
