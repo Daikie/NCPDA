@@ -138,6 +138,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						amLmin = Number(amLast.split(":")[0]) * 60 + Number(amLast.split(":")[1]);
 						amLimit = Math.floor((amLmin - amSmin) * 60 / avgDur) + 3;
 						amLimit = amLimit + "人";
+						console.log("午前開始：" + amSmin);
+						console.log("午前終了：" + amLmin);
+						console.log("午前残り" + amLimit);
 					}
 					if (pmStart == "-") {
 						pmLimit = "-";
@@ -146,14 +149,11 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						pmLmin = Number(pmLast.split(":")[0]) * 60 + Number(pmLast.split(":")[1]);
 						pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
 						pmLimit = pmLimit + "人";
+						console.log("午後開始：" + pmSmin);
+						console.log("午後終了：" + pmLmin);
+						console.log("午後残り" + pmLimit);
 					}
-					console.log("午前開始：" + amSmin);
-					console.log("午前終了：" + amLmin);
-					console.log("午前残り" + amLimit);
-					console.log("午後開始：" + pmSmin);
-					console.log("午後終了：" + pmLmin);
-					console.log("午後残り" + pmLimit);
-
+					
 					document.getElementById("today").innerHTML = month + "/" + day + youbi;
 					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
 					document.getElementById("am-start").innerHTML = amStart;
