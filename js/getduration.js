@@ -147,6 +147,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
 						pmLimit = pmLimit + "人";
 					}
+					console.log(amSmin);
+					console.log(amLmin);
+					console.log(amLimit);
+					console.log(pmSmin);
+					console.log(pmLmin);
+					console.log(pmLimit);
 					document.getElementById("today").innerHTML = month + "/" + day + youbi;
 					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
 					document.getElementById("am-start").innerHTML = amStart;
