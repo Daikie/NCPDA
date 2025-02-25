@@ -147,12 +147,13 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						pmLimit = Math.floor((pmLmin - pmSmin) * 60 / avgDur) + 3;
 						pmLimit = pmLimit + "人";
 					}
-					console.log(amSmin);
-					console.log(amLmin);
-					console.log(amLimit);
-					console.log(pmSmin);
-					console.log(pmLmin);
-					console.log(pmLimit);
+					console.log("午前開始：" + amSmin);
+					console.log("午前終了：" + amLmin);
+					console.log("午前残り" + amLimit);
+					console.log("午後開始：" + pmSmin);
+					console.log("午後終了：" + pmLmin);
+					console.log("午後残り" + pmLimit);
+					console.log("現在時刻(分)：" + t);
 					document.getElementById("today").innerHTML = month + "/" + day + youbi;
 					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
 					document.getElementById("am-start").innerHTML = amStart;
@@ -163,11 +164,10 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					document.getElementById("pm-limit").innerHTML = pmLimit;
 					var countPerson = document.getElementById("count-person").textContent;
 					var l = countPerson.replace(/[^0-9]/g, "");
-					console.log(l);
+					console.log("現在待ち人数：" + l);
 					if (l == "") {
 						rest = "--";
 					} else {
-						console.log(t);
 						if(t < amSmin) {			// 午前開始
 							rest = "--";
 						} else if(t < amLmin) {		// 午前終了
@@ -180,7 +180,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							rest = "--";
 						}
 					}
-					console.log(rest);
+					console.log("現在残り：" + rest);
 					if (rest == "--") {
 						document.getElementById("count-group").textContent = "待ち組数：--";
 						document.getElementById("count-person").textContent = "待ち人数：--";
