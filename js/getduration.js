@@ -153,6 +153,11 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log("午後開始：" + pmSmin);
 					console.log("午後終了：" + pmLmin);
 					console.log("午後残り" + pmLimit);
+					var urlParam = location.search
+					if (urlParam !== null) {
+						var param = urlParam.substring(1).split('=');
+						t = Number(param[1]);
+					}
 					console.log("現在時刻(分)：" + t);
 					document.getElementById("today").innerHTML = month + "/" + day + youbi;
 					document.getElementById("duration").innerHTML = min + "分" + sec + "秒";
