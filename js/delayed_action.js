@@ -23,4 +23,4 @@ req.open("GET", "https://airwait.jp/WCSP/api/20160600/external/stateless/store/g
 req.addEventListener("load", function() {
     const res = req.responseText;
     console.log(res);
-}
+});
