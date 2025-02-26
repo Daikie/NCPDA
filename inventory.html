@@ -20,6 +20,7 @@
 		<input class="form-control" type="text" placeholder="URL" name="URL">
 		<button class="btn btn-secondary" type="submit" onclick="PostAPI()">Go</button>
 	</form>
+	<div class="output"></div>
 <body>
 	
 
@@ -77,7 +78,7 @@
 			req.open("POST", URL.value, true);
 			req.addEventListener("load", function() {
 			    const res = req.responseText;
-			    console.log(res);
+			    document.getElementById("output").innerHTML = res;
 			});
 			req.send(null);
 		}
