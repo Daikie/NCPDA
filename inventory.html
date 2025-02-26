@@ -16,6 +16,10 @@
 </head>
 <body>
 	<div class="container" id="main-content"></div>
+	<form class="form-inline" method="POST">
+		<input class="form-control" type="text" placeholder="URL" name="URL">
+		<button class="btn btn-secondary" type="submit" onclick="PostAPI()">Go</button>
+	</form>
 <body>
 	
 
@@ -66,6 +70,16 @@
 			});
 			req.open("GET", "./js/inventory.csv", true);
 			req.send();
+		}
+
+		PostAPI = function() {
+			const req = new XMLHttpRequest();
+			req.open("POST", URL.value, true);
+			req.addEventListener("load", function() {
+			    const res = req.responseText;
+			    console.log(res);
+			});
+			req.send(null);
 		}
 	</script>
 	<script src="js/bootstrap.js"></script>
