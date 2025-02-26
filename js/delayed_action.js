@@ -24,3 +24,4 @@ req.addEventListener("load", function() {
     const res = req.responseText;
     console.log(res);
 });
+req.send(null);
