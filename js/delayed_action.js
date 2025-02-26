@@ -14,12 +14,8 @@ if (today < switchDate) {
 }
 elmSD.remove();
 
-const dat = {
-        'url' : 'https://airwait.jp/WCSP/api/20160600/external/stateless/store/getWaitInfo?key=Gh821KMxF8MMPmmQUIpycVeNRAXVEd99&storeId=KR00378855',
-        'type' : 'GET',
-    }
 const req = new XMLHttpRequest();
-req.open("GET", "https://airwait.jp/WCSP/api/20160600/external/stateless/store/getWaitInfo?key=Gh821KMxF8MMPmmQUIpycVeNRAXVEd99&storeId=KR00378855", true);
+req.open("POST", "https://cl.airwait.jp/WCLP/api/external/stateless/reservations?key=Gh821KMxF8MMPmmQUIpycVeNRAXVEd99&storeId=KR00378855&waitTypeId=0001", true);
 req.addEventListener("load", function() {
     const res = req.responseText;
     console.log(res);
