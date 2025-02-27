@@ -176,6 +176,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log("現在時刻(分)：" + t);
 					if (l == "") {
 						rest = "--";
+						console.log("l:" + l);
 					} else {
 						if(t < amSmin) {			// 午前開始
 							rest = "--";
