@@ -180,14 +180,19 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					} else {
 						if(t < amSmin) {			// 午前開始
 							rest = "--";
+							console.log("あ");
 						} else if(t < amLmin) {		// 午前終了
 							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+							console.log("い");
 						} else if(t < pmSmin) {		// 午後開始
 							rest = "--";
+							console.log("う");
 						} else if (t < pmLmin) {	// 午後終了
 							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
+							console.log("え");
 						} else {
 							rest = "--";
+							console.log("お");
 						}
 					}
 					console.log("現在残り：" + rest);
