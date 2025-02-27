@@ -163,7 +163,12 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					document.getElementById("am-limit").innerHTML = amLimit;
 					document.getElementById("pm-limit").innerHTML = pmLimit;
 					var countPerson = document.getElementById("count-person").textContent;
-					var l = countPerson.replace(/[^0-9]/g, "");
+					var l
+					if (countPerson == "--") {
+						l = -1;
+					} else {
+						l = countPerson.replace(/[^0-9]/g, "");
+					}					
 
 					var urlParam = location.search
 					console.log(urlParam);
@@ -174,7 +179,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					}
 					console.log("現在待ち人数：" + l);
 					console.log("現在時刻(分)：" + t);
-					if (l == "") {
+					if (l < 0) {
 						rest = "--";
 						console.log("l:" + l);
 					} else {
