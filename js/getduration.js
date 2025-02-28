@@ -86,10 +86,14 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log(avgDur + "秒");
 					min = String(Math.floor(avgDur / 60));
 					sec = String(Math.floor(avgDur - min * 60));
-
-					var amStart, amLast;
-					var amSmin, amLmin;
-					var pmStart, pmLast;
+					var amStart = "-";
+					var amLast = "-";
+					var pmStart = "-";
+					var pmLast = "-";
+					var amSmin = 570;
+					var amLmin = 570;
+					var pmSmin = 930;
+					var pmLmin = 930;
 					var amLimit, pmLimit;
 					// 営業日を反映
 					for(let k = 0; k < csvArrayB.length; k++) {
