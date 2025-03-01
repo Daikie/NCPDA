@@ -38,21 +38,73 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						csvArrayC.push(cellsC);
 					}
 				}
+				var today = new Date();
+				var year = today.getFullYear();
+		      	var month = today.getMonth() + 1;
+		      	var day = today.getDate();
+		      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
+				var weekday = today.getDay();
+				var youbi;
+				var cdate;
+				var cmonth;
+		      	var cday;
+		      	var cweekday;
+		      	var cyoubi;
+				let elmA = document.getElementById("sideA");
+				let elmB = document.getElementById("sideB");
+				var switchA = false;
+				var switchB = false;
 				for(let jc = 0; jc < csvArrayC.length; jc++) {
-					if(csvArrayC[jc][2] == "-") {
-						if(csvArrayC[jc][1] == "a") {
-							console.log(csvArrayC[jc][0] + "午前休診");
-						} else {
-							console.log(csvArrayC[jc][0] + "午後休診");
-						}
-					} else {
-						if(csvArrayC[jc][1] == "a") {
-							console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-						} else {
-							console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+					cdate = new Date(csvArrayC[jc][0]);
+					console.log(cdate);
+					if (cdate > today) {
+						cmonth = cdate.getMonth() + 1;
+						cday = cdate.getDate();
+						cweekday = cdate.getDay();
+						cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
+						if(csvArrayC[jc][2] == "-") {	// 臨時休業
+							if (switchA) {
+								elmA.innerHTML += '<br><h3>&emsp;';
+							} else {
+								elmA.innerHTML += '<h3>臨時休業：';
+							}
+							if(csvArrayC[jc][1] == "a") {
+								console.log(csvArrayC[jc][0] + "午前休診");
+								elmA.innerHTML += '<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前</span></h3>';
+							} else if(csvArrayC[jc][1] == "p") {
+								console.log(csvArrayC[jc][0] + "午後休診");
+								elmA.innerHTML += '<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
+							} else {
+								console.log(csvArrayC[jc][0] + "終日休診");
+								elmA.innerHTML += '<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')終日</span></h3>';
+							}
+							switchA = true;
+						} else {						// 時間変更
+							if (switchB) {
+								elmB.innerHTML += '<br><h3>&emsp;';
+							} else {
+								elmB.innerHTML += '<h3>時間変更：';
+							}
+							if(csvArrayC[jc][1] == "a") {
+								console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+								elmB.innerHTML += '<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前';
+								elmB.innerHTML += csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3><br>';
+							} else if(csvArrayC[jc][1] == "p") {
+								console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+								elmB.innerHTML += '<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後';
+								elmB.innerHTML += csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3><br>';
+							}
+							switchB = true;
 						}
 					}
 				}
+				if (switchA == false) {	// 臨時休業なし
+					elmA.innerHTML += '<h3>臨時休業：なし</h3>';
+				}
+				if (switchB == false) {	// 時間変更なし
+					elmB.innerHTML += '<h3>時間変更：なし</h3>';
+				}
+				
 				// ID
 				let csvArray = [];
 				const req = new XMLHttpRequest();
@@ -66,13 +118,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							csvArray.push(cells);
 						}
 					}
-					var today = new Date();
-					var year = today.getFullYear();
-			      	var month = today.getMonth() + 1;
-			      	var day = today.getDate();
-			      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
-					var weekday = today.getDay();
-					var youbi;
 					var avgDur;
 					var min;
 					var sec;
