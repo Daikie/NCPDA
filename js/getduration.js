@@ -207,11 +207,11 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					document.getElementById("pm-limit").innerHTML = pmLimit;
 					var countPerson = document.getElementById("count-person").textContent;
 					var l
-					if (countPerson == "--") {
+					if (countPerson == "--") {			// 受付時間外
 						l = -1;
-					} else if (countPerson == "-") {
+					} else if (countPerson === "") {	// 待ち人数表示されない
 						l = -2;
-					} else {
+					} else {							// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
 					}					
 
