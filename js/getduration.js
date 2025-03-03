@@ -209,7 +209,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var l
 					if (countPerson == "--") {
 						l = -1;
-					} else (countPerson == "-") {
+					} else if (countPerson == "-") {
 						l = -2;
 					} else {
 						l = countPerson.replace(/[^0-9]/g, "");
