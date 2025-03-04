@@ -206,6 +206,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					document.getElementById("am-limit").innerHTML = amLimit;
 					document.getElementById("pm-limit").innerHTML = pmLimit;
 					var countPerson = document.getElementById("count-person").textContent;
+					console.log(countPerson);
 					var l
 					if (countPerson == "--") {			// 受付時間外
 						l = -1;
