@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 		      	var day = today.getDate();
 		      	var todaystr = year + "-" + ("00" + month).slice(-2) + "-" + ("00" + day).slice(-2);
 				var weekday = today.getDay();
-				var youbi;
+				var youbi = "日月火水木金土".slice(weekday, weekday + 1);
 				var cdate;
 				var cmonth;
 		      	var cday;
@@ -144,7 +144,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 								pmStart = csvArrayB[k][3];
 								pmLast = csvArrayB[k][4];
 							}
-							youbi = csvArrayB[k][1];
 						}
 					}
 					// 祝日を反映
@@ -208,11 +207,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var countPerson = document.getElementById("count-person").textContent;
 					console.log(countPerson);
 					var l
-					if (countPerson == "--") {			// 受付時間外
+					if (countPerson == "待ち人数：--") {		// 受付時間外
 						l = -1;
-					} else if (countPerson === "") {	// 待ち人数表示されない
-						l = -2;
-					} else {							// 待ち人数表示中
+					} else {								// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
 					}					
 
@@ -226,28 +223,24 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log("現在待ち人数：" + l);
 					console.log("現在時刻(分)：" + t);
 					if (l == -1) {
-						rest = "--";
-						console.log("Out of service");
-					} else if (l == -2) {
 						rest = "e";
-						console.log("No waiting data");
+						console.log("No data");
+					}
+					if(t < amSmin) {			// 午前開始
+						rest = "--";
+						console.log("Befor AM");
+					} else if(t < amLmin) {		// 午前終了
+						rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+						console.log("AM");
+					} else if(t < pmSmin) {		// 午後開始
+						rest = "--";
+						console.log("Befor PM");
+					} else if (t < pmLmin) {	// 午後終了
+						rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
+						console.log("PM");
 					} else {
-						if(t < amSmin) {			// 午前開始
-							rest = "--";
-							console.log("Befor AM");
-						} else if(t < amLmin) {		// 午前終了
-							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
-							console.log("AM");
-						} else if(t < pmSmin) {		// 午後開始
-							rest = "--";
-							console.log("Befor PM");
-						} else if (t < pmLmin) {	// 午後終了
-							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
-							console.log("PM");
-						} else {
-							rest = "--";
-							console.log("After PM");
-						}
+						rest = "--";
+						console.log("After PM");
 					}
 					console.log("現在残り：" + rest);
 					if (rest == "--") {
@@ -256,10 +249,14 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						document.getElementById("max-calling").textContent = "通知済み：--";
 						document.getElementById("count-rest").innerHTML = "--";
 					} else if (rest == "e") {
-						document.getElementById("count-group").textContent = "待ち組数：計算中";
-						document.getElementById("count-person").textContent = "待ち人数：計算中";
-						document.getElementById("max-calling").textContent = "通知済み：計算中";
-						document.getElementById("count-rest").innerHTML = "計算中";
+						document.getElementById("count-group").textContent = "待ち組数：計算中...";
+						document.getElementById("count-person").textContent = "待ち人数：計算中...";
+						document.getElementById("max-calling").textContent = "通知済み：計算中...";
+						document.getElementById("count-rest").innerHTML = "計算中...";
+						queue = document.getElementById("queue");
+						queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
+						queue.getElementsByTagName("a")[0].setAttribute("class", "active");
+						queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
 					} else if (rest <= 0) {
 						document.getElementById("count-group").textContent += "組";
 						document.getElementById("count-person").textContent += "人";
