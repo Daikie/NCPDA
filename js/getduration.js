@@ -207,7 +207,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var countPerson = document.getElementById("count-person").textContent;
 					console.log(countPerson);
 					var l
-					if (countPerson == "待ち人数：--") {		// 受付時間外
+					if (countPerson == "待ち人数：--") {		// 待ち人数表示されない
 						l = -1;
 					} else {								// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
@@ -226,22 +226,33 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						rest = "e";
 						console.log("No data");
 					}
-					if(t < amSmin) {			// 午前開始
+					if(t < amSmin) {			// 午前開始前
 						rest = "--";
 						console.log("Befor AM");
-					} else if(t < amLmin) {		// 午前終了
-						rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
-						console.log("AM");
-					} else if(t < pmSmin) {		// 午後開始
+					} else if(t < amLmin) {		// 午前終了前
+						if (l == -1) {			// 待ち人数表示されない
+							rest = "e";
+							console.log("No data");
+						} else {
+							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+							console.log("AM");
+						}
+					} else if(t < pmSmin) {		// 午後開始前
 						rest = "--";
 						console.log("Befor PM");
-					} else if (t < pmLmin) {	// 午後終了
-						rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
-						console.log("PM");
+					} else if (t < pmLmin) {	// 午後終了前
+						if (l == -1) {			// 待ち人数表示されない
+							rest = "e";
+							console.log("No data");
+						} else {
+							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
+							console.log("PM");
+						}
 					} else {
 						rest = "--";
 						console.log("After PM");
 					}
+					
 					console.log("現在残り：" + rest);
 					if (rest == "--") {
 						document.getElementById("count-group").textContent = "待ち組数：--";
