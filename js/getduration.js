@@ -209,6 +209,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var l
 					if (countPerson == "待ち人数：--") {		// 待ち人数表示されない
 						l = -1;
+					} else if (countPerson == "待ち人数：-") {
+						l = -2;
 					} else {								// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
 					}					
@@ -222,10 +224,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					}
 					console.log("現在待ち人数：" + l);
 					console.log("現在時刻(分)：" + t);
-					if (l == -1) {
-						rest = "e";
-						console.log("No data");
-					}
 					if(t < amSmin) {			// 午前開始前
 						rest = "--";
 						console.log("Befor AM");
@@ -233,6 +231,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						if (l == -1) {			// 待ち人数表示されない
 							rest = "e";
 							console.log("No data");
+						} else if (l == -2) {
+							rest = "--";
+							console.log("Stop");
 						} else {
 							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
 							console.log("AM");
@@ -244,6 +245,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						if (l == -1) {			// 待ち人数表示されない
 							rest = "e";
 							console.log("No data");
+						} else if (l == -2) {
+							rest = "--";
+							console.log("Stop");
 						} else {
 							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
 							console.log("PM");
