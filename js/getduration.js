@@ -269,9 +269,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						document.getElementById("max-calling").textContent = "通知済み：計算中...";
 						document.getElementById("count-rest").innerHTML = "計算中...";
 						queue = document.getElementById("queue");
-						queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
+						queue.getElementsByTagName("a")[0].setAttribute("href", "tel:03-3791-5761");
 						queue.getElementsByTagName("a")[0].setAttribute("class", "active");
-						queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
+						queue.innerHTML = queue.innerHTML.replace("順番受付停止中", "電話で問い合わせ");
 					} else if (rest <= 0) {
 						document.getElementById("count-group").textContent += "組";
 						document.getElementById("count-person").textContent += "人";
