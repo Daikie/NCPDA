@@ -215,6 +215,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					countPerson = document.getElementById("count-person").textContent;
 					console.log("1回目：", countPerson);
 					if (countPerson == "待ち人数：計算中...") {		// 待ち人数表示されない
+						console.log("waiting...");
 						waitApi(1000).then(function () {
 							countPerson = document.getElementById("count-person").textContent;
 							console.log("2回目：", countPerson);
