@@ -1,6 +1,6 @@
 function waitApi(ms) {
 	return new Promise(function(resolve) {
-		setTimeout(resolve, me);
+		setTimeout(resolve, ms);
 	});
 }
 
