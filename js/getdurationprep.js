@@ -284,9 +284,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						document.getElementById("max-calling").textContent = "通知済み：--";
 						document.getElementById("count-rest").innerHTML = "--";
 					} else if (rest == "e") {
-						document.getElementById("count-group").textContent = "待ち組数：計算中...";
-						document.getElementById("count-person").textContent = "待ち人数：計算中...";
-						document.getElementById("max-calling").textContent = "通知済み：計算中...";
+						// document.getElementById("count-group").textContent = "待ち組数：計算中...";
+						// document.getElementById("count-person").textContent = "待ち人数：計算中...";
+						// document.getElementById("max-calling").textContent = "通知済み：計算中...";
 						document.getElementById("count-rest").innerHTML = "計算中...";
 						queue = document.getElementById("queue");
 						queue.getElementsByTagName("a")[0].setAttribute("href", "tel:03-3791-5761");
