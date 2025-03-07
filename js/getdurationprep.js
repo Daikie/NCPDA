@@ -294,18 +294,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							countPerson = document.getElementById("count-person").textContent;
 							console.log("2回目：", countPerson);
 							if (countPerson == "待ち人数：計算中...") {
-								return waitApi(1000);
-							} else if (countPerson == "待ち人数：-") {		// 営業時間外
-								l = -2;
-								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin, avgDur);
-							} else {										// 待ち人数表示中
-								l = countPerson.replace(/[^0-9]/g, "");
-								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin, avgDur);
-							}	
-						}).then(function () {
-							countPerson = document.getElementById("count-person").textContent;
-							console.log("3回目：", countPerson);
-							if (countPerson == "待ち人数：計算中...") {
 								l = -1;
 								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin, avgDur);
 							} else if (countPerson == "待ち人数：-") {		// 営業時間外
