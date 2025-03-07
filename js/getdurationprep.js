@@ -4,6 +4,81 @@ function waitApi(ms) {
 	});
 }
 
+function showStatus() {
+	var urlParam = location.search
+	console.log(urlParam);
+	if (urlParam !== "") {
+		var param = urlParam.substring(1).split('&');
+		t = Number(param[0].split('=')[1]);
+		l = Number(param[1].split('=')[1]);
+	}
+	console.log("現在待ち人数：" + l);
+	console.log("現在時刻(分)：" + t);
+	if(t < amSmin) {			// 午前開始前
+		rest = "--";
+		console.log("Befor AM");
+	} else if(t < amLmin) {		// 午前終了前
+		if (l == -1) {			// 待ち人数表示されない
+			rest = "e";
+			console.log("No data");
+		} else if (l == -2) {
+			rest = "--";
+			console.log("Stop");
+		} else {
+			rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
+			console.log("AM");
+		}
+	} else if(t < pmSmin) {		// 午後開始前
+		rest = "--";
+		console.log("Befor PM");
+	} else if (t < pmLmin) {	// 午後終了前
+		if (l == -1) {			// 待ち人数表示されない
+			rest = "e";
+			console.log("No data");
+		} else if (l == -2) {
+			rest = "--";
+			console.log("Stop");
+		} else {
+			rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
+			console.log("PM");
+		}
+	} else {
+		rest = "--";
+		console.log("After PM");
+	}
+	
+	console.log("現在残り：" + rest);
+	if (rest == "--") {
+		document.getElementById("count-group").textContent = "待ち組数：--";
+		document.getElementById("count-person").textContent = "待ち人数：--";
+		document.getElementById("max-calling").textContent = "通知済み：--";
+		document.getElementById("count-rest").innerHTML = "--";
+	} else if (rest == "e") {
+		// document.getElementById("count-group").textContent = "待ち組数：計算中...";
+		// document.getElementById("count-person").textContent = "待ち人数：計算中...";
+		// document.getElementById("max-calling").textContent = "通知済み：計算中...";
+		document.getElementById("count-rest").innerHTML = "計算中...";
+		queue = document.getElementById("queue");
+		queue.getElementsByTagName("a")[0].setAttribute("href", "tel:03-3791-5761");
+		queue.getElementsByTagName("a")[0].setAttribute("class", "active");
+		queue.innerHTML = queue.innerHTML.replace("順番受付停止中", "電話で問い合わせ");
+	} else if (rest <= 0) {
+		document.getElementById("count-group").textContent += "組";
+		document.getElementById("count-person").textContent += "人";
+		document.getElementById("max-calling").textContent += "番の方まで";
+		document.getElementById("count-rest").innerHTML = "残り0人";
+	} else {
+		document.getElementById("count-group").textContent += "組";
+		document.getElementById("count-person").textContent += "人";
+		document.getElementById("max-calling").textContent += "番の方まで";
+		document.getElementById("count-rest").innerHTML = "残り" + rest + "人";
+		queue = document.getElementById("queue");
+		queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
+		queue.getElementsByTagName("a")[0].setAttribute("class", "active");
+		queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
+	}
+}
+
 window.addEventListener("DOMContentLoaded", function(event) {
 	// 営業日
 	const reqB = new XMLHttpRequest();
@@ -215,98 +290,39 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					countPerson = document.getElementById("count-person").textContent;
 					console.log("1回目：", countPerson);
 					if (countPerson == "待ち人数：計算中...") {		// 待ち人数表示されない
-						console.log("waiting...");
 						waitApi(1000).then(function () {
 							countPerson = document.getElementById("count-person").textContent;
 							console.log("2回目：", countPerson);
 							if (countPerson == "待ち人数：計算中...") {
 								return waitApi(1000);
-							}
+							} else if (countPerson == "待ち人数：-") {		// 営業時間外
+								l = -2;
+								showStatus();
+							} else {										// 待ち人数表示中
+								l = countPerson.replace(/[^0-9]/g, "");
+								showStatus();
+							}	
 						}).then(function () {
 							countPerson = document.getElementById("count-person").textContent;
 							console.log("3回目：", countPerson);
 							if (countPerson == "待ち人数：計算中...") {
 								l = -1;
-							}
+								showStatus();
+							} else if (countPerson == "待ち人数：-") {		// 営業時間外
+								l = -2;
+								showStatus();
+							} else {										// 待ち人数表示中
+								l = countPerson.replace(/[^0-9]/g, "");
+								showStatus();
+							}	
 						});
 					} else if (countPerson == "待ち人数：-") {		// 営業時間外
 						l = -2;
+						showStatus();
 					} else {										// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
+						showStatus();
 					}	
-					
-					var urlParam = location.search
-					console.log(urlParam);
-					if (urlParam !== "") {
-						var param = urlParam.substring(1).split('&');
-						t = Number(param[0].split('=')[1]);
-						l = Number(param[1].split('=')[1]);
-					}
-					console.log("現在待ち人数：" + l);
-					console.log("現在時刻(分)：" + t);
-					if(t < amSmin) {			// 午前開始前
-						rest = "--";
-						console.log("Befor AM");
-					} else if(t < amLmin) {		// 午前終了前
-						if (l == -1) {			// 待ち人数表示されない
-							rest = "e";
-							console.log("No data");
-						} else if (l == -2) {
-							rest = "--";
-							console.log("Stop");
-						} else {
-							rest = Math.floor((amLmin - t) * 60 / avgDur) - l;
-							console.log("AM");
-						}
-					} else if(t < pmSmin) {		// 午後開始前
-						rest = "--";
-						console.log("Befor PM");
-					} else if (t < pmLmin) {	// 午後終了前
-						if (l == -1) {			// 待ち人数表示されない
-							rest = "e";
-							console.log("No data");
-						} else if (l == -2) {
-							rest = "--";
-							console.log("Stop");
-						} else {
-							rest = Math.floor((pmLmin - t) * 60 / avgDur) - l;
-							console.log("PM");
-						}
-					} else {
-						rest = "--";
-						console.log("After PM");
-					}
-					
-					console.log("現在残り：" + rest);
-					if (rest == "--") {
-						document.getElementById("count-group").textContent = "待ち組数：--";
-						document.getElementById("count-person").textContent = "待ち人数：--";
-						document.getElementById("max-calling").textContent = "通知済み：--";
-						document.getElementById("count-rest").innerHTML = "--";
-					} else if (rest == "e") {
-						// document.getElementById("count-group").textContent = "待ち組数：計算中...";
-						// document.getElementById("count-person").textContent = "待ち人数：計算中...";
-						// document.getElementById("max-calling").textContent = "通知済み：計算中...";
-						document.getElementById("count-rest").innerHTML = "計算中...";
-						queue = document.getElementById("queue");
-						queue.getElementsByTagName("a")[0].setAttribute("href", "tel:03-3791-5761");
-						queue.getElementsByTagName("a")[0].setAttribute("class", "active");
-						queue.innerHTML = queue.innerHTML.replace("順番受付停止中", "電話で問い合わせ");
-					} else if (rest <= 0) {
-						document.getElementById("count-group").textContent += "組";
-						document.getElementById("count-person").textContent += "人";
-						document.getElementById("max-calling").textContent += "番の方まで";
-						document.getElementById("count-rest").innerHTML = "残り0人";
-					} else {
-						document.getElementById("count-group").textContent += "組";
-						document.getElementById("count-person").textContent += "人";
-						document.getElementById("max-calling").textContent += "番の方まで";
-						document.getElementById("count-rest").innerHTML = "残り" + rest + "人";
-						queue = document.getElementById("queue");
-						queue.getElementsByTagName("a")[0].setAttribute("href", "https://airwait.jp/WCSP/storeDetail?storeNo=AKR9456100837");
-						queue.getElementsByTagName("a")[0].setAttribute("class", "active");
-						queue.innerHTML = queue.innerHTML.replace("受付停止中", "を取得する");
-					}
 				});
 				req.send(null);
 			});
