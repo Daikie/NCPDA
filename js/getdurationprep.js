@@ -4,7 +4,7 @@ function waitApi(ms) {
 	});
 }
 
-function showStatus() {
+function showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin) {
 	var urlParam = location.search
 	console.log(urlParam);
 	if (urlParam !== "") {
@@ -297,31 +297,31 @@ window.addEventListener("DOMContentLoaded", function(event) {
 								return waitApi(1000);
 							} else if (countPerson == "待ち人数：-") {		// 営業時間外
 								l = -2;
-								showStatus();
+								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 							} else {										// 待ち人数表示中
 								l = countPerson.replace(/[^0-9]/g, "");
-								showStatus();
+								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 							}	
 						}).then(function () {
 							countPerson = document.getElementById("count-person").textContent;
 							console.log("3回目：", countPerson);
 							if (countPerson == "待ち人数：計算中...") {
 								l = -1;
-								showStatus();
+								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 							} else if (countPerson == "待ち人数：-") {		// 営業時間外
 								l = -2;
-								showStatus();
+								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 							} else {										// 待ち人数表示中
 								l = countPerson.replace(/[^0-9]/g, "");
-								showStatus();
+								showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 							}	
 						});
 					} else if (countPerson == "待ち人数：-") {		// 営業時間外
 						l = -2;
-						showStatus();
+						showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 					} else {										// 待ち人数表示中
 						l = countPerson.replace(/[^0-9]/g, "");
-						showStatus();
+						showStatus(l, t, amSmin, amLmin, pmSmin, pmLmin);
 					}	
 				});
 				req.send(null);
