@@ -140,36 +140,38 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					console.log(cdate);
 					if (cdate > today) {
 						cmonth = cdate.getMonth() + 1;
-						cday = cdate.getDate();
-						cweekday = cdate.getDay();
-						cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
-						if(csvArrayC[jc][2] == "-") {	// 臨時休業
-							if (switchA == false) {
-								elmA.innerHTML += '<h3>臨時休業：</h3>';
+						if (cmonth < month + 2) {	// 来月までの臨時休業・時間変更を表示
+							cday = cdate.getDate();
+							cweekday = cdate.getDay();
+							cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
+							if(csvArrayC[jc][2] == "-") {	// 臨時休業
+								if (switchA == false) {
+									elmA.innerHTML += '<h3>臨時休業：</h3>';
+								}
+								if(csvArrayC[jc][1] == "a") {
+									console.log(csvArrayC[jc][0] + "午前休診");
+									elmA.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前</span></h3>';
+								} else if(csvArrayC[jc][1] == "p") {
+									console.log(csvArrayC[jc][0] + "午後休診");
+									elmA.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
+								} else {
+									console.log(csvArrayC[jc][0] + "終日休診");
+									elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')終日</span></h3>';
+								}
+								switchA = true;
+							} else {						// 時間変更
+								if (switchB == false) {
+									elmB.innerHTML += '<h3>時間変更：</h3>';
+								}
+								if(csvArrayC[jc][1] == "a") {
+									console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+									elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
+								} else if(csvArrayC[jc][1] == "p") {
+									console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
+									elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
+								}
+								switchB = true;
 							}
-							if(csvArrayC[jc][1] == "a") {
-								console.log(csvArrayC[jc][0] + "午前休診");
-								elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前</span></h3>';
-							} else if(csvArrayC[jc][1] == "p") {
-								console.log(csvArrayC[jc][0] + "午後休診");
-								elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
-							} else {
-								console.log(csvArrayC[jc][0] + "終日休診");
-								elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')終日</span></h3>';
-							}
-							switchA = true;
-						} else {						// 時間変更
-							if (switchB == false) {
-								elmB.innerHTML += '<h3>時間変更：</h3>';
-							}
-							if(csvArrayC[jc][1] == "a") {
-								console.log(csvArrayC[jc][0] + "午前" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-								elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
-							} else if(csvArrayC[jc][1] == "p") {
-								console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-								elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
-							}
-							switchB = true;
 						}
 					}
 				}
