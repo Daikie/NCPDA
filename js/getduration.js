@@ -116,10 +116,13 @@ window.addEventListener("DOMContentLoaded", function(event) {
 				for (let ic = 0; ic < linesC.length; ic++) {
 					let cellsC = linesC[ic].split(",");
 					if (cellsC.length != 1) {
-						csvArrayC.push(cellsC);
+						if (cellsC[0] != "*") {		// コメント行スキップ
+							csvArrayC.push(cellsC);
+						}
 					}
 				}
 				var today = new Date();
+				today.setHours(0, 0, 0);
 				var year = today.getFullYear();
 		      	var month = today.getMonth() + 1;
 		      	var day = today.getDate();
@@ -131,20 +134,49 @@ window.addEventListener("DOMContentLoaded", function(event) {
 		      	var cday;
 		      	var cweekday;
 		      	var cyoubi;
+		      	var udate;
+				var umonth;
+		      	var uday;
+		      	var uweekday;
+		      	var uyoubi;
 				let elmA = document.getElementById("sideA");
 				let elmB = document.getElementById("sideB");
+				let elmC = document.getElementById("sideC");
 				var switchA = false;
 				var switchB = false;
 				for(let jc = 0; jc < csvArrayC.length; jc++) {
 					cdate = new Date(csvArrayC[jc][0]);
-					console.log(cdate);
-					if (cdate > today) {
-						cmonth = cdate.getMonth() + 1;
+					cmonth = cdate.getMonth() + 1;
+					cday = cdate.getDate();
+					cweekday = cdate.getDay();
+					cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
+					if (csvArrayC[jc][1] == "s") {	// 夏季休業
+						udate = new Date(csvArrayC[jc][2]);
+						if (udate >= today) {
+							console.log(csvArrayC[jc][0] + "～" + csvArrayC[jc][2] + "夏季休業");
+							udate = new Date(csvArrayC[jc][2]);
+							umonth = udate.getMonth() + 1;
+							uday = udate.getDate();
+							uweekday = udate.getDay();
+							uyoubi = "日月火水木金土".slice(uweekday, uweekday + 1);
+							elmC.innerHTML += '<h3>夏季休業：</h3>';
+							elmC.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')～' + umonth + '月' + uday + '日(' + uyoubi + ')</span></h3>';
+						}
+					} else if (csvArrayC[jc][1] == "n") {	// 年末年始休業
+						udate = new Date(csvArrayC[jc][2]);
+						if (udate >= today) {
+							console.log(csvArrayC[jc][0] + "～" + csvArrayC[jc][2] + "年末年始休業");
+							udate = new Date(csvArrayC[jc][2]);
+							umonth = udate.getMonth() + 1;
+							uday = udate.getDate();
+							uweekday = udate.getDay();
+							uyoubi = "日月火水木金土".slice(uweekday, uweekday + 1);
+							elmC.innerHTML += '<h3>年末年始休業：</h3>';
+							elmC.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')～' + umonth + '月' + uday + '日(' + uyoubi + ')</span></h3>';
+						}
+					} else if (cdate >= today) {
 						if (cmonth < month + 2) {	// 来月までの臨時休業・時間変更を表示
-							cday = cdate.getDate();
-							cweekday = cdate.getDay();
-							cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
-							if(csvArrayC[jc][2] == "-") {	// 臨時休業
+							if (csvArrayC[jc][2] == "-") {	// 臨時休業
 								if (switchA == false) {
 									elmA.innerHTML += '<h3>臨時休業：</h3>';
 								}
@@ -154,7 +186,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 								} else if(csvArrayC[jc][1] == "p") {
 									console.log(csvArrayC[jc][0] + "午後休診");
 									elmA.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
-								} else {
+								} else if(csvArrayC[jc][1] == "w") {
 									console.log(csvArrayC[jc][0] + "終日休診");
 									elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')終日</span></h3>';
 								}
@@ -200,8 +232,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var sec;
 					var t = today.getHours() * 60 + today.getMinutes();
 					var rest;
-					for(let j = 0; j < csvArray.length; j++) {
-						if(csvArray[j][1] == 1) {
+					for (let j = 0; j < csvArray.length; j++) {
+						if (csvArray[j][1] == 1) {
 							avgDur = csvArray[j][3];
 						}
 					}
@@ -218,9 +250,9 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var pmLmin = 930;
 					var amLimit, pmLimit;
 					// 営業日を反映
-					for(let k = 0; k < csvArrayB.length; k++) {
-						if(csvArrayB[k][0] == weekday) {
-							if(csvArrayB[k][2] == "a") {
+					for (let k = 0; k < csvArrayB.length; k++) {
+						if (csvArrayB[k][0] == weekday) {
+							if (csvArrayB[k][2] == "a") {
 								amStart = csvArrayB[k][3];
 								amLast = csvArrayB[k][4];
 							} else {
@@ -230,8 +262,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						}
 					}
 					// 祝日を反映
-					for(let m = 0; m < csvArrayH.length; m++) {
-						if(csvArrayH[m][0] == todaystr) {
+					for (let m = 0; m < csvArrayH.length; m++) {
+						if (csvArrayH[m][0] == todaystr) {
 							amStart = "-";
 							amLast = "-";
 							pmStart = "-";
@@ -239,19 +271,30 @@ window.addEventListener("DOMContentLoaded", function(event) {
 						}
 					}
 					// 臨時休業日を反映
-					for(let n = 0; n < csvArrayC.length; n++) {
-						if(csvArrayC[n][0] == todaystr) {
-							if(csvArrayC[n][1] == "a") {
+					for (let n = 0; n < csvArrayC.length; n++) {
+						if (csvArrayC[n][0] == todaystr) {
+							if (csvArrayC[n][1] == "a") {
 								amStart = csvArrayC[n][2];
 								amLast = csvArrayC[n][3];
-							} else if(csvArrayC[n][1] == "p"){
+							} else if (csvArrayC[n][1] == "p"){
 								pmStart = csvArrayC[n][2];
 								pmLast = csvArrayC[n][3];
-							} else {
+							} else if (csvArrayC[n][1] == "w"){
 								amStart = csvArrayC[n][2];
 								amLast = csvArrayC[n][3];
 								pmStart = csvArrayC[n][2];
 								pmLast = csvArrayC[n][3];
+							}
+						}
+						// 夏季休業、年末年始休業を繁栄
+						if (csvArrayC[n][1] == "s" || csvArrayC[n][1] == "n") {
+							cdate = new Date(csvArrayC[n][0]);
+							udate = new Date(csvArrayC[n][2]);
+							if (today >= cdate && today <= udate) {
+								amStart = "-";
+								amLast = "-";
+								pmStart = "-";
+								pmLast = "-";
 							}
 						}
 					}

@@ -111,15 +111,27 @@ reqH.addEventListener("load", function() {
         let linesC = resC.split(/\r\n|\n/);
         for (let ic = 0; ic < linesC.length; ic++) {
             let cellsC = linesC[ic].split(",");
-            if (cellsC[1] == "w" && cellsC[2] == "-") {
-                if (cellsC[0].length > 0){
-                    offArr.push(cellsC[0]);
-                }
-            } else {
-                if (cellsC[0].length > 0){
-                    halfArr.push(cellsC[0]);
+            if (cellsC.length > 1) {
+                if (cellsC[0] != "*") {     // コメント行スキップ
+                    if (cellsC[1] == "s" || cellsC[1] == "n") { // 夏季休業、年末年始休業
+                        cdate = new Date(cellsC[0]);
+                        udate = new Date(cellsC[2]);
+                        do {
+                            let vy = cdate.getFullYear();
+                            let vm = cdate.getMonth() + 1;
+                            let vd = cdate.getDate();
+                            offArr.push(String(vy + "-" + ("00" + vm).slice(-2) + "-" + ("00" + vd).slice(-2)));
+                            cdate.setDate(cdate.getDate() + 1);
+                        } while (cdate <= udate);
+
+                    } else if (cellsC[1] == "w" && cellsC[2] == "-") {
+                        offArr.push(cellsC[0]);
+                    } else {
+                        halfArr.push(cellsC[0]);
+                    }
                 }
             }
+            
         }
         showCalendar(year, month, halfArr, offArr, todayStr);
     });
