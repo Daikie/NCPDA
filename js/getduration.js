@@ -122,7 +122,6 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					}
 				}
 				var today = new Date();
-				today.setHours(0, 0, 0);
 				var year = today.getFullYear();
 		      	var month = today.getMonth() + 1;
 		      	var day = today.getDate();
@@ -231,6 +230,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					var min;
 					var sec;
 					var t = today.getHours() * 60 + today.getMinutes();
+					console.log("tは" + t);
 					var rest;
 					for (let j = 0; j < csvArray.length; j++) {
 						if (csvArray[j][1] == 1) {
