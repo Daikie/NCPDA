@@ -150,7 +150,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 					cweekday = cdate.getDay();
 					cyoubi = "日月火水木金土".slice(cweekday, cweekday + 1);
 					if (csvArrayC[jc][1] == "s") {	// 夏季休業
-						udate = new Date(csvArrayC[jc][2]);
+						udate = new Date(csvArrayC[jc][2] + " 23:59");
 						if (udate >= today) {
 							console.log(csvArrayC[jc][0] + "～" + csvArrayC[jc][2] + "夏季休業");
 							udate = new Date(csvArrayC[jc][2]);
@@ -162,7 +162,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							elmC.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')～' + umonth + '月' + uday + '日(' + uyoubi + ')</span></h3>';
 						}
 					} else if (csvArrayC[jc][1] == "n") {	// 年末年始休業
-						udate = new Date(csvArrayC[jc][2]);
+						udate = new Date(csvArrayC[jc][2] + " 23:59");
 						if (udate >= today) {
 							console.log(csvArrayC[jc][0] + "～" + csvArrayC[jc][2] + "年末年始休業");
 							udate = new Date(csvArrayC[jc][2]);
