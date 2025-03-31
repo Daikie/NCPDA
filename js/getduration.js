@@ -144,7 +144,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 				var switchA = false;
 				var switchB = false;
 				for(let jc = 0; jc < csvArrayC.length; jc++) {
-					cdate = new Date(csvArrayC[jc][0]);
+					cdate = new Date(csvArrayC[jc][0] + " 23:59");
 					cmonth = cdate.getMonth() + 1;
 					cday = cdate.getDate();
 					cweekday = cdate.getDay();
