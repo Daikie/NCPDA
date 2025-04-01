@@ -56,22 +56,12 @@ function createCalendar(year, month, halfList, offList, todayStr) {
                 dayCount++;
             } else {
                 dateStr = String(year + "-" + ("00" + month).slice(-2) + "-" + ("00" + dayCount).slice(-2));
-                if (month < 4) {    // 2025年3月まで
-                    if (d == 0 || d == 3 || offList.includes(dateStr)) {
-                        dayTag = '<span class="off">' + dayCount + '</span>';
-                    } else if(d == 5 || d == 6 || halfList.includes(dateStr)) {
-                        dayTag = '<span class="half">' + dayCount + '</span>';
-                    } else {
-                        dayTag = '<span>' + dayCount + '</span>';
-                    }
-                } else {            // 2025年4月以降
-                    if (d == 0 || d == 3 || offList.includes(dateStr)) {
-                        dayTag = '<span class="off">' + dayCount + '</span>';
-                    } else if(d == 4 || d == 5 || d == 6 || halfList.includes(dateStr)) {
-                        dayTag = '<span class="half">' + dayCount + '</span>';
-                    } else {
-                        dayTag = '<span>' + dayCount + '</span>';
-                    }
+                if (d == 0 || d == 3 || offList.includes(dateStr)) {
+                    dayTag = '<span class="off">' + dayCount + '</span>';
+                } else if(d == 4 || d == 5 || d == 6 || halfList.includes(dateStr)) {
+                    dayTag = '<span class="half">' + dayCount + '</span>';
+                } else {
+                    dayTag = '<span>' + dayCount + '</span>';
                 }
                 
                 if(todayStr == dateStr) {
