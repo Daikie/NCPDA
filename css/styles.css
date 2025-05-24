@@ -15,26 +15,21 @@ body {
 	background: url("../img/logo_md.png") no-repeat;
 	width: 71px;
 	height: 55px;
-	margin: 10px;
-}
-.navbar-brand {
-	padding-top: 15px;
+	margin: 5px;
 }
 .navbar-brand h1 { /* Name */
 	color: #259;
 	font-size: 1.8em;
 	font-weight: bold;
 	text-shadow: 1px 2px 3px #424;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin: 15px;
 	line-height: .75;
 }
 .navbar-brand h2 { /* Department */
 	color: #831;
 	font-size: 1.2em;
 	font-weight: bold;
-	margin-top: 15px;
-	margin-bottom: 0px;
+	margin: 15px;
 	line-height: .75;
 }
 .navbar-brand a:hover, .navbar-brand a:focus { /* Remove underlines */
@@ -44,8 +39,7 @@ body {
 	color: #F00;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: 10px;
-	margin-bottom: 0px;
+	margin: 15px;
 }
 
 .nav-item a {
@@ -373,6 +367,14 @@ form.form-inline {
 
 ul {
 	padding-left:25px;
+}
+ol.list-group-numbered li {
+	font-weight: bold;
+	color: #000;
+}
+ol.list-group-numbered li ul {
+	font-weight: normal;
+	color: #000;
 }
 li.list-group-item {
 	font-weight: bold;
