@@ -72,6 +72,20 @@ span.markR {
 span.markB {
 	color: #00F;
 }
+span.blink {
+	animation: blinkEffect 1s ease infinite;
+}
+@keyframes blinkEffect {
+	0% {
+		opacity: 0;
+		color: #822;
+	}
+	100% {
+		opacity: 1;
+		color: #D44;
+	}
+}
+
 div img {
 	margin-top: 0px;
 	margin-bottom: 20px;
