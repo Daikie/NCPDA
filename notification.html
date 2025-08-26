@@ -34,11 +34,16 @@
             width: 37.5%; /* 期間列の幅調整 */
         }
         .chart-container {
-            width: 80%;
+            width: 100%; /* 幅を100%に設定 */
+            height: 400px;
             margin: auto;
         }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
         .percentage-table {
-            width: 80%;
+            width: 100%; /* 幅を100%に設定 */
             margin: 20px auto;
             border-collapse: collapse;
         }
@@ -116,37 +121,11 @@
 		</div>
 	</nav>
 	<div class="container">
-		<table>
-	        <thead>
-	            <tr>
-	                <th>項目</th>
-	                <th>2024年7月～2025年1月</th>
-	                <th>2025年2月～2025年8月</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <tr>
-	                <td>あいうえお</td>
-	                <td>4384</td>
-	                <td>4760</td>
-	            </tr>
-	            <tr>
-	                <td>かきく</td>
-	                <td>137</td>
-	                <td>505</td>
-	            </tr>
-	            <tr>
-	                <td>さしすせそた</td>
-	                <td>374</td>
-	                <td>1016</td>
-	            </tr>
-	            <tr>
-	                <td>なにぬねのはひ</td>
-	                <td>3873</td>
-	                <td>3239</td>
-	            </tr>
-	        </tbody>
-	    </table>
+		<h2>初診受付方法を変更します。</h2>
+		<p>2025年2月から<span class="markR">順番制を導入し、診察を受けられる人数は8.6%増えました</span>。みなさまのご協力に感謝申し上げます。
+			<br>一方で、診察順番の<span class="markB">受付を開始してから1-2分で受付可能人数に達してしまうことが多く</span>なっており、受診したいのにできないというお声を頻繁にいただくようになりました。
+			<br>解決法を探るため、以下のグラフを作成しました。順番制導入前の7カ月間と、導入後の7カ月間に受診された方の内訳を比較したものです。
+		</p>
 	    <script src="js/chart.js"></script>
 	    <script src="js/chartjs-plugin-datalabels@2.0.0"></script>
 		<div class="chart-container">
@@ -162,26 +141,36 @@
 	            </tr>
 	        </thead>
 	        <tbody>
-	            <tr>
-	                <td>かきく</td>
-	                <td id="kakiku-percentage"></td>
+	        	<tr>
+	                <td>全体</td>
+	                <td id="total-percentage"></td>
 	            </tr>
 	            <tr>
-	                <td>さしすせそた</td>
-	                <td id="sashisusesota-percentage"></td>
+	                <td>初診</td>
+	                <td id="shoshin-percentage"></td>
 	            </tr>
 	            <tr>
-	                <td>なにぬねのはひ</td>
-	                <td id="naninunenohahi-percentage"></td>
+	                <td>初診者の再診</td>
+	                <td id="shoshinsaishin-percentage"></td>
+	            </tr>
+	            <tr>
+	                <td>以前からの再診</td>
+	                <td id="saisaishin-percentage"></td>
 	            </tr>
 	        </tbody>
 	    </table>
-
+	    <p>受診された総人数は8.6%増えているのですが、それにも増して初診の方の受診された人数が268%も増加しております。
+	    	<br>それだけでなく、初診後も平均して2カ月に1回程度受診されているため、結果として以前から受診されている方が受診しづらくなり、16.4%減少しております。</p>
+	    <p>もちろん今医療が必要な方を新たに受け入れることは診療所の機能として重要なことですが、<span class="markR">継続的な治療が必要な方が受診できない状況を放置できない</span>と考えました。
+	    	<br>そこで、初診の受付人数を絞り、再診の方が多少でも順番を取りやすいようにしたいと思います。</p>
+	    <p>順番制の中で初診人数に制限をかけることができないため、<span class="markR">初診に関しては完全予約制</span>とします。
+	    	<br>初診予約を午前1枠、午後1枠とすると、初診の人数が1/3程度に減らせる計算です。
+	    	<br>再診の方が順番を取りやすくなる効果が得られるまでに多少お時間はいただくと思いますが、ご理解いただければ幸いです。</p>
 	    <script>
 	        const data = {
-	            'かきく': [137, 505],
-	            'さしすせそた': [374, 1016],
-	            'なにぬねのはひ': [3873, 3239]
+	            '初診': [137, 505],
+	            '初診者の再診': [374, 1016],
+	            '以前からの再診': [3873, 3239]
 	        };
 
 	        const calculatePercentage = (start, end) => {
@@ -191,23 +180,27 @@
 	        };
 
 	        const updateTable = () => {
-	            document.getElementById('kakiku-percentage').textContent = calculatePercentage(data['かきく'][0], data['かきく'][1]);
-	            document.getElementById('sashisusesota-percentage').textContent = calculatePercentage(data['さしすせそた'][0], data['さしすせそた'][1]);
-	            document.getElementById('naninunenohahi-percentage').textContent = calculatePercentage(data['なにぬねのはひ'][0], data['なにぬねのはひ'][1]);
+	        	document.getElementById('total-percentage').textContent = calculatePercentage(data['初診'][0]+data['初診者の再診'][0]+data['以前からの再診'][0], data['初診'][1]+data['初診者の再診'][1]+data['以前からの再診'][1]);
+	            document.getElementById('shoshin-percentage').textContent = calculatePercentage(data['初診'][0], data['初診'][1]);
+	            document.getElementById('shoshinsaishin-percentage').textContent = calculatePercentage(data['初診者の再診'][0], data['初診者の再診'][1]);
+	            document.getElementById('saisaishin-percentage').textContent = calculatePercentage(data['以前からの再診'][0], data['以前からの再診'][1]);
 
-	            // 色付け
-	            const kakiku = document.getElementById('kakiku-percentage');
-	            const sashisusesota = document.getElementById('sashisusesota-percentage');
-	            const naninunenohahi = document.getElementById('naninunenohahi-percentage');
+	            const total = document.getElementById('total-percentage');
+	            const shoshin = document.getElementById('shoshin-percentage');
+	            const shoshinsaishin = document.getElementById('shoshinsaishin-percentage');
+	            const saisaishin = document.getElementById('saisaishin-percentage');
 
-	            if (parseFloat(kakiku.textContent) > 0) kakiku.classList.add('increase');
-	            else if (parseFloat(kakiku.textContent) < 0) kakiku.classList.add('decrease');
+	            if (parseFloat(total.textContent) > 0) total.classList.add('increase');
+	            else if (parseFloat(total.textContent) < 0) total.classList.add('decrease');
+
+	            if (parseFloat(shoshin.textContent) > 0) shoshin.classList.add('increase');
+	            else if (parseFloat(shoshin.textContent) < 0) shoshin.classList.add('decrease');
 	            
-	            if (parseFloat(sashisusesota.textContent) > 0) sashisusesota.classList.add('increase');
-	            else if (parseFloat(sashisusesota.textContent) < 0) sashisusesota.classList.add('decrease');
+	            if (parseFloat(shoshinsaishin.textContent) > 0) shoshinsaishin.classList.add('increase');
+	            else if (parseFloat(shoshinsaishin.textContent) < 0) shoshinsaishin.classList.add('decrease');
 
-	            if (parseFloat(naninunenohahi.textContent) > 0) naninunenohahi.classList.add('increase');
-	            else if (parseFloat(naninunenohahi.textContent) < 0) naninunenohahi.classList.add('decrease');
+	            if (parseFloat(saisaishin.textContent) > 0) saisaishin.classList.add('increase');
+	            else if (parseFloat(saisaishin.textContent) < 0) saisaishin.classList.add('decrease');
 	        };
 
 	        Chart.register(ChartDataLabels);
@@ -220,8 +213,8 @@
 	                labels: ['2024年7月～2025年1月', '2025年2月～2025年8月'],
 	                datasets: [
 	                    {
-	                        label: 'かきく',
-	                        data: data['かきく'],
+	                        label: '初診',
+	                        data: data['初診'],
 	                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
 	                        borderColor: 'rgba(255, 99, 132, 1)',
 	                        borderWidth: 1,
@@ -232,8 +225,8 @@
 	                        }
 	                    },
 	                    {
-	                        label: 'さしすせそた',
-	                        data: data['さしすせそた'],
+	                        label: '初診者の再診',
+	                        data: data['初診者の再診'],
 	                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
 	                        borderColor: 'rgba(54, 162, 235, 1)',
 	                        borderWidth: 1,
@@ -244,8 +237,8 @@
 	                        }
 	                    },
 	                    {
-	                        label: 'なにぬねのはひ',
-	                        data: data['なにぬねのはひ'],
+	                        label: '以前からの再診',
+	                        data: data['以前からの再診'],
 	                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
 	                        borderColor: 'rgba(75, 192, 192, 1)',
 	                        borderWidth: 1,
@@ -259,27 +252,51 @@
 	            },
 	            options: {
 	                responsive: true,
+	                maintainAspectRatio: false,
 	                scales: {
 	                    x: {
 	                        stacked: true,
+	                        ticks: {
+	                            font: {
+	                                size: 12 // x軸ラベルのフォントサイズを縮小 (元のサイズ15の2/3程度)
+	                            }
+	                        }
 	                    },
 	                    y: {
 	                        stacked: true,
 	                        title: {
 	                            display: true,
-	                            text: '値'
+	                            text: '人'
+	                        },
+	                        ticks: {
+	                            font: {
+	                                size: 12 // y軸ラベルのフォントサイズを縮小
+	                            }
 	                        }
 	                    }
 	                },
 	                plugins: {
 	                    title: {
 	                        display: true,
-	                        text: '項目別期間比較グラフ'
+	                        text: '項目別期間比較グラフ',
+	                        font: {
+	                            size: 13 // タイトルのフォントサイズを縮小
+	                        }
+	                    },
+	                    legend: {
+	                        labels: {
+	                            font: {
+	                                size: 12 // 凡例のフォントサイズを縮小
+	                            }
+	                        }
 	                    },
 	                    datalabels: {
 	                        color: 'black',
 	                        anchor: 'end',
-	                        align: 'end'
+	                        align: 'end',
+	                        font: {
+	                            size: 12 // データラベルのフォントサイズを縮小
+	                        }
 	                    }
 	                }
 	            }
