@@ -323,6 +323,12 @@ div#collapseDetail div.card {
 	padding: 5px;
 	margin-bottom: 15px;
 }
+div#collapseDetailN div.card {
+	width: 340px;
+	background-color: #FFA;
+	padding: 5px;
+	margin-bottom: 15px;
+}
 div#collapseSoftbank div.card {
 	background-color: #CCC;
 	padding: 5px;
