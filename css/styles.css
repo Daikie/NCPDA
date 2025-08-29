@@ -340,11 +340,8 @@ div#collapseYmobile div.card {
 	margin-bottom: 15px;
 }
 
-div .table.table-dark tr { /* Table dark */
-	background-color: #022;
-}
-div .table.table-dark tr.mark { /* Marked row */ 
-	background-color: #003;
+div .table.table-dark tr.thin { /* Thin row */
+	line-height: 10px;
 }
 div .table.table-dark td, div .table.table-dark th {
 	padding: 5px;
@@ -355,6 +352,9 @@ div .table.table-dark td.markG { /* Marked table */
 }
 div .table.table-dark td.markR { /* Marked table */
 	background-color: #602;
+}
+div .table.table-dark td.markB { /* Marked table */
+	background-color: #046;
 }
 
 div.container table.status thead th {
