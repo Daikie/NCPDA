@@ -237,6 +237,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							avgDur = csvArray[j][3];
 						}
 					}
+					// 平均診察時間+δ
+					avgDur = (avgDur * 4 + 780) / 5;
 					console.log(avgDur + "秒");
 					min = String(Math.floor(avgDur / 60));
 					sec = String(Math.floor(avgDur - min * 60));
