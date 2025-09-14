@@ -141,8 +141,8 @@ window.addEventListener("DOMContentLoaded", function(event) {
 				let elmA = document.getElementById("sideA");
 				let elmB = document.getElementById("sideB");
 				let elmC = document.getElementById("sideC");
-				var switchA = false;
-				var switchB = false;
+				var switchA = false;	// 臨時休業
+				var switchB = false;	// 時間変更
 				for(let jc = 0; jc < csvArrayC.length; jc++) {
 					cdate = new Date(csvArrayC[jc][0] + " 23:59");
 					cmonth = cdate.getMonth() + 1;
@@ -184,7 +184,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 									elmA.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前</span></h3>';
 								} else if(csvArrayC[jc][1] == "p") {
 									console.log(csvArrayC[jc][0] + "午後休診");
-									elmA.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
+									elmA.innerHTML += '<h3>&emsp;<span class="markG">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後</span></h3>';
 								} else if(csvArrayC[jc][1] == "w") {
 									console.log(csvArrayC[jc][0] + "終日休診");
 									elmA.innerHTML += '<h3>&emsp;<span class="markR">' + cmonth + '月' + cday + '日(' + cyoubi + ')終日</span></h3>';
@@ -199,7 +199,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 									elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午前' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
 								} else if(csvArrayC[jc][1] == "p") {
 									console.log(csvArrayC[jc][0] + "午後" + csvArrayC[jc][2] + "～" + csvArrayC[jc][3]);
-									elmB.innerHTML += '<h3>&emsp;<span class="markB">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
+									elmB.innerHTML += '<h3>&emsp;<span class="markG">' + cmonth + '月' + cday + '日(' + cyoubi + ')午後' + csvArrayC[jc][2] + "～" + csvArrayC[jc][3] + '</span></h3>';
 								}
 								switchB = true;
 							}
@@ -272,7 +272,7 @@ window.addEventListener("DOMContentLoaded", function(event) {
 							pmLast = "-";
 						}
 					}
-					// 臨時休業日を反映
+					// 臨時休業日、時間変更を反映
 					for (let n = 0; n < csvArrayC.length; n++) {
 						if (csvArrayC[n][0] == todaystr) {
 							if (csvArrayC[n][1] == "a") {

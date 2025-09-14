@@ -28,8 +28,12 @@
     background-color: #CFC;
 }
 
-#calendar td span.half {
+#calendar td span.am {
     color: blue;
+}
+
+#calendar td span.pm {
+    color: green;
 }
 
 #calendar td span.off {

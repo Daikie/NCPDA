@@ -7,9 +7,9 @@ const config = {
     show: 2,
 }
 
-function showCalendar(year, month, halfList, offList, todayStr) {
+function showCalendar(year, month, amList, pmList, offList, todayStr) {
     for ( i = 0; i < config.show; i++) {
-        const calendarHtml = createCalendar(year, month, halfList, offList, todayStr);
+        const calendarHtml = createCalendar(year, month, amList, pmList, offList, todayStr);
         const sec = document.createElement('section');
         sec.innerHTML = calendarHtml;
         document.querySelector('#calendar').appendChild(sec);
@@ -22,7 +22,7 @@ function showCalendar(year, month, halfList, offList, todayStr) {
     }
 }
 
-function createCalendar(year, month, halfList, offList, todayStr) {
+function createCalendar(year, month, amList, pmList, offList, todayStr) {
     const startDate = new Date(year, month - 1, 1); // 月の最初の日を取得
     const endDate = new Date(year, month,  0); // 月の最後の日を取得
     const endDayCount = endDate.getDate(); // 月の末日
@@ -58,8 +58,10 @@ function createCalendar(year, month, halfList, offList, todayStr) {
                 dateStr = String(year + "-" + ("00" + month).slice(-2) + "-" + ("00" + dayCount).slice(-2));
                 if (d == 0 || d == 3 || offList.includes(dateStr)) {
                     dayTag = '<span class="off">' + dayCount + '</span>';
-                } else if(d == 4 || d == 5 || d == 6 || halfList.includes(dateStr)) {
-                    dayTag = '<span class="half">' + dayCount + '</span>';
+                } else if(d == 4 || d == 5 || d == 6 || amList.includes(dateStr)) {
+                    dayTag = '<span class="am">' + dayCount + '</span>';
+                } else if(pmList.includes(dateStr)) {  
+                    dayTag = '<span class="pm">' + dayCount + '</span>';
                 } else {
                     dayTag = '<span>' + dayCount + '</span>';
                 }
@@ -80,7 +82,8 @@ function createCalendar(year, month, halfList, offList, todayStr) {
 }
 
 let offArr = [];
-let halfArr = [];
+let amArr = [];
+let pmArr = [];
 // 祝日
 const reqH = new XMLHttpRequest();
 reqH.open("GET", "./js/hd.csv", true);
@@ -116,14 +119,16 @@ reqH.addEventListener("load", function() {
 
                     } else if (cellsC[1] == "w" && cellsC[2] == "-") {
                         offArr.push(cellsC[0]);
-                    } else {
-                        halfArr.push(cellsC[0]);
+                    } else if (cellsC[1] == "p" && cellsC[2] == "-") {
+                        amArr.push(cellsC[0]);
+                    } else if (cellsC[1] == "a" && cellsC[2] == "-") {
+                        pmArr.push(cellsC[0]);
                     }
                 }
             }
             
         }
-        showCalendar(year, month, halfArr, offArr, todayStr);
+        showCalendar(year, month, amArr, pmArr, offArr, todayStr);
     });
     reqC.send(null);
 });
