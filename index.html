@@ -120,7 +120,7 @@
 		<div id="sideB"></div>
 		<div id="sideC"></div>
 		<ul>
-			<li>【オンライン診療時間変更】初診予約と時間が重複しないようオンライン診療の時間枠を変更しました。</li>
+			<li>【マイナ同意】オンライン診療でマイナンバーカードを使用される場合、診療予約日を正しく選択してください。</li>
 			<li><span class="markR">【初診受付方法の変更】</span>順番が取りにくい状況を改善するため、初診を予約制とします。<a href="notification.html" target="_blank">詳細はこちら</a></li>
 			<li>
 				<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseDetailN" aria-expanded="false" aria-controls="collapseDetail">▼悪天候時の入場時間繰り上げのお知らせ▼</button>
@@ -134,13 +134,13 @@
 				</div>
 			</li>
 			<li>【<span class="blink">母乳ドナー登録</span>】入院中の赤ちゃんに母乳を寄付してくださる方の問診・検査を当院で行います。<a href="milkbank.html" target="_blank">詳細はこちら</a>
-			<!--<li>【検査キット不足】百日咳迅速検査キットが入手困難なため、<span class="markR">当面は百日咳検査を行うことができません</span>。-->
 			
 			
 			<li>【予防接種】<span class="markB">おたふくワクチン、MRワクチンは出荷調整中</span>のため、予約をお受けできない場合があります。</li>
 		</ul>
 		<h3>過去のお知らせ</h3>
 		<ul>
+			<li>【オンライン診療時間変更】初診予約と時間が重複しないようオンライン診療の時間枠を変更しました。</li>
 			<li>【オンライン診療】<a href="telemed.html" target="_blank">マイナンバーカード登録方法</a></li>
 			<li>【帯状疱疹ワクチン】<a href="shingrix.html" target="_blank">帯状疱疹ワクチンの予約</a></li>
 			<li>【待ち時間の目安】<a href="#stats">統計に基づく目安</a></li>
@@ -208,6 +208,7 @@
         				<li id=count-person>待ち人数：<span data-airwait="waitCountPerson">計算中...</span></li>
         				<li id=max-calling>通知済み：<span data-airwait="maxCallingNumber">計算中...</span></li>
         				<li>受付可能：<span id="count-rest">計算中...</span></li>
+        				<!-- <li><div class="count-display"><span id="visitor-count">--</span></div></li> -->
         			</ul>
     			</li>
     		</ul>
@@ -719,6 +720,7 @@
 	<script src="https://airwait.jp/js/corporate/airwait.js" data-airwait="key:Gh821KMxF8MMPmmQUIpycVeNRAXVEd99" enable-log charset="utf-8"></script>
 	<script src="js/getduration.js?version=20251012a"></script>
 	<script src="js/calendar.js?version=20250914b"></script>
+	<script type="module" src="js/fetchfirebase.js?version=20260128a"></script>
 	
 </body>
 </html>
