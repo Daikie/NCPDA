@@ -18,10 +18,27 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const visitorRef = ref(database, 'visitor_count');
 
+var countPerson = document.getElementById("count-person");
+var mo = new MutationObserver(function() {
+    if (document.getElementById("count-person").textContent == "待ち人数：--") {
+        document.getElementById('visitor-count').innerText = "--";
+    }
+});
+var config = {
+  childList: true
+};
+mo.observe(countPerson, config);
+
 // データが更新されたら自動的に実行される
 onValue(visitorRef, (snapshot) => {
     const data = snapshot.val();
-    document.getElementById('visitor-count').innerText = data || 0;
+    console.log("現在の院内待機人数：" + data + "人");
+    if (document.getElementById("count-person").textContent == "待ち人数：計算中...") {
+        document.getElementById('visitor-count').innerText = "計算中...";
+    } else {
+        document.getElementById('visitor-count').innerText = data || 0;
+    document.getElementById('visitor-count').innerText += "人";
+    }
     
     // 少しアニメーションさせると「更新された感」が出ます
     const el = document.getElementById('visitor-count');

@@ -120,10 +120,17 @@
 		<div id="sideB"></div>
 		<div id="sideC"></div>
 		<ul>
+			<li><span class="markR">【リアルタイム在院者数表示】</span>診察順番を取得された方のうち何人が院内に来られているかをリアルタイムに表示する仕組みを導入しました。順番の進行が遅い場合は参考にされてください。</li>
 			<li>【マイナ同意】オンライン診療でマイナンバーカードを使用される場合、診療予約日を正しく選択してください。</li>
-			<li><span class="markR">【初診受付方法の変更】</span>順番が取りにくい状況を改善するため、初診を予約制とします。<a href="notification.html" target="_blank">詳細はこちら</a></li>
+			<li>【<span class="blink">母乳ドナー登録</span>】入院中の赤ちゃんに母乳を寄付してくださる方の問診・検査を当院で行います。<a href="milkbank.html" target="_blank">詳細はこちら</a>
+			<li>【予防接種】<span class="markB">おたふくワクチン、MRワクチンは出荷調整中</span>のため、予約をお受けできない場合があります。</li>
+		</ul>
+		<h3>過去のお知らせ</h3>
+		<ul>
+			<li><span class="markR">【初診予約】</span>当院受診歴がない方の受診には予約が必要<a href="notification.html" target="_blank">詳細はこちら</a></li>
+			<li>【オンライン診療時間変更】初診予約と時間が重複しないよう変更</li>
 			<li>
-				<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseDetailN" aria-expanded="false" aria-controls="collapseDetail">▼悪天候時の入場時間繰り上げのお知らせ▼</button>
+				<button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseDetailN" aria-expanded="false" aria-controls="collapseDetail">▼悪天候時の入場時間繰り上げ▼</button>
 				<div class="collapse" id="collapseDetailN">
 					<div class="card card-body">
 			            <p>　当院では、これまで来院された最初の3組の方を優先的にご案内するため、午前は8時55分、午後は14時55分から入場可能な仕組みを採用しておりました。しかし、猛暑時に院外でお待ちいただく方の体調面への影響が懸念される事例が発生しました。</p>
@@ -133,22 +140,12 @@
 					</div>
 				</div>
 			</li>
-			<li>【<span class="blink">母乳ドナー登録</span>】入院中の赤ちゃんに母乳を寄付してくださる方の問診・検査を当院で行います。<a href="milkbank.html" target="_blank">詳細はこちら</a>
-			
-			
-			<li>【予防接種】<span class="markB">おたふくワクチン、MRワクチンは出荷調整中</span>のため、予約をお受けできない場合があります。</li>
-		</ul>
-		<h3>過去のお知らせ</h3>
-		<ul>
-			<li>【オンライン診療時間変更】初診予約と時間が重複しないようオンライン診療の時間枠を変更しました。</li>
 			<li>【オンライン診療】<a href="telemed.html" target="_blank">マイナンバーカード登録方法</a></li>
 			<li>【帯状疱疹ワクチン】<a href="shingrix.html" target="_blank">帯状疱疹ワクチンの予約</a></li>
 			<li>【待ち時間の目安】<a href="#stats">統計に基づく目安</a></li>
-			<li>【優先受付】最初の3組は<span class="markR">院内待機で</span>優先受付可。</li>
-			<li>【診療時間変更】2025年4月より火曜午後は17:30まで、木曜は午前のみ。</li>
+			<li>【優先受付】最初の3組は<span class="markR">院内待機で</span>優先受付可</li>
 			<li>【新しい順番制】<a href="queuing.html" target="_blank">オンライン順番制の詳細</a></li>
-			<li>【舌下免疫療法】シダキュア2000単位は新規処方不可、5000単位は既存者に処方可。</li>
-			<li>【新型コロナ治療薬】ゾコーバ等の扱いなし。</li>
+			<li>【新型コロナ治療薬】ゾコーバ等の扱いなし</li>
 		</ul>
 		<hr>
 	</div>
@@ -208,8 +205,9 @@
         				<li id=count-person>待ち人数：<span data-airwait="waitCountPerson">計算中...</span></li>
         				<li id=max-calling>通知済み：<span data-airwait="maxCallingNumber">計算中...</span></li>
         				<li>受付可能：<span id="count-rest">計算中...</span></li>
-        				<li><div class="count-display"><span id="visitor-count">--</span></div></li>
+        				<li><sup><i>New</i></sup>現在の院内待機者：<span id="visitor-count">計算中...</span></li>
         			</ul>
+        			<img src="img/firebase.png" width="120px" height="40px" class="img-fluid">
     			</li>
     		</ul>
 		</div>
@@ -720,7 +718,7 @@
 	<script src="https://airwait.jp/js/corporate/airwait.js" data-airwait="key:Gh821KMxF8MMPmmQUIpycVeNRAXVEd99" enable-log charset="utf-8"></script>
 	<script src="js/getduration.js?version=20251012a"></script>
 	<script src="js/calendar.js?version=20250914b"></script>
-	<script type="module" src="js/fetchfirebase.js?version=20260128a"></script>
+	<script type="module" src="js/fetchfirebase.js?version=20260130a"></script>
 	
 </body>
 </html>
