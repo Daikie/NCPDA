@@ -35,9 +35,11 @@ onValue(visitorRef, (snapshot) => {
     console.log("現在の院内待機人数：" + data + "人");
     if (document.getElementById("count-person").textContent == "待ち人数：計算中...") {
         document.getElementById('visitor-count').innerText = "計算中...";
+    } else if (document.getElementById("count-person").textContent == "待ち人数：--") {
+        document.getElementById('visitor-count').innerText = "--";
     } else {
         document.getElementById('visitor-count').innerText = data || 0;
-    document.getElementById('visitor-count').innerText += "人";
+        document.getElementById('visitor-count').innerText += "人";
     }
     
     // 少しアニメーションさせると「更新された感」が出ます
