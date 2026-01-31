@@ -32,7 +32,7 @@ mo.observe(countPerson, config);
 // データが更新されたら自動的に実行される
 onValue(visitorRef, (snapshot) => {
     const data = snapshot.val();
-    console.log("現在の院内待機人数：" + data + "人");
+    console.log("院内患者数：" + data + "人");
     if (document.getElementById("count-person").textContent == "待ち人数：計算中...") {
         document.getElementById('visitor-count').innerText = "計算中...";
     } else if (document.getElementById("count-person").textContent == "待ち人数：--") {
