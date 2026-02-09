@@ -74,6 +74,8 @@ window.addEventListener("load", function(event) {
 						const suite = [3598, 19507, 23253, 25414, 27623, 27408, 27493, 29703];
 						console.log(suite.includes(Number(enc)));
 						htm += "<p><span class='markR'>カルテ番号" + enc + "の方専用</span>の予約ページです。</p>";
+						htm += "<p><span class='markR'>【処置予約のご利用方法の変更】</span>順番制の中に処置予約が混在するため、";
+						htm += "処置予約1枠の中で複数名同時の診察は行えなくなりました。<span class='markB'>ご家族も同日に受診されたい場合は順番の取得</span>をお願いします。</p>";
 						htm += "<h3>予約枠</h3>";
 						htm += "<ul><li>月・火・木・金・土午前は9:00と11:00</li><li>月午後は15:00と18:00</li><li>火午後は15:00と17:00</li></ul>";
 						htm += "<p>予約取得後にご都合が合わなくなった場合は必ずキャンセル処理をなさってください。</p>";
